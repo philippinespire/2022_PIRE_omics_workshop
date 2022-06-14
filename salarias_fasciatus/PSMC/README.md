@@ -40,9 +40,13 @@ cat reference.genbank.Sfa20k.fasta | grep "^>" | wc -l
 ```
 
 How many scaffolds did we keep for each genome?
+
 reference.denovoSSL.Sfa100k.fasta = 130
+
 reference.genbank.Sfa100k.fasta = 103
+
 reference.denovoSSL.Sfa20k.fasta = 7488
+
 reference.genbank.Sfa20k.fasta = 196
 
 And here are scripts to calculate the total length of the filtered assemblies.
@@ -55,9 +59,13 @@ cat reference.genbank.Sfa20k.fasta | grep -v "^>" | tr "\n" "\t" | sed 's/\t//g'
 ```
 
 How long is each assembly?
+
 reference.denovoSSL.Sfa100k.fasta = 16815789
+
 reference.genbank.Sfa100k.fasta = 792843668
+
 reference.denovoSSL.Sfa20k.fasta = 282010249
+
 reference.genbank.Sfa20k.fasta = 797427707
 
 Our shotgun assembly has shorter scaffolds in general than the Genbank assembly. If we use only scaffolds >100k we are using a fraction of the genome, however this may still be enough to make robust inferences about demographic history. We will assess this in the next steps.
@@ -130,7 +138,88 @@ mv data/reference.genbank.Sfa100k.fasta data/mkBAM/genbank_100k
 
 Thus in each folder you must have: * reads to map (.R1.fq.gz/.R2.fq.gz) * reference genome (renamed scaffolds, with dDocent prefix reference.cutoff1.cutoff2.fasta) * dDocentHPC.bash * config file (currently config.5.cssl) * dDocentHPC_ODU.sbatch
 
-Recall that we used a specific convention to name our reference genome files. We need to edit the config file in each directory to so that dDocent can find the reference.  
+Examine a `config.5.cssl` file - this file contains all of the setting that will be used to run dDocent. Most of these you can keep as they are. Recall that we used a specific convention to name our reference genome files - specifically the format is `reference.<cutoff1>.<cutoff2>.fasta`, where cutoff1 and cutoff2 refer to descriptive variables used by dDocent. We need to edit the config file `config.5.cssl` in each directory to so that dDocent can find the reference.  
+--> Also, the default alignment score in config.5.cssl is 80, which is different from before and seems high! I am changing this to 30.
+
+Here is an example:
+
+```
+----------mkREF: Settings for de novo assembly of the reference genome--------------------------------------------
+PE              Type of reads for assembly (PE, SE, OL, RPE)                                    PE=ddRAD & ezRAD pairedend, non-overlapping reads; SE=singleend reads; OL=ddRAD & ezRAD overlapping reads, miseq; RPE=oregonRAD, restriction site + random shear
+0.9             cdhit Clustering_Similarity_Pct (0-1)                                                   Use cdhit to cluster and collapse uniq reads by similarity threshold
+denovoSSL               Cutoff1 (integer)     ### <--- change this value to either denovoSSL or genbank to match the reference ###
+Aur-C_500_R1R2ORPHMRGD_decontam_noisolate               Cutoff2 (integer)    ### <--- change to either Sfa100k or Sfa20k to match your reference
+0.05    rainbow merge -r <percentile> (decimal 0-1)                                             Percentile-based minimum number of seqs to assemble in a precluster
+0.95    rainbow merge -R <percentile> (decimal 0-1)                                             Percentile-based maximum number of seqs to assemble in a precluster
+------------------------------------------------------------------------------------------------------------------
+
+----------mkBAM: Settings for mapping the reads to the reference genome-------------------------------------------
+Make sure the cutoffs above match the reference*fasta!
+1               bwa mem -A Mapping_Match_Value (integer)
+4               bwa mem -B Mapping_MisMatch_Value (integer)
+6               bwa mem -O Mapping_GapOpen_Penalty (integer)
+80              bwa mem -T Mapping_Minimum_Alignment_Score (integer)     ### <--- change to 30
+5       bwa mem -L Mapping_Clipping_Penalty (integer,integer)
+------------------------------------------------------------------------------------------------------------------
+
+```
+
+Go through each config file and make these changes using a text editor.
+
+--> current ODU sbatch file references config.4, change to config.5? Maybe we should have a more compact version in the scripts folder? 
+--> also needs singularity bind for Eric's folder
+--> export SINGULARITY_BIND=/home/e1garcia
+
+Now you will need to edit each sbatch file in each directory. Notice that this file has a lot of lines commented out with hashtags - these will run different steps in the process when un-commented. Find the line starting with `crun bash dDocentHPC.bash mkBAM config`... and un-comment this line by removing the hashtag. The config file is the last argument in this line - make sure it is the correct file (config.5.ssl). Make sure all of the other lines starting with `crun` are still commented. You can also change the job-name and output SBATCH settings in the header to identify this job (something appropriate to each reference genome, like mkBAM_denovoSSL_Sfa100k), and change the email address so it emails you when finished. 
+
+Your header, and the lines you are running, should read something like this:
+
+```
+#!/bin/bash -l
+
+#SBATCH --job-name=mkBAM_denovoSSL_Sfa100k
+#SBATCH -o mkBAM_denovoSLL_Sfa100k-%j.out
+#SBATCH -p main
+#SBATCH -c 4                                    # either < -c 4 > or < --ntasks=1 together withw --cpus-per-task=40 > We have been using -c 4 
+##SBATCH --ntasks=1
+##SBATCH --cpus-per-task=40                     # 40 for Wahab or 32 for Turing
+#SBATCH --mail-user=br450@rutgers.edu
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=END
+
+enable_lmod
+module load container_env ddocent
+
+crun bash dDocentHPC.bash mkBAM config.5.cssl
+```
+
+If all of that is set you should be able to run dDocentHPC and map your reads by executing the sbatch file in each directory. Navigate to each directory and run the following.
+
+```
+sbatch dDocentHPC_ODU.sbatch
+```
+
+*Take a break!*
+
+After we have generated the .bam files we need to filter them. This can be done just by editing the sbatch file to un-comment the appopriate line in your sbatch file and rerunning. 
+
+Add a hashtag at the beginning on the mkBAM line (so you don't run that step again!), then find the next line with `crun bash dDocentHPC.bash fltrBAM`... and remove the hashtag from that one. Make sure it is pointing to the proper config file again. Change "mkBAM" to "fltrBAM" in the header. THe relevant lines should look like this.
+
+```
+#!/bin/bash -l
+
+#SBATCH --job-name=fltrBAM_denovoSSL_Sfa100k
+#SBATCH -o fltrBAM_denovoSSL_Sfa100k-%j.out
+#SBATCH -p main
+#SBATCH -c 4					# either < -c 4 > or < --ntasks=1 together withw --cpus-per-task=40 > We have been using -c 4 
+##SBATCH --ntasks=1
+##SBATCH --cpus-per-task=40			# 40 for Wahab or 32 for Turing
+#SBATCH --mail-user=breid@rutgers.edu
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=END
+
+crun bash dDocentHPC.bash fltrBAM config.5.cssl
+```
 
 ## Step 3. Assess depth of coverage.
 ## Step 4. Call genotypes and consensus sequences.
