@@ -66,8 +66,9 @@ cd spratelloides_gracilis/shotgun_raw_fq
 nano README.md
 ```
 
-## 0. **Rename the raw fq.gz files (<1 minute run time)**
+---
 
+## 0. **Rename the raw fq.gz files (<1 minute run time)**
 
 Make sure you check and edit the decode file as necessary so that the following naming format is followed:
 
@@ -95,6 +96,7 @@ After you are satisfied that the orginal and new file names are correct, then yo
 cd YOURSPECIESDIR/shotgun_raw_fq
 
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash NAMEOFDECODEFILE.tsv rename
+#will need to say "yes" 2X
 ```
 
 ---
@@ -147,11 +149,12 @@ The max # of nodes to use at once should **NOT** exceed the number of pairs of r
 cd YOURSPECIESDIR
 
 #runCLUMPIFY_r1r2_array.bash <indir;fast1 files > <outdir> <tempdir> <max # of nodes to use at once>
-# do not use trailing / in paths. Example:
+#do not use trailing / in paths. Example:
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/YOURUSERNAME 3
 ```
 
 After completion, run `checkClumpify.R` to see if any files failed
+
 ```bash
 cd YOURSPECIESDIR
 
@@ -159,39 +162,40 @@ enable_lmod
 module load container_env mapdamage2
 crun R < checkClumpify_EG.R --no-save
 
-# if the previous line returns an error that tidyverse is missing then do the following
+#if the previous line returns an error that tidyverse is missing then do the following
 crun R
 
-# you are now in the R environment (there should be a > rather than $), install tidyverse
+#you are now in the R environment (there should be a > rather than $), install tidyverse
 install.packages("tidyverse")
-# when prompted, type "yes"
+#when prompted, type "yes"
 
-# when the install is complete, exit R with the following keystroke combo: ctrl-d
-# type "no" when asked about saving the environment
+#when the install is complete, exit R with the following keystroke combo: ctrl-d
+#type "no" when asked about saving the environment
 
-# you are now in the shell environment and you should be able to run the checkClumpify script
+#you are now in the shell environment and you should be able to run the checkClumpify script
 crun R < checkClumpify_EG.R --no-save
 ```
+
 If all files were successful, `checkClumpify_EG.R` will return "Clumpify Successfully worked on all samples". 
 
-If some failed, the script will also let you know. Try raising "-c 20" to "-c 40" in `runCLUMPIFY_r1r2_array.bash` and run clumplify again
+If some failed, the script will also let you know. Try raising the number of nodes used (ex: "-c 20" to "-c 40") and run clumplify again.
 
-Also look for this error "OpenJDK 64-Bit Server VM warning:
-INFO: os::commit_memory(0x00007fc08c000000, 204010946560, 0) failed; error='Not enough space' (errno=12)"
+Also look for this error *"OpenJDK 64-Bit Server VM warning:
+INFO: os::commit_memory(0x00007fc08c000000, 204010946560, 0) failed; error='Not enough space' (errno=12)"*.
 
-If the array set up doesn't work. Try running Clumpify on a turing himem node, see the [cssl repo](https://github.com/philippinespire/pire_cssl_data_processing/tree/main/scripts) for details.
+If the array set up doesn't work. Try running Clumpify on a turing himem node (see the [cssl repo](https://github.com/philippinespire/pire_cssl_data_processing/tree/main/scripts) for details).
 
 ---
 
-## **4. Second trim. Execute `runFASTP_2.sbatch` (0.5-3 hours run time)**
+## **4. Second trim. Execute `runFASTP_2_ssl.sbatch` (0.5-3 hours run time)**
 
-If you are going to assemble a genome with this data, use  [runFASTP_2_ssl.sbatch](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_2_ssl.sbatch). Modify the script name in the code blocks below as necessary 
+For pre-processing for genome assembly, use  [runFASTP_2_ssl.sbatch](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_2_ssl.sbatch).
 
 ```bash
 cd YOURSPECIESDIR
 
-#sbatch runFASTP_2.sbatch <INDIR/full path to cumplified files> <OUTDIR/full path to desired outdir>
-# do not use trailing / in paths. Example:
+#sbatch runFASTP_2_ssl.sbatch <INDIR/full path to cumplified files> <OUTDIR/full path to desired outdir>
+#do not use trailing / in paths. Example:
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch fq_fp1_clmp fq_fp1_clmp_fp2
 ```
 
@@ -199,16 +203,14 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch f
 
 ## **5. Decontaminate files. Execute [`runFQSCRN_6.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFQSCRN_6.bash) (several hours run time)**
 
-Check the number of available nodes `sinfo` (i.e. nodes in idle in the main partition).
- Try running one node per fq.gz file if possilbe or how many nodes are available. Here, the number of nodes running simultaneously should **NOT** exceed the number of fq.gz files (ex: 3 r1-r2 fq.gz pairs = 6 nodes max).
-* ***NOTE: you are executing the bash not the sbatch script***
-* ***This can take up to several days depending on the size of your dataset. Plan accordingly***
+Try running one node per fq.gz file if possible. Here, the number of nodes running simultaneously should **NOT** exceed the number of fq.gz files (ex: 3 r1-r2 fq.gz pairs = 6 nodes max).
+  * ***NOTE: you are executing the bash not the sbatch script***
 
 ```sh
 cd YOURSPECIESDIR
 
 #runFQSCRN_6.bash <indir> <outdir> <number of nodes running simultaneously>
-# do not use trailing / in paths. Example:
+#do not use trailing / in paths. Example:
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_clmp_fp2 fq_fp1_clmp_fp2_fqscrn 6
 ```
 
@@ -217,7 +219,7 @@ Confirm that all files were successfully completed.
 ```sh
 cd YOURSPECIESDIR
 
-# fastqscreen generates 5 files (*tagged.fastq.gz, *tagged_filter.fastq.gz, *screen.txt, *screen.png, *screen.html) for each input fq.gz file
+#fastqscreen generates 5 files (*tagged.fastq.gz, *tagged_filter.fastq.gz, *screen.txt, *screen.png, *screen.html) for each input fq.gz file
 #check that all 5 files were created for each file: 
 ls fq_fp1_clmp_fp2_fqscrn/*tagged.fastq.gz | wc -l
 ls fq_fp1_clmp_fp2_fqscrn/*tagged_filter.fastq.gz | wc -l 
@@ -228,19 +230,20 @@ ls fq_fp1_clmp_fp2_fqscrn/*screen.html | wc -l
 # for each, you should have the same number as the number of input files (number of fq.gz files)
 
 #You should also check for errors in the *out files:
-# this will return any out files that had a problem
+#this will return any out files that had a problem
 
-#do all out files at once
+#do all *out files at once
 grep 'error' slurm-fqscrn.*out
 grep 'No reads in' slurm-fqscrn.*out
 
-# or check individuals files <replace JOBID with your actual job ID>
+#or check individuals files <replace JOBID with your actual job ID>
 grep 'error' slurm-fqscrn.JOBID*out
 grep 'No reads in' slurm-fqscrn.JOBID*out
 ```
-If you see missing indiviudals or categories in the multiqc output, there was likely a ram error. I'm not sure if the "error" search term catches it.
 
-Run the files that failed again. This seems to work in most cases
+If you see missing indiviudals or categories in the multiqc output, there was likely a RAM error. The "error" search term may not always catch it.
+
+Run the files that failed again. This seems to work in most cases:
 
 ```sh
 cd YOURSPECIESDIR
@@ -264,12 +267,13 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runREPAIR.sbatch fq_fp1
 
 ## **7. Calculate the percent of reads lost in each step**
 
-Execute [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh)
+Execute [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh).
+
 ```sh
 cd YOURSPECIESDIR
 
 #read_calculator_ssl.sh <Path to species home dir> 
-# do not use trailing / in paths. Example:
+#do not use trailing / in paths. Example:
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
 ```
 
@@ -281,10 +285,12 @@ Inspect these tables and revisit steps if too much data was lost
 
 ## **8. Clean Up
 
-Move the `.out` files into the `logs` dir after each step is completed:
+Make sure all the `.out` files have been moved into the `logs` directory
 
 ```sh
-mv *out /home/youruserID/shotgun_PIRE/pire_ssl_data_processing/YOURSPECIESDIR/logs
+cd YOURSPECIESDIR
+
+mv *out logs/
 ```
 
-Be sure to update your readme file so that others know what happened in your directory. Ideally, somebody should be able to replicate what you did exactly.
+Be sure to update your README file so that others know what happened in your directory. Ideally, somebody should be able to replicate what you did exactly.
