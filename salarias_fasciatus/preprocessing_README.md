@@ -1,6 +1,6 @@
 # Pre-Processing PIRE Data
 
-List of steps to take in raw fq files from shotgun
+List of steps to process raw `fq.gz` files from shotgun sequencing.
 
 ---
 
