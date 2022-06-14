@@ -107,6 +107,8 @@ Execute `Multi_FASTQC.sh` while providing, in quotations and in this order,
 (1) the FULL path to these files and (2) a suffix that will identify the files to be processed. 
 
 ```sh
+cd YOURSPECIESDIR/shotgun_raw_fq
+
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz"   
 ```
 
