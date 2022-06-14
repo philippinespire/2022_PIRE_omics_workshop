@@ -37,17 +37,17 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotg
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "fq.gz" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq"
 ```
 
-[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "https://htmlpreview.github.io/?" to the beginning of the URL.*
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
   * % duplication - low
-    * 20s-26s
+    * 20-26%
   * gc content - reasonable
     * 45-47%
   * quality - good
     * sequence quality and per sequence qual both good
   * % adapter - good and low
-    * ~4s
+    * ~4%
   * number of reads - good
     * ~216M
 
@@ -62,30 +62,31 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch shotgun_raw_fq fq_fp1
 ```
 
-Potential issues:  
-* % duplication - not bad 
-  * 31-46%
-* gc content - reasonable
-  * ~44%
-  * more variable in pos 1-72 than in 73-150 
-* passing filter - good
-  * ~91%
-* % adapter - not too bad 
-  * 6-7.5%
-* number of reads - good
-  * ~340-414M (per pair of r1-r2 files)
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1/1st_fastp_report.html) written out to `fq_fp1` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
-```
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash ../fq_fp1 ../fq_fp1_clmparray /scratch/e1garcia 6
-```
+Potential issues:  
+  * % duplication - low 
+    * 17-23%
+  * gc content - reasonable
+    * ~45%
+      * more variable at pos 1-70 than in 70-150 
+  * passing filter - good
+    * ~95-96%
+  * % adapter - not too bad 
+    * 6-8.5%
+  * number of reads - good
+    * ~324-504M (per pair of r1-r2 files)
 
 ---
 
 ## Step 3. Clumpify
 
-Ran [runCLUMPIFY_r1r2_array.bash](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) in a 3 node array in Wahab
+Ran [runCLUMPIFY_r1r2_array.bash](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) in a 3 node array on Wahab.
+
 ```
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmparray /scratch/e1garcia 3
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmparray /scratch/r3clark 3
 ```
 
 Checked the output with `checkClumpify_EG.R`
