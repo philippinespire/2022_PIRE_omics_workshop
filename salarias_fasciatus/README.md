@@ -6,6 +6,8 @@ Following the [pire_ssl_data_processing](https://github.com/philippinespire/pire
 
 ---
 
+## Pre-processing section
+
 ## Step 0. Rename the raw fq.gz files
 
 Used decode file from Sharon Magnuson.
@@ -203,8 +205,7 @@ This went smoothly.
 
 ---
 
-
-## Calculated the percent of reads lost in each step
+## Step 7. Calculate the percent of reads lost in each step
 
 Executed [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh)
 to generate the [percent read loss](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/preprocess_read_change/readLoss_table.tsv) and
@@ -221,12 +222,11 @@ Highlights:
 * fastp2 dropped 14-17% of the reads after deduplication (lower min read lenght?)
 * Total accumulative read loss is 50-60%, which results in 86-94 M reads still remaining (loss seems pretty high but we still ~90M read left!)
 
-
 ---
 
 ### Assembly section
 
-## Step 7. Genome properties
+## Step 8. Genome properties
 
 I could not find Sgr in the [genomesize.com](https://www.genomesize.com/) database,
  thus I estimated the genome size of Sgr using jellyfish
@@ -262,7 +262,7 @@ QUAST stat table has also been updated to include the genome scope version and "
 
 ---
 
-## Step 8. Assemble the genome using [SPAdes](https://github.com/ablab/spades#sec3.2)
+## Step 9. Assemble the genome using [SPAdes](https://github.com/ablab/spades#sec3.2)
 
 In our previous tests, contaminated data has produced the best assemblies for nDNA but decontaminated assemblies were better for mtDNA. The effect of using merged files remains unclear
 
@@ -311,7 +311,7 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShim
 
 This SPAdes scripts automatically runs `QUAST` but running `BUSCO` separately 
 
-## Step 9. Assessing the best assembly
+## Step 10. Assessing the best assembly
 
 **Executed [runBUCSO.sh](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runBUSCO.sh) on the `contigs` and `scaffolds` files**
 ```sh
@@ -390,7 +390,7 @@ Added a new record for Sgr SgC0072C contam to the [best_ssl_assembly_per_sp.tsv]
 nano ../best_ssl_assembly_per_sp.tsv
 ```
 
-## Step 10. Probe design - regions for probe development
+## Step 11. Probe design - regions for probe development
 
 From species directory. Made probe dir, renamed assembly and copied scripts
 ```sh
@@ -431,7 +431,7 @@ Moved out files to logs
 mv *out ../logs
 ```
 
-## step 11. Fetching genomes for closest relatives
+## Step 12. Fetching genomes for closest relatives
 
 ```sh
 nano closest_relative_genomes_Spratelloides_gracilis.txt
