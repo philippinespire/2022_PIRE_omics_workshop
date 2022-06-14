@@ -91,45 +91,54 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/r3clark 3
 ```
 
-Checked the output with `checkClumpify_EG.R`
+Checked the output with [`checkClumpify_EG.R`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/checkClumpify_EG.R).
+
 ```
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
 enable_lmod
 module load container_env mapdamage2
+
 crun R < /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/checkClumpify_EG.R --no-save
 ```
 
-*I couldn't pass the arguments from the terminal to R correcty so I commented out few lines in checkClumpify.R to bypass this*
-
 Clumpify worked succesfully!
 
-Out files were moved to the `logs` dir
+Moved all `*out` files to the `logs` directory.
+
 ```
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
 mv *out logs
 ```
-
 
 ---
 
 ## Step 4. Run fastp2
 
-Executed `runFASTP_2_ssl.sbatch` to generate this [report](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/fq_fp1_clmparray_fp2/2nd_fastp_report.html)
+Rab [runFASTP_2_ssl.sbatch](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_2_ssl.sbatch).
+
 ```
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
 #runFASTP_2_ssl.sbatch <indir> <outdir> 
 # do not use trailing / in paths
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch fq_fp1_clmparray/ fq_fp1_clmparray_fp2
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch fq_fp1_clmp fq_fp1_clmp_fp2
 ```
 
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1/1st_fastp_report.html) written out to `fq_fp1` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
+
 Potential issues:  
-* % duplication - low
-  * 8-14%
-* gc content - reasonable
-  * 44s 
-* passing filter - good
-  * 83-85%s 
-* % adapter - virtually noned
-  * 0.1%
-* number of reads - lost alot for albatross
-  * 205-213M (per pair of r1-r2 files)
+  * % duplication - good
+    * 3-6%
+  * gc content - reasonable
+    * 45% 
+  * passing filter - good
+    * 87-89%s 
+  * % adapter - virtually none
+    * 0.1-0.2%
+  * number of reads
+    * 241-358M (per pair of r1-r2 files)
 
 ---
 
