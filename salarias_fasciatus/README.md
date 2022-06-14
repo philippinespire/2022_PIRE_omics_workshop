@@ -96,6 +96,7 @@ Checked the output with [`checkClumpify_EG.R`](https://github.com/philippinespir
 ```
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
+salloc
 enable_lmod
 module load container_env mapdamage2
 
@@ -122,11 +123,11 @@ Rab [runFASTP_2_ssl.sbatch](https://github.com/philippinespire/pire_fq_gz_proces
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #runFASTP_2_ssl.sbatch <indir> <outdir> 
-# do not use trailing / in paths
+#do not use trailing / in paths
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch fq_fp1_clmp fq_fp1_clmp_fp2
 ```
 
-[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1/1st_fastp_report.html) written out to `fq_fp1` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2/2nd_fastp_report.html) written out to `fq_fp1_clmp_fp2` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
   * % duplication - good
@@ -142,51 +143,51 @@ Potential issues:
 
 ---
 
-
 ## Step 5. Run fastq_screen
 
-Executed `runFQSCRN_6.bash` to generate this [report](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/fq_fp1_clmparray_fp2_fqscrn/fastqc_screen_report.html)
+Ran [`runFQSCRN_6.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFQSCRN_6.bash).
 
 ```
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
 #runFQSCRN_6.bash <indir> <outdir> <number of nodes to run simultaneously>
-# do not use trailing / in paths
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_clmparray_fp2 fq_fp1_clmparray_fp2_fqscrn 6
+#do not use trailing / in paths
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_clmp_fp2 fq_fp1_clmp_fp2_fqscrn 6
 ``
 
-Checked output for errors
-``
-ls fq_fp1_clmparray_fp2_fqscrn/*tagged.fastq.gz | wc -l
-ls fq_fp1_clmparray_fp2_fqscrn/*tagged_filter.fastq.gz | wc -l 
-ls fq_fp1_clmparray_fp2_fqscrn/*screen.txt | wc -l
-ls fq_fp1_clmparray_fp2_fqscrn/*screen.png | wc -l
-ls fq_fp1_clmparray_fp2_fqscrn/*screen.html | wc -l
+Checked output for errors.
 
-# all returned 6
+``
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
+ls fq_fp1_clmp_fp2_fqscrn/*tagged.fastq.gz | wc -l
+ls fq_fp1_clmp_fp2_fqscrn/*tagged_filter.fastq.gz | wc -l 
+ls fq_fp1_clmp_fp2_fqscrn/*screen.txt | wc -l
+ls fq_fp1_clmp_fp2_fqscrn/*screen.png | wc -l
+ls fq_fp1_clmp_fp2_fqscrn/*screen.html | wc -l
+
+#all returned 6 (good)
 
 #checked for errors in all out files at once
 grep 'error' slurm-fqscrn.*out
 grep 'No reads in' slurm-fqscrn.*out
 
-# No errors!
+#No errors!
 ```
 
-However, `runFQSCRN_6.bash` was running multiqc several times generating reports with not all the files and making many outputs. I deleted all of this and re-run multiqc with `runMULTIQC.sbatch`
 
-I modified `runFQSCRN_6.bash` by commenting out the original execution of multiqc and added the format we are running in the trims
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2/2nd_fastp_report.html) written out to `fq_fp1_clmp_fp2_fqscrn` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
-```sh
-#runMULTIQC.sbatch <INDIR> <Report name>
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runMULTIQC.sbatch "fq_fp1_clmparray_fp2_fqscrn" "fqsrn_report"
+Potential issues:
+  * about 90% of reads were retained
+
+
+Cleaned-up logs again.
+
 ```
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
-Highlights from [report](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/fq_fp1_clmparray_fp2_fqscrn/fastqc_screen_report.html):
-* about 90% of reads were retained
-
-
-Cleanup logs
-```
-mkdir logs
-mv *out logs
+mv *out logs/
 ```
 
 ---
