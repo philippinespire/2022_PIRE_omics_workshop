@@ -1,0 +1,7 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	Sfa-CBas_028-Ex1-1H_L4_1	/home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_1_fastqc.zip
+FastQC	all_sections	Sfa-CBas_028-Ex1-2A_L4_1	/home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_1_fastqc.zip
+FastQC	all_sections	Sfa-CBas_028-Ex1-1H_L4_2	/home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_2_fastqc.zip
+FastQC	all_sections	Sfa-CBas_028-Ex1-2A_L4_2	/home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_2_fastqc.zip
+FastQC	all_sections	Sfa-CBas_028-Ex1-1G_L4_2	/home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_2_fastqc.zip
+FastQC	all_sections	Sfa-CBas_028-Ex1-1G_L4_1	/home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_1_fastqc.zip
