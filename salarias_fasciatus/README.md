@@ -179,8 +179,8 @@ grep 'No reads in' slurm-fqscrn.*out
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2/2nd_fastp_report.html) written out to `fq_fp1_clmp_fp2_fqscrn` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:
-  * about 90% of reads were retained
-
+  * one hit, one genome, no ID ~96% - fine
+  * no one hit, one genome to any potential contaminators (bacteria, virus, human, etc) - good
 
 Cleaned-up logs again.
 
