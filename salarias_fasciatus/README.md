@@ -2,9 +2,9 @@
 
 copy and paste this into a new species dir and fill in as steps are accomplished.
 
----
-
 Following the [pire_ssl_data_processing](https://github.com/philippinespire/pire_ssl_data_processing) and [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq_gz_processing) roadmaps.
+
+---
 
 ## Step 0. Rename the raw fq.gz files
 
@@ -24,38 +24,43 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_Probe
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_ProbeDevelopmentLibraries_SequenceNameDecode.tsv rename
 ```
 
+---
+
 ## Step 1. Check quality of data with fastqc
 
 Ran the [Multi_FASTQC.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh) script. 
 
 ```
-cd /home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq
 
 #Multi_FastQC.sh "<file_extension>" "<indir>"
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "fq.gz" "/home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "fq.gz" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq"
 ```
 
-[Report](https://github.com/philippinespire/REUs/blob/master/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory.
-  * To visualize, click "view raw" and then add "https://htmlpreview.github.io/?" to the beginning of the URL.
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "https://htmlpreview.github.io/?" to the beginning of the URL.*
 
 Potential issues:  
-* % duplication - not bad
-  * 30s-40s
-* gc content - reasonable
-  * 46-48%
-* quality - good
-  * sequence quality and per sequence qual both good
-* % adapter - good and low
-  * ~2s
-* number of reads - good
-  * ~200M
+  * % duplication - low
+    * 20s-26s
+  * gc content - reasonable
+    * 45-47%
+  * quality - good
+    * sequence quality and per sequence qual both good
+  * % adapter - good and low
+    * ~4s
+  * number of reads - good
+    * ~216M
 
+---
 
+## Step 2.  First trim with fastp
 
-## Step 2.  1st fastp
+```
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
-Used [runFASTP_1st_trim.sbatch](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_1st_trim.sbatch)
-to generate this [report](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/fq_fp1/1st_fastp_report.html)
+#sbatch runFASTP_1st_trim.sbatch <INDIR/full path to files> <OUTDIR/full path to desired outdir>
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch shotgun_raw_fq fq_fp1
+```
 
 Potential issues:  
 * % duplication - not bad 
