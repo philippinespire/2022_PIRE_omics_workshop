@@ -6,7 +6,7 @@ Following the [pire_ssl_data_processing](https://github.com/philippinespire/pire
 
 ---
 
-## Pre-processing section
+## **Pre-processing Section**
 
 ## Step 0. Rename the raw fq.gz files
 
@@ -263,7 +263,7 @@ Highlights:
 
 ---
 
-### Assembly section
+## **Assembly Section**
 
 ## Step 8. Genome properties
 
