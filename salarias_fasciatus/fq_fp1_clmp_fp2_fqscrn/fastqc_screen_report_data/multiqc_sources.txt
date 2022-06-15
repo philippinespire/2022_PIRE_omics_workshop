@@ -1,0 +1,7 @@
+Module	Section	Sample Name	Source
+FastQ Screen	all_sections	Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r2_screen	/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r2_screen.txt
+FastQ Screen	all_sections	Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r1_screen	/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r1_screen.txt
+FastQ Screen	all_sections	Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r2_screen	/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r2_screen.txt
+FastQ Screen	all_sections	Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r2_screen	/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r2_screen.txt
+FastQ Screen	all_sections	Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r1_screen	/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r1_screen.txt
+FastQ Screen	all_sections	Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r1_screen	/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r1_screen.txt
