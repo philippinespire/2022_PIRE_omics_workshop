@@ -1,17 +1,18 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=fltrBAM_rawRef
-#SBATCH -o fltrBAM_rawRef-%j.out
+#SBATCH --job-name=mkBAM_genbank_Sfa20k
+#SBATCH -o mkBAM_genbank_Sfa20k-%j.out
 #SBATCH -p main
 #SBATCH -c 4					# either < -c 4 > or < --ntasks=1 together withw --cpus-per-task=40 > We have been using -c 4 
 ##SBATCH --ntasks=1
 ##SBATCH --cpus-per-task=40			# 40 for Wahab or 32 for Turing
-#SBATCH --mail-user=e1garcia@odu.edu
+#SBATCH --mail-user=breid@rutgers.edu
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=END
 
 enable_lmod
 module load container_env ddocent
+export SINGULARITY_BIND=/home/e1garcia
 
 #this is an example sbatch script to run dDocentHPC on a slurm supercomputer
 #it is assumed that you have copied dDocentHPC.bash and config.4.all to your project directory
@@ -40,10 +41,10 @@ module load container_env ddocent
 #dDocent mkREF.  We have to change directories, copy the reference*fasta to mkBAM, then run dDocent mkBAM 
 #cd ../mkBAM
 #cp ../mkREF/reference.*.fasta .
-#crun bash dDocentHPC.bash mkBAM config.4.all
+crun bash dDocentHPC.bash mkBAM config.5.cssl
 
 #this will use dDocent fltrBAM to filter the BAM files
-crun bash dDocentHPC.bash fltrBAM config.4.all
+#crun bash dDocentHPC.bash fltrBAM config.4.all
 
 #this will use freebayes to genotype the bam files and make a VCF
 #crun bash dDocentHPC.bash mkVCF config.4.all.cbirdq

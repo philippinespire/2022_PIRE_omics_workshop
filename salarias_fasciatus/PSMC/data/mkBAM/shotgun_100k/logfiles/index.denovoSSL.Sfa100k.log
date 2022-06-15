@@ -1,0 +1,9 @@
+[bwa_index] Pack FASTA... 0.19 sec
+[bwa_index] Construct BWT for the packed sequence...
+[bwa_index] 13.22 seconds elapse.
+[bwa_index] Update BWT... 0.18 sec
+[bwa_index] Pack forward-only FASTA... 0.15 sec
+[bwa_index] Construct SA from BWT and Occ... 5.24 sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa index reference.denovoSSL.Sfa100k.fasta
+[main] Real time: 19.454 sec; CPU: 18.987 sec

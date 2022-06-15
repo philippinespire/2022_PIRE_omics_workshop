@@ -1,0 +1,33 @@
+[bwa_index] Pack FASTA... 7.12 sec
+[bwa_index] Construct BWT for the packed sequence...
+[BWTIncCreate] textLength=1594855414, availableWord=124219684
+[BWTIncConstructFromPacked] 10 iterations done. 99999990 characters processed.
+[BWTIncConstructFromPacked] 20 iterations done. 199999990 characters processed.
+[BWTIncConstructFromPacked] 30 iterations done. 299999990 characters processed.
+[BWTIncConstructFromPacked] 40 iterations done. 399999990 characters processed.
+[BWTIncConstructFromPacked] 50 iterations done. 499999990 characters processed.
+[BWTIncConstructFromPacked] 60 iterations done. 599999990 characters processed.
+[BWTIncConstructFromPacked] 70 iterations done. 699999990 characters processed.
+[BWTIncConstructFromPacked] 80 iterations done. 799999990 characters processed.
+[BWTIncConstructFromPacked] 90 iterations done. 899999990 characters processed.
+[BWTIncConstructFromPacked] 100 iterations done. 996164726 characters processed.
+[BWTIncConstructFromPacked] 110 iterations done. 1081801606 characters processed.
+[BWTIncConstructFromPacked] 120 iterations done. 1157911878 characters processed.
+[BWTIncConstructFromPacked] 130 iterations done. 1225554854 characters processed.
+[BWTIncConstructFromPacked] 140 iterations done. 1285672086 characters processed.
+[BWTIncConstructFromPacked] 150 iterations done. 1339100406 characters processed.
+[BWTIncConstructFromPacked] 160 iterations done. 1386583670 characters processed.
+[BWTIncConstructFromPacked] 170 iterations done. 1428782838 characters processed.
+[BWTIncConstructFromPacked] 180 iterations done. 1466285574 characters processed.
+[BWTIncConstructFromPacked] 190 iterations done. 1499614054 characters processed.
+[BWTIncConstructFromPacked] 200 iterations done. 1529232454 characters processed.
+[BWTIncConstructFromPacked] 210 iterations done. 1555553334 characters processed.
+[BWTIncConstructFromPacked] 220 iterations done. 1578943382 characters processed.
+[bwt_gen] Finished constructing BWT in 228 iterations.
+[bwa_index] 777.56 seconds elapse.
+[bwa_index] Update BWT... 6.46 sec
+[bwa_index] Pack forward-only FASTA... 4.43 sec
+[bwa_index] Construct SA from BWT and Occ... 351.15 sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa index reference.genbank.Sfa20k.fasta
+[main] Real time: 1165.322 sec; CPU: 1146.730 sec

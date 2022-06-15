@@ -1,3 +1,15 @@
+
+
+
+* dDocentHPC v4.5 Forked by cbird@tamucc.edu * 
+
+
+Running dDocentHPC mkBAM...
+ 
+Tue Jun 14 12:36:18 EDT 2022 Files output to:  /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k
+
+Tue Jun 14 12:36:18 EDT 2022 Reading config file... 
+ 
 Settings for dDocentHPC
 #Made in notepad++, use for best viewing
 
@@ -26,8 +38,8 @@ no              FixStacks (yes,no)                                              
 ----------mkREF: Settings for de novo assembly of the reference genome--------------------------------------------
 PE              Type of reads for assembly (PE, SE, OL, RPE)                                    PE=ddRAD & ezRAD pairedend, non-overlapping reads; SE=singleend reads; OL=ddRAD & ezRAD overlapping reads, miseq; RPE=oregonRAD, restriction site + random shear
 0.9             cdhit Clustering_Similarity_Pct (0-1)                                                   Use cdhit to cluster and collapse uniq reads by similarity threshold
-genbank               Cutoff1 (integer)                                                                                         Use unique reads that have at least this much coverage for making the reference     genome
-Sfa100k               Cutoff2 (integer)
+denovoSSL              Cutoff1 (integer)                                                                                         Use unique reads that have at least this much coverage for making the reference     genome
+Sfa20k               Cutoff2 (integer)
                 Use unique reads that occur in at least this many individuals for making the reference genome
 0.05    rainbow merge -r <percentile> (decimal 0-1)                                             Percentile-based minimum number of seqs to assemble in a precluster
 0.95    rainbow merge -R <percentile> (decimal 0-1)                                             Percentile-based maximum number of seqs to assemble in a precluster
@@ -91,3 +103,76 @@ no      freebayes    --report-monomorphic (no|yes)                      Report e
 
 Email
 user@tamucc.edu
+
+Tue Jun 14 12:36:18 EDT 2022 Reading in variables from config file...
+
+Tue Jun 14 12:36:18 EDT 2022 Checking for all required dDocent software...
+
+ Running CheckDependencies Function...
+
+  The dependency trimmomatic is installed!
+
+  The dependency freebayes is installed!
+
+  The dependency mawk is installed!
+
+  The dependency bwa is installed!
+
+  The dependency samtools is installed!
+
+  The dependency vcftools is installed!
+
+  The dependency rainbow is installed!
+
+  The dependency gnuplot is installed!
+
+  The dependency gawk is installed!
+
+  The dependency seqtk is installed!
+
+  The dependency cd-hit-est is installed!
+
+  The dependency bamToBed is installed!
+
+  The dependency bedtools is installed!
+
+  The dependency coverageBed is installed!
+
+  The dependency parallel is installed!
+
+  The dependency vcfcombine is installed!
+
+  The dependency bamtools is installed!
+
+  The dependency pearRM is installed!
+
+ All dependencies are installed and up to date!
+
+
+Tue Jun 14 12:36:18 EDT 2022  Begin main ddocent function
+
+ The HPC version of dDocent will only digest files with particular extensions for particular tasks
+  untouched files for trimming must be *.F.fq.gz and *.R.fq.gz
+  files trimmed for assembly (mkREF) must be *r1.fq.gz *r2.fq.gz
+  files trimmed for mapping (mkBAM) must be *R1.fq.gz *R2.fq.gz
+
+  extensions selected: *.R1.fq.gz *.R2.fq.gz
+ 
+ The samples being processed are:
+  SfC0281G_CKDL210013395-1a-AK3911-AK845_HF33GDSX2_L4_clmp.fp2_repr
+  SfC0281H_CKDL210013395-1a-5UDI245-GD07_HF33GDSX2_L4_clmp.fp2_repr
+  SfC0282A_CKDL210013395-1a-AK8593-7UDI304_HF33GDSX2_L4_clmp.fp2_repr
+
+ 
+Tue Jun 14 12:36:20 EDT 2022  Using BWA to map reads.
+
+Tue Jun 14 12:42:37 EDT 2022  was ref assembled by dDocent? No. Expected insert length not modified for BWA
+
+Tue Jun 14 12:42:37 EDT 2022  Run bwa mem on non-dDocent files
+[bam_sort_core] merging from 160 files and 40 in-memory blocks...
+[bam_sort_core] merging from 120 files and 40 in-memory blocks...
+[bam_sort_core] merging from 200 files and 40 in-memory blocks...
+
+Wed Jun 15 07:28:50 EDT 2022 mkBAM completed!
+
+Compress large filesWed Jun 15 07:28:50 EDT 2022

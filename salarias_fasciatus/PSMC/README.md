@@ -3,7 +3,7 @@
 Genomic data contains a wealth of information regarding the demographic history of populations. One of the most interesting insights to emerge from the genomic revolution is that genomic data from just a few individuals or even a single individual can be used to estimate demographic trends for entire species or populations. A number of methods, summarized in [Mather et al.](https://doi.org/10.1002/ece3.5888), have been developed to take advantage of this information. We are going to use the method developed in 2011 by [Li and Durbin](https://doi.org/10.1038/nature10231) for this workshop.
 
 Using the curated read data and the shotgun reference genome we have developed for *Salarias fasciatus*, as well as a published reference genome for the species, we will align reads to the genome, call genotypes and consensus sequences, and run the PSMC program to estimate a demographic trajectory for this species.
-## Step 1. Prepare reference genomes.
+## Step 1. Preparing reference genomes.
 The reference genomes we will be using are located in the `data` folder. The file `scaffolds.fasta` is the best shotgun assembly we created, while `GCF_902148845.1_fSalaFa1.1_genomic.fna.gz` is a more complete reference genome that was downloaded from [Genbank](https://www.ncbi.nlm.nih.gov/genome/7248?genome_assembly_id=609472).
 
 Move to the `data` folder and rename our shotgun genome `Sfa_shotgun_assembly.fa`.
@@ -81,7 +81,7 @@ awk -i inplace '/^>/{print ">" ++i; next}{print}' reference.genbank.Sfa100k.fast
 
 Now we're ready to map to the reference!
 
-## Step 2. Map reads to a reference genome.
+## Step 2. Mapping reads to a reference genome and working with mapping (.bam) files.
 
 We next need to map our shotgun reads to our reference genomes. This is a key step in many genomic workflows. We use a modified version of a pipeline called dDocent to do this mapping. We will use two steps in the dDocent pipeline, mkBAM (which creates .bam files that store mapping information) and fltrBAM (which filters out reads that mapped to the genome with low quality).
 
@@ -189,6 +189,9 @@ Your header, and the lines you are running, should read something like this:
 
 enable_lmod
 module load container_env ddocent
+export SINGULARITY_BIND=/home/e1garcia
+
+[...]
 
 crun bash dDocentHPC.bash mkBAM config.5.cssl
 ```
@@ -199,7 +202,7 @@ If all of that is set you should be able to run dDocentHPC and map your reads by
 sbatch dDocentHPC_ODU.sbatch
 ```
 
-*Take a break!*
+
 
 After we have generated the .bam files we need to filter them. This can be done just by editing the sbatch file to un-comment the appopriate line in your sbatch file and rerunning. 
 
@@ -218,10 +221,26 @@ Add a hashtag at the beginning on the mkBAM line (so you don't run that step aga
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=END
 
+enable_lmod
+module load container_env ddocent
+export SINGULARITY_BIND=/home/e1garcia
+
+[...]
+
 crun bash dDocentHPC.bash fltrBAM config.5.cssl
 ```
 
+If we have multiple sorted .bam files from the same individual, we can merge those .bam files into a single .bam file using thecommand  `samtools merge`. The sbatch script `mergebams.sbatch` can be used to do this- copy it to your folder and execute.
+
+```
+cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/scripts/mergebams.sbatch
+sbatch mergebams.sbatch
+```
+
 ## Step 3. Assess depth of coverage.
+
+
+
 ## Step 4. Call genotypes and consensus sequences.
 ## Step 5. Convert files to PSMC format.
 ## Step 6. Run PSMC.

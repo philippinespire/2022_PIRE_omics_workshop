@@ -1,0 +1,23 @@
+[bwa_index] Pack FASTA... 2.66 sec
+[bwa_index] Construct BWT for the packed sequence...
+[BWTIncCreate] textLength=564020498, availableWord=51686384
+[BWTIncConstructFromPacked] 10 iterations done. 82984850 characters processed.
+[BWTIncConstructFromPacked] 20 iterations done. 155491890 characters processed.
+[BWTIncConstructFromPacked] 30 iterations done. 219932322 characters processed.
+[BWTIncConstructFromPacked] 40 iterations done. 277203122 characters processed.
+[BWTIncConstructFromPacked] 50 iterations done. 328101570 characters processed.
+[BWTIncConstructFromPacked] 60 iterations done. 373336210 characters processed.
+[BWTIncConstructFromPacked] 70 iterations done. 413536850 characters processed.
+[BWTIncConstructFromPacked] 80 iterations done. 449263250 characters processed.
+[BWTIncConstructFromPacked] 90 iterations done. 481012946 characters processed.
+[BWTIncConstructFromPacked] 100 iterations done. 509228130 characters processed.
+[BWTIncConstructFromPacked] 110 iterations done. 534301826 characters processed.
+[BWTIncConstructFromPacked] 120 iterations done. 556583346 characters processed.
+[bwt_gen] Finished constructing BWT in 124 iterations.
+[bwa_index] 245.57 seconds elapse.
+[bwa_index] Update BWT... 2.31 sec
+[bwa_index] Pack forward-only FASTA... 1.74 sec
+[bwa_index] Construct SA from BWT and Occ... 116.25 sec
+[main] Version: 0.7.17-r1188
+[main] CMD: bwa index reference.denovoSSL.Sfa20k.fasta
+[main] Real time: 375.199 sec; CPU: 368.541 sec
