@@ -278,9 +278,23 @@ sbatch Sfa_denovoSSL_100k_mpileup.sbatch
 
 The maximum number of tasks the array can handle using this script is 1000. If you need to run more than that we also have a modified sbatch script `mpileup2.sbatch` that can run >1000.
 
-Check some of the output files - do we have heterozygotes?
+Check some of the output files - do we have heterozygous sites?
 
-## Step 5. Convert files to PSMC format.
+## Step 5. Converting files to PSMC format.
+
+Now that we have consensus sequences we need to convert these to a format PSMC understands. Again we can use an array script, `psmcfa.sbatch`, to do this over all of our sequence files.
+
+Check again to make sure that all of the file paths are correct, then run the script. This script needs to be run from the directory containing all of your consensus sequences
+
+```
+sbatch Sfa_denovoSSL_100k_psmcfa.sbatch
+```
+
+If you need to convert >1000 files we again have a modified version of the script, `psmcfa2.sbatch'.
+
 ## Step 6. Run PSMC.
+
+We are finally ready to run PSMC!
+
 ## Step 7. Create confidence intervals via bootstrapping.
 ## Step 8. Make plots.
