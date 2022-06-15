@@ -230,7 +230,7 @@ export SINGULARITY_BIND=/home/e1garcia
 crun bash dDocentHPC.bash fltrBAM config.5.cssl
 ```
 
-If we have multiple sorted .bam files from the same individual, we can merge those .bam files into a single .bam file using thecommand  `samtools merge`. The sbatch script `mergebams.sbatch` can be used to do this- copy it to your folder and execute.
+If we have multiple sorted .bam files from the same individual, we can merge those .bam files into a single .bam file using thecommand  `samtools merge`. To call genotypes we also need to index this merged file first. The sbatch script `mergebams.sbatch` can be used to do both of these things. Copy it to your folder and execute.
 
 ```
 cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/scripts/mergebams.sbatch
@@ -255,9 +255,31 @@ What was the mean depth of coverage? What range of coverage should we use?
 
 With this level of coverage we should be pretty confident in calling heterozygous sites.
 
-We can also examine the mapping visually using a program called IGV (<ins>I</ins>ntegrative <ins>G</ins>enomics <ins>V</ins>iewer. We will take a closer look at our mapping results using this program while we are running some of the next steps.
+We can also examine the mapping visually using a program called IGV (<ins>I</ins>ntegrative <ins>G</ins>enomics <ins>V</ins>iewer). We will take a closer look at our mapping results using this program while we are running some of the next steps.
 
-## Step 4. Call genotypes and consensus sequences.
+## Step 4. Calling genotypes and consensus sequences.
+
+This step uses scripts modified from [Harvard FAS Informatics tutorial](https://informatics.fas.harvard.edu/psmc-journal-club-walkthrough.html), [Applying PSMC to Neandertal data](http://willyrv.github.io/tutorials/bioinformatics/AltaiNea-psmc.html), & the [PSMC documentation](https://github.com/lh3/psmc) to call a "consensus sequence" from our .bam file. We use SLURM's array mode to parallelize the consensus calling, meaning that for each of the scaffolds in our reference genome we create a new processthat calls the sequence for that scaffold.
+
+The script `mpileup.sbatch` uses a pipeline from samtools to bcftools to vcfutils.pl to create a consensus sequence.
+
+Examine the script - it is configured to work with our Sfa_denovoSSL_100k bamfile. You may have to edit a few things in the sbatch for it to run properly.
+
+1) Make sure all of the paths are correct, especially the DATAPATH (= the path to the folder containing your bamfile and reference assembly).
+
+2) Check the `-d` and `-D` arguments after `crun vcfutils.pl vcf2fq`. These should reflect the minimum and maximum depth cutoffs you calculated in the previous step.
+
+
+Execute the script using
+
+```
+sbatch Sfa_denovoSSL_100k_mpileup.sbatch
+```
+
+The maximum number of tasks the array can handle using this script is 1000. If you need to run more than that we also have a modified sbatch script `mpileup2.sbatch` that can run >1000.
+
+Check some of the output files - do we have heterozygotes?
+
 ## Step 5. Convert files to PSMC format.
 ## Step 6. Run PSMC.
 ## Step 7. Create confidence intervals via bootstrapping.
