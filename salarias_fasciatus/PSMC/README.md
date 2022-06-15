@@ -237,9 +237,25 @@ cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/
 sbatch mergebams.sbatch
 ```
 
-## Step 3. Assess depth of coverage.
+## Step 3. Assessng depth of coverage.
 
+For shotgun sequencing, we should theoretically have roughly the same depth of coverage across the whole genome. For real data this won't always be the case - some parts of the genome might have been difficult to sequence, and some repetitive regions could cause mapping issues that inflate our depth of coverage. We don't want to use these regions for calling genotypes that we will be using in the PSMC analysis later. For calling consensus sequences, PSMC documentation recommends using sites with minimum depth 1/3 of mean depth and maximum depth 2x mean depth.
 
+We can calculate the mean depth using samtools. Let's use an interactive node to do this.
+
+```
+salloc
+module load samtools
+samtools depth Sfa_denovoSSL_100k.bam | awk '{sum+=$3} END { print "Average (covered sites) = ",sum/NR}'
+```
+
+What was the mean depth of coverage? What range of coverage should we use?
+
+-->The mean coverage is 138, so we will use minimum depth 46 and maximum depth 276.
+
+With this level of coverage we should be pretty confident in calling heterozygous sites.
+
+We can also examine the mapping visually using a program called IGV (<ins>I</ins>ntegrative <ins>G</ins>enomics <ins>V</ins>iewer. We will take a closer look at our mapping results using this program while we are running some of the next steps.
 
 ## Step 4. Call genotypes and consensus sequences.
 ## Step 5. Convert files to PSMC format.
