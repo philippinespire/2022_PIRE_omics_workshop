@@ -187,7 +187,7 @@ If some failed, the script will also let you know. Try raising the number of nod
 Also look for this error *"OpenJDK 64-Bit Server VM warning:
 INFO: os::commit_memory(0x00007fc08c000000, 204010946560, 0) failed; error='Not enough space' (errno=12)"*.
 
-If the array set up doesn't work. Try running Clumpify on a turing himem node (see the [cssl repo](https://github.com/philippinespire/pire_cssl_data_processing/tree/main/scripts) for details).
+If the array set up doesn't work try running Clumpify on a Turing himem node (see the [cssl repo](https://github.com/philippinespire/pire_cssl_data_processing/tree/main/scripts) for details).
 
 ---
 
