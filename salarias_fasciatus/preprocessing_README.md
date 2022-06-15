@@ -298,16 +298,16 @@ Execute [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_p
 ```sh
 cd YOURSPECIESDIR
 
-#read_calculator_ssl.sh <Path to species home dir> 
+#sbatch read_calculator_ssl.sh <Path to species home dir> 
 #do not use trailing / in paths. Example:
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
 ```
 
-`read_calculator_ssl.sh` counts the number of reads before and after each step in the pre-process of ssl data and creates the dir `reprocess_read_change` with the following 2 tables:
-1. `readLoss_table.tsv` which reporsts the step-specific percent of read loss and final accumulative read loss
-2. `readsRemaining_table.tsv` which reports the step-specific percent of read loss and final accumulative read loss
+`read_calculator_ssl.sh` counts the number of reads before and after each step of pre-process the ssl data and creates the dir `preprocess_read_change` with the following 2 tables:
+1. `readLoss_table.tsv` which reports the step-specific percentage of reads lost and the final cumulative percentage of reads lost.
+2. `readsRemaining_table.tsv` which reports the step-specific percentage of reads that remain and the final cumulative percentage of reads that remain.
 
-Inspect these tables and revisit steps if too much data was lost
+Inspect these tables and revisit any steps where too much data was lost.
 
 ## **8. Clean Up
 
