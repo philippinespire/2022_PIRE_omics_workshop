@@ -292,9 +292,39 @@ sbatch Sfa_denovoSSL_100k_psmcfa.sbatch
 
 If you need to convert >1000 files we again have a modified version of the script, `psmcfa2.sbatch'.
 
-## Step 6. Run PSMC.
+## Step 6. Running PSMC.
 
 We are finally ready to run PSMC!
 
-## Step 7. Create confidence intervals via bootstrapping.
-## Step 8. Make plots.
+The psmc.sbatch script will run PSMC and generate a basic plot. Make sure all of the paths and the input/output file names are correct. To plot the demographic history on the scale of years we need to know generation time and mutation rate. We are assuming a default mutation rate (2.25x10^-8). Generation time is species-specific; for Sfa we can use 4 years, which is average for related species.
+
+```
+sbatch Sfa_denovoSSL_100k_psmc.sbatch
+
+```  
+
+After running PSMC you can download the plot (.eps file) to your local computer and see the estimated demographic history of your species.
+
+## Step 7. Creating confidence intervals via bootstrapping.
+
+
+We now have an idea of how our Sfa population may have changed over time. We don't know, however, how confident we should be in the estimate of population size at any given time. One source of error is our sampling of the genome - if we sampled a different selection of regions, would we get the same result?
+
+PSMC has a built in bootstrapping feature that can create confidence intervals for our demographic history based on resampling chunks of the data.
+
+Run this script (make sure to modify to match your paths/etc) to perform 100 rounds of bootstrapping.
+
+```
+sbatch Sfa_denovoSSL_100k_psmcboot.sbatch
+```
+
+
+## Step 8. Examining the outputs and making plots.
+
+Let's take a look at our PSMC outputs.
+
+To plot the bootstrap result, use the `pmscbootplot.sbatch` script. Since this will include confidence intervals you will have to increase the maximum Y-axis value - 'pY100' will change it to 200x10^4. You can change the X-axis scale too. Try pY100 - does that capture the maximum bootstrapped value? Change and rerun the script if not.
+
+How does the confidence in our estimated demographic history change from the distant past to the recent past?
+
+Take a look at the PSMC output files (.psmc and .par). These are the "raw" outputs from PSMC. Notably, the numbers are scaled to mutation rate and population size. How do we translate these to unscaled estimates of effective population size? 
