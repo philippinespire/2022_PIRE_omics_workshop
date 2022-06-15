@@ -35,8 +35,8 @@ Ran [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing
 ```
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq
 
-#Multi_FastQC.sh "<file_extension>" "<indir>"
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "fq.gz" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq"
+#Multi_FastQC.sh "<indir>" "file extension"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "fq.gz"
 ```
 
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
@@ -217,19 +217,44 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runREPAIR.sbatch fq_fp1
 
 This went smoothly.
 
+Have to run Fastqc-Multiqc separately.
+
+```
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired
+
+#Multi_FastQC.sh "<indir>" "file_extension"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired" "fq.gz" 
+```
+
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/fastqc_screen_report.html) written out to `fq_fp1_clmp_fp2_fqscrn_repaired` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
+
+Potential issues:  
+  * % duplication - good
+    * 3-6%
+  * gc content - reasonable
+    * 45% 
+  * passing filter - good
+    * 87-89%s 
+  * % adapter - virtually none
+    * 0.1-0.2%
+  * number of reads
+    * 241-358M (per pair of r1-r2 files)
+
 ---
 
 ## Step 7. Calculate the percent of reads lost in each step
 
-Executed [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh)
-to generate the [percent read loss](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/preprocess_read_change/readLoss_table.tsv) and
- [percent reads remaining](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/preprocess_read_change/readsRemaining_table.tsv) tables
+Ran [`read_calculator_ssl.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh).
 
 ```sh
-#read_calculator_ssl.sh <Species home dir> 
-# do not use trailing / in paths
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
+#sbatch read_calculator_ssl.sh <species home dir> 
+#do not use trailing / in paths
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus"
 ```
+
+Generated the [percent_read_loss] and [percent_reads_remaining] tables.
 
 Highlights:
 * 25-38% of reads were duplicates and were dropped by clumpify
