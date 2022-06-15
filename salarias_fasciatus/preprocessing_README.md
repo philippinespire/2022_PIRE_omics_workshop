@@ -53,7 +53,7 @@ mkdir spratelloides_gracilis
 mkdir spratelloides_gracilis/logs
 mkdir spratelloides_gracilis/shotgun_raw_fq
 
-cp <source of files> spratelloides_gracilis/shotgun_raw_fq #scp | cp |mv
+cp <source of files> spratelloides_gracilis/shotgun_raw_fq #scp | cp | mv
 ```
 
 Now create a `README` in the `shotgun_raw_fq` dir with the full path to the original copies of the raw files and necessary decoding info to find out from which individual(s) these sequence files came from.
@@ -87,6 +87,7 @@ Then, use the decode file to rename your raw `fq.gz` files. If you make a mistak
 ```bash
 cd YOURSPECIESDIR/shotgun_raw_fq
 
+#bash renameFQGZ.bash <decode file>
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash NAMEOFDECODEFILE.tsv 
 ```
 
@@ -95,6 +96,7 @@ After you are satisfied that the orginal and new file names are correct, then yo
 ```bash
 cd YOURSPECIESDIR/shotgun_raw_fq
 
+#bash renameFQGZ.bash <decode file> rename
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash NAMEOFDECODEFILE.tsv rename
 #will need to say "yes" 2X
 ```
