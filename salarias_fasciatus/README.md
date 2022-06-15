@@ -226,19 +226,15 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired" "fq.gz" 
 ```
 
-[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/fastqc_screen_report.html) written out to `fq_fp1_clmp_fp2_fqscrn_repaired` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
+[Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/fastqc_report.html) written out to `fq_fp1_clmp_fp2_fqscrn_repaired` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
-  * % duplication - good
-    * 3-6%
+  * % duplication - fine
+    * 8-11%
   * gc content - reasonable
-    * 45% 
-  * passing filter - good
-    * 87-89%s 
-  * % adapter - virtually none
-    * 0.1-0.2%
+    * 44% 
   * number of reads
-    * 241-358M (per pair of r1-r2 files)
+    * 112-165.8M
 
 ---
 
@@ -254,12 +250,15 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus"
 ```
 
-Generated the [percent_read_loss] and [percent_reads_remaining] tables.
+Generated the [percent_read_loss](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/preprocess_read_change/readLoss_table.tsv) and [percent_reads_remaining](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/preprocess_read_change/readsRemaining_table.tsv) tables.
 
-Highlights:
-* 25-38% of reads were duplicates and were dropped by clumpify
-* fastp2 dropped 14-17% of the reads after deduplication (lower min read lenght?)
-* Total accumulative read loss is 50-60%, which results in 86-94 M reads still remaining (loss seems pretty high but we still ~90M read left!)
+Reads lost:
+  * fastp1 dropped 3-6% of the reads
+  * 14-20% of reads were duplicates and were dropped by clumpify
+  * fastp2 dropped 11-13% of the reads after deduplication
+
+Reads remaining:
+  * Total reads remaining: 63-66% (>100M reads - fine)
 
 ---
 
