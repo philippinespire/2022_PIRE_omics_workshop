@@ -103,7 +103,7 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash NAMEOFDEC
 
 ## **1. Check the quality of your data. Run `fastqc` (1-2 hours run time)**
 
-Fastqc and then Multiqc can be run using the [Multi_FASTQC.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh) script.
+Fastqc and then Multiqc can be run using the [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh) script.
 
 Execute `Multi_FASTQC.sh` while providing, in quotations and in this order, 
 (1) the FULL path to these files and (2) a suffix that will identify the files to be processed. 
@@ -111,6 +111,8 @@ Execute `Multi_FASTQC.sh` while providing, in quotations and in this order,
 ```sh
 cd YOURSPECIESDIR/shotgun_raw_fq
 
+#sbatch Multi_FASTQC.sh <indir> <file extension>
+#do not use trailing / in paths. Example:
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz"   
 ```
 
@@ -148,12 +150,12 @@ The max # of nodes to use at once should **NOT** exceed the number of pairs of r
 ```bash
 cd YOURSPECIESDIR
 
-#runCLUMPIFY_r1r2_array.bash <indir;fast1 files > <outdir> <tempdir> <max # of nodes to use at once>
+#bash runCLUMPIFY_r1r2_array.bash <indir> <outdir> <tempdir> <max # of nodes to use at once>
 #do not use trailing / in paths. Example:
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/YOURUSERNAME 3
 ```
 
-After completion, run `checkClumpify.R` to see if any files failed
+After completion, run `checkClumpify_EG.R` to see if any files failed
 
 ```bash
 cd YOURSPECIESDIR
@@ -194,7 +196,7 @@ For pre-processing for genome assembly, use  [runFASTP_2_ssl.sbatch](https://git
 ```bash
 cd YOURSPECIESDIR
 
-#sbatch runFASTP_2_ssl.sbatch <INDIR/full path to cumplified files> <OUTDIR/full path to desired outdir>
+#sbatch runFASTP_2_ssl.sbatch <indir> <outdir>
 #do not use trailing / in paths. Example:
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch fq_fp1_clmp fq_fp1_clmp_fp2
 ```
@@ -209,7 +211,7 @@ Try running one node per fq.gz file if possible. Here, the number of nodes runni
 ```sh
 cd YOURSPECIESDIR
 
-#runFQSCRN_6.bash <indir> <outdir> <number of nodes running simultaneously>
+#bash runFQSCRN_6.bash <indir> <outdir> <number of nodes running simultaneously>
 #do not use trailing / in paths. Example:
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_clmp_fp2 fq_fp1_clmp_fp2_fqscrn 6
 ```
@@ -241,14 +243,25 @@ grep 'error' slurm-fqscrn.JOBID*out
 grep 'No reads in' slurm-fqscrn.JOBID*out
 ```
 
-If you see missing indiviudals or categories in the multiqc output, there was likely a RAM error. The "error" search term may not always catch it.
+Run [`runMULTIQC.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runMULTIQC.sbatch) to get multiqc output.
+
+```
+cd YOURSPECIESDIR
+
+#sbatch runMULTIQC.sbatch <indir> <report name>
+#do not use trailing / in paths. Example:
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runMULTIQC.sbatch fq_fp1_clmp_fp2_fqscrn fastqc_screen_report
+```
+
+If you see missing individuals or categories in the multiqc output, there was likely a RAM error. The "error" search term may not always catch it.
 
 Run the files that failed again. This seems to work in most cases:
 
 ```sh
 cd YOURSPECIESDIR
 
-#runFQSCRN_6.bash <indir> <outdir> <number of nodes to run simultaneously> <fq file pattern to process>
+#bash runFQSCRN_6.bash <indir> <outdir> <number of nodes to run simultaneously> <fq file pattern to process>
+#do not use trailing / in paths. Example:
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_clmp_fp2 fq_fp1_clmp_fp2_fqscrn 1 LlA01010*r1.fq.gz
 ```
 
@@ -259,7 +272,8 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_c
 ```
 cd YOURSPECISDIR
 
-#runREPAIR.sbatch <indir> <outdir> <threads>
+#sbatch runREPAIR.sbatch <indir> <outdir> <threads>
+#do not use trailing / in paths. Example:
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runREPAIR.sbatch fq_fp1_clmp_fp2_fqscrn fq_fp1_clmp_fp2_fqscrn_repaired 40
 ```
 
