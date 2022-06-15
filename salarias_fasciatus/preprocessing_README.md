@@ -279,6 +279,16 @@ cd YOURSPECISDIR
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runREPAIR.sbatch fq_fp1_clmp_fp2_fqscrn fq_fp1_clmp_fp2_fqscrn_repaired 40
 ```
 
+Run Fastqc-Multiqc separately.
+
+```sh
+cd YOURSPECIESDIR/fq_fp1_clmp_fp2_fqscrn_repaired
+
+#sbatch Multi_FASTQC.sh <indir> <file extension>
+#do not use trailing / in paths. Example:
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "PATHTOYOURSPECIESDIR/fq_fp1_clmp_fp2_fqscrn_repaired" "fq.gz"   
+```
+
 ---
 
 ## **7. Calculate the percent of reads lost in each step**
