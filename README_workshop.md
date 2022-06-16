@@ -2,6 +2,22 @@
 
 Message
 
+README for workshop 
+
+[Schedule](https://docs.google.com/spreadsheets/d/17KVHAxO8ihgFinT20YejtroK7-l133fBxTAzXAmE8CM/edit#gid=1010648430)
+
+* Make sure eveyone has access to the HPC
+
+**Git**
+
+Maybe drop files everyday, so they get used to git pull all the time
+
+We will be following the [PIRE SSL pipeline](https://github.com/philippinespire/pire_ssl_data_processing)
+
+[Pre-Processing pipeline](https://github.com/philippinespire/pire_fq_gz_processing)
+
+
+
 List of Personnel
 |Position |Name | Institution | Contact |
 | --- | --- | --- | --- |
@@ -51,7 +67,7 @@ Contact Dr. Eric Garcia for questions or if you are having issues running script
 
 ## Here we go! 
 
-To process a species, begin by cloning this repo to your working dir. I recommend setting up a `shotgun_PIRE` sub-dir in your home dir if you have not done something similar already
+Start the workshop by cloning this repo to your working dir. I recommend setting up a `shotgun_PIRE` sub-dir in your home dir if you have not done something similar already
 
 Example: `/home/youruserID/shotgun_PIRE/`
 
@@ -61,40 +77,20 @@ cd ~ 	# this will take you to your home dir
 cd shotgun_PIRE
 git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git
 ```
-**Now you have the files you need to start working!**
+*Now you have the files you need to start working!*
 
-Organization is imporatnat, for the workshop each person will create and work on their own directory. **Please Note:** do not use spaces or special characters (such as *#$%^&*~"][)(+'\|=) in the names of files or directory. Stick to letters, numbers, dashes (-), and underscores (_) 
+Organization is importanat, for the workshop each person will create and work on their own directory. 
+
+**Please Note:** do not use spaces or special characters (such as *#$%^&*~"][)(+'\|=) in the names of files or directory. Stick to letters, numbers, dashes (-), and underscores (_) 
 
 Make your own directory:
 ```
 cd 2022_PIRE_omics_workshop
 mkdir <your_name_with_no_spaces>
-```>
+```
 
-** gitignore **
+copy any files?
 
-The data will be processed and analyzed in the repo.  There is a `.gitignore` file that lists files and directories to be ignored by git.  It includes large files that git cannot handle (fq.gz, bam, etc) and other repos that might be downloaded into this repo. 
-For example, the BUSCO outdir contains several large files that will cause problems for git so `busco_*/` occurs in  `.gitignore` so that it is not uploaded to github in this repo.
-
-Because large data files will not be saved to github, they will reside in an individual's copy of the repo or somewhere on the HPC.
-
-A list of ongoing SSL projects can be found below. If you are working on an SSL analysis project (or if you wish to claim a project), please indicate so in the table. When data are available, priority should go to species that are higher on the CSSL priority list which will need probes in the near future.
-
-|Species | Data availability | CSSL priority | Analysis lead | Analysis status / notes |
-| --- | --- | --- | --- | --- |
-|Periophthalmus_argentilineatus | On ODU HPC | 12 | Keenan/Chris | probe development pipeline in progress |
-|Sphaeramia_nematoptera | On ODU HPC | 20 | Jem | Step 1 SPAdes Assembly as of 5/3 |
-|Pomacentrus_brachialis | On ODU HPC | 26 | Jem/Kyra | Step 1 Spades Assembly as of 5/3 |
-|Corythoichthys_haematopterus | On ODU HPC | 24 | John/Brendan? | |
-|Stethojulis_interrupta | On ODU HPC | 23 |John/Brendan? | |
-|Ostorhinchus_chrysopomus | On ODU HPC | 27 | Eric | |
-|Pomacentrus_pavo | On ODU HPC | 25 | John/Brendan? | Genome assembly complete |
-|Lethrinus_variegatus | On ODU HPC | 21 | Jordan/Chris | probe development pipeline in progress |
-|Hypoatherina_temminckii | On ODU HPC | 9/10 | John/Brendan? | Remake probes with correct genome |
-|Encrasicholina_pseudoheteroloba | On ODU HPC | 30 | John/Brendan? | Check individual ID |
-|Ambassis_buruensis | Library prep ongoing | n/a | not assigned | |
-|Tylosurus_crocodilus | Needs extraction | 35 | not assigned | |
-|Sphaeramia_orbicularis | Needs extraction | 36 | not assigned | |
 
 ---
 
@@ -111,9 +107,10 @@ git push -u origin main
 ```
 
 This code has been compiled into the script `runGIT.bash` thus you can just run this script BEFORE and AFTER you do anything in your species repo.
+
 You will need to provide the message of your commit in the command line. Example:
 ```sh
-bash ../runGIT.bash "initiated Sgr repo"
+bash ../runGIT.bash "initiated my directory"
 ```
 You will need to enter your git credentials multiple times each time you run this script
 
@@ -136,6 +133,15 @@ git add -u .
 git commit -m "update deletions"
 git push -u origin main
 ```
+
+**gitignore**
+
+There is a `.gitignore` file that lists files and directories to be ignored by git.  It includes large files that git cannot handle (fq.gz, bam, etc) 
+ and other repos that might be downloaded into this repo.
+For example, the BUSCO outdir contains several large files that will cause problems for git so `busco_*/` occurs in  `.gitignore` so that it is not uploaded to github in this repo.
+
+Because large data files will not be saved to github, they will reside in an individual's copy of the repo or somewhere on the HPC.
+
 ___
 
 ## Data Processing Roadmap
