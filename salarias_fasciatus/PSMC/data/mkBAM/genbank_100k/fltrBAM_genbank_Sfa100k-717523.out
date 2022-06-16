@@ -179,3 +179,5 @@ Thu Jun 16 09:31:19 EDT 2022  Begin main ddocent function
 [bam_sort_core] merging from 126 files and 1 in-memory blocks...
 
   Thu Jun 16 11:36:15 EDT 2022  Indexing the filtered BAM files
+
+Compress large filesThu Jun 16 11:38:54 EDT 2022

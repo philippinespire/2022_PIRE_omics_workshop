@@ -85,8 +85,6 @@ Now we're ready to map to the reference!
 
 We next need to map our shotgun reads to our reference genomes. This is a key step in many genomic workflows. We use a modified version of a pipeline called dDocent to do this mapping. We will use two steps in the dDocent pipeline, mkBAM (which creates .bam files that store mapping information) and fltrBAM (which filters out reads that mapped to the genome with low quality).
 
-Mapping can take a long time, especially when we have a lot of reads (our shotgun libraries for Sfa have >100 million reads each!). For the sake of expediency, we have created a 
-
 We first need to navigate back to our PSMC directory and clone the dDocent repo.
 
 ```
@@ -96,7 +94,7 @@ git clone https://github.com/cbirdlab/dDocentHPC.git
 
 --> set up dirs with reads already
 
-Mapping can take a long time, especially when we have a lot of reads (our shotgun libraries for Sfa have >100 million read pairs each!). For the sake of expediency, we have created a smaller test dataset (only 5 million read pairs), which can be found in the folder `data/mkBAM/test_mapping`.
+Mapping can take a long time, especially when we have a lot of reads (our shotgun libraries for Sfa have >100 million read pairs each!). For the sake of expediency, we have created a smaller test dataset (only 5 million read pairs), which can be found in the folder `data/mkBAM/test_mapping`. This folder also contains a README.md file - you should use this to keep track of the inputs to this analysis.
 
 Now we need to copy some scripts and configuration files to our folders. Note that we need to use a modified version of the sbatch file that works with the ODU HPCC.
 
@@ -227,6 +225,8 @@ samtools depth Sfa_reduced_denovoSSL_100k.bam | awk '{sum+=$3} END { print "Aver
 What was the average depth of coverage? What range of coverage would we use?
 
 -->The average coverage is ~12, so we will use minimum depth 4 and maximum depth 24.
+
+Update the README.md file with this statistic.
 
 With this level of coverage we would be fairly confident in calling heterozygous sites, but we might have some false negatives.
 
