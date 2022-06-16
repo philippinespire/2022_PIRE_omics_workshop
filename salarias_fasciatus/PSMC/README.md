@@ -210,7 +210,7 @@ cp <yourdirectory>/salarias_fasciatus/PSMC/scripts/mergebams.sbatch ./
 sbatch mergebams.sbatch
 ```
 
-## Step 3. Assessng depth of coverage.
+## Step 3. Assessing depth of coverage.
 
 For shotgun sequencing, we should theoretically have roughly the same depth of coverage across the whole genome. For real data this won't always be the case - some parts of the genome might have been difficult to sequence, and some repetitive regions could cause mapping issues that inflate our depth of coverage. We don't want to use these regions for calling genotypes that we will be using in the PSMC analysis later. For calling consensus sequences, PSMC documentation recommends using sites with minimum depth 1/3 of mean depth and maximum depth 2x mean depth.
 
