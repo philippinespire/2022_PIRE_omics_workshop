@@ -106,17 +106,17 @@ cp dDocentHPC/configs/config.5.cssl data/mkBAM/test_mapping
 cp scripts/dDocentHPC_ODU.sbatch data/mkBAM/test_mapping
 ```
 
-Copy two of the reference genome files (`denovoSSL.Sfa100k` and `genbank.Sfa100k`) to the appropriate folders.
+Let's try mapping to the filtered version of our shotgun genome with scaffolds >100kb. the Copy this reference genome files (`denovoSSL.Sfa100k`) to the appropriate folder.
 
 ```
-cp data/reference.denovoSSL.Sfa100k.fasta data/mkBAM/shotgun_100k
-cp data/reference.genbank.Sfa100k.fasta data/mkBAM/genbank_100k
+cp data/reference.denovoSSL.Sfa100k.fasta data/mkBAM/test_mapping
 ```
 
-In your test_mapping folder you should have: * reads to map (.R1.fq.gz/.R2.fq.gz) * reference genome (renamed scaffolds, with dDocent prefix reference.cutoff1.cutoff2.fasta) * dDocentHPC.bash * config file (currently config.5.cssl) * dDocentHPC_ODU.sbatch
+In your test_mapping folder you should now have all of the files required to perform mapping: * reads to map (.R1.fq.gz/.R2.fq.gz) * reference genome (renamed scaffolds, with dDocent prefix reference.cutoff1.cutoff2.fasta) * dDocentHPC.bash * config file (currently config.5.cssl) * dDocentHPC_ODU.sbatch
 
 Examine the `config.5.cssl` file - this file contains all of the setting that will be used to run dDocent. Most of these you can keep as they are. Recall that we used a specific convention to name our reference genome files - specifically the format is `reference.<cutoff1>.<cutoff2>.fasta`, where cutoff1 and cutoff2 refer to descriptive variables used by dDocent. We need to edit the config file `config.5.cssl` in each directory to so that dDocent can find the reference.  
---> Also, the default alignment score in config.5.cssl is 80, which is different from before and seems high! I am changing this to 30.
+
+The default alignment score in config.5.cssl is 80, which is a bit high - let's also change this to 30.
 
 Here is an example:
 
@@ -125,7 +125,7 @@ Here is an example:
 PE              Type of reads for assembly (PE, SE, OL, RPE)                                    PE=ddRAD & ezRAD pairedend, non-overlapping reads; SE=singleend reads; OL=ddRAD & ezRAD overlapping reads, miseq; RPE=oregonRAD, restriction site + random shear
 0.9             cdhit Clustering_Similarity_Pct (0-1)                                                   Use cdhit to cluster and collapse uniq reads by similarity threshold
 denovoSSL               Cutoff1 (integer)     ### <--- change this value to either denovoSSL or genbank to match the reference ###
-Aur-C_500_R1R2ORPHMRGD_decontam_noisolate               Cutoff2 (integer)    ### <--- change to either Sfa100k or Sfa20k to match your reference
+               Cutoff2 (integer)    ### <--- change to either Sfa100k or Sfa20k to match your reference
 0.05    rainbow merge -r <percentile> (decimal 0-1)                                             Percentile-based minimum number of seqs to assemble in a precluster
 0.95    rainbow merge -R <percentile> (decimal 0-1)                                             Percentile-based maximum number of seqs to assemble in a precluster
 ------------------------------------------------------------------------------------------------------------------
@@ -141,13 +141,9 @@ Make sure the cutoffs above match the reference*fasta!
 
 ```
 
-Go through each config file and make these changes using a text editor.
+Go through the config file and make these changes using a text editor.
 
---> current ODU sbatch file references config.4, change to config.5? Maybe we should have a more compact version in the scripts folder? 
---> also needs singularity bind for Eric's folder
---> export SINGULARITY_BIND=/home/e1garcia
-
-Now you will need to edit each sbatch file in each directory. Notice that this file has a lot of lines commented out with hashtags - these will run different steps in the process when un-commented. Find the line starting with `crun bash dDocentHPC.bash mkBAM config`... and un-comment this line by removing the hashtag. The config file is the last argument in this line - make sure it is the correct file (config.5.ssl). Make sure all of the other lines starting with `crun` are still commented. You can also change the job-name and output SBATCH settings in the header to identify this job (something appropriate to each reference genome, like mkBAM_denovoSSL_Sfa100k), and change the email address so it emails you when finished. 
+Now you may need to edit each sbatch file in each directory. Notice that this file has a lot of lines commented out with hashtags - these will run different steps in the process when un-commented. Find the line starting with `crun bash dDocentHPC.bash mkBAM config`... and un-comment this line by removing the hashtag. The config file is the last argument in this line - make sure it is the correct file (config.5.ssl). Make sure all of the other lines starting with `crun` are still commented. You can also change the job-name and output SBATCH settings in the header to identify this job (something appropriate to each reference genome, like mkBAM_denovoSSL_Sfa100k), and change the email address so it emails you when finished. 
 
 Your header, and the lines you are running, should read something like this:
 
@@ -173,13 +169,13 @@ export SINGULARITY_BIND=/home/e1garcia
 crun bash dDocentHPC.bash mkBAM config.5.cssl
 ```
 
-If all of that is set you should be able to run dDocentHPC and map your reads by executing the sbatch file in each directory. Navigate to each directory and run the following.
+If all of that is set you should be able to run dDocentHPC and map your reads by executing the sbatch file in each directory. Navigate to the `test_mapping` directory and run the following.
 
 ```
 sbatch dDocentHPC_ODU.sbatch
 ```
 
-
+Even though we are working with a reduced dataset this mapping step can take a while (~20-25 minutes), so this is a good time to take a break!
 
 After we have generated the .bam files we need to filter them. This can be done just by editing the sbatch file to un-comment the appopriate line in your sbatch file and rerunning. 
 
@@ -207,10 +203,12 @@ export SINGULARITY_BIND=/home/e1garcia
 crun bash dDocentHPC.bash fltrBAM config.5.cssl
 ```
 
-If we have multiple sorted .bam files from the same individual, we can merge those .bam files into a single .bam file using thecommand  `samtools merge`. To call genotypes we also need to index this merged file first. The sbatch script `mergebams.sbatch` can be used to do both of these things. Copy it to your folder and execute.
+Once you have edited your sbatch file you can run the filtering step using the same `sbatch dDocentHPC_ODU.sbatch` command that you used before.
+
+If we have multiple sorted .bam files from the same individual, we can merge those .bam files into a single .bam file using thecommand  `samtools merge`. To call genotypes we also need to index this merged file first. The sbatch script `mergebams.sbatch` can be used to do both of these things. Copy it to your folder, make sure you are specifying the proper input files to merge, and execute.
 
 ```
-cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/scripts/mergebams.sbatch
+cp <yourdirectory>/salarias_fasciatus/PSMC/scripts/mergebams.sbatch ./
 sbatch mergebams.sbatch
 ```
 
@@ -223,14 +221,16 @@ We can calculate the mean depth using samtools. Let's use an interactive node to
 ```
 salloc
 module load samtools
-samtools depth Sfa_denovoSSL_100k.bam | awk '{sum+=$3} END { print "Average (covered sites) = ",sum/NR}'
+samtools depth Sfa_reduced_denovoSSL_100k.bam | awk '{sum+=$3} END { print "Average (covered sites) = ",sum/NR}'
 ```
 
-What was the mean depth of coverage? What range of coverage should we use?
+What was the average depth of coverage? What range of coverage would we use?
 
--->The mean coverage is 138, so we will use minimum depth 46 and maximum depth 276.
+-->The average coverage is ~12, so we will use minimum depth 4 and maximum depth 24.
 
-With this level of coverage we should be pretty confident in calling heterozygous sites.
+With this level of coverage we would be fairly confident in calling heterozygous sites, but we might have some false negatives.
+
+Now, let's switch over to the full dataset from which the reduced dataset we've been working on was generated. This dataset can be found in `data/mkBAM/shotgun_100k` and has been processed through step 2 already. Calculate average depth of coverage for this dataset.
 
 We can also examine the mapping visually using a program called IGV (<ins>I</ins>ntegrative <ins>G</ins>enomics <ins>V</ins>iewer). We will take a closer look at our mapping results using this program while we are running some of the next steps.
 
@@ -245,7 +245,6 @@ Examine the script - it is configured to work with our Sfa_denovoSSL_100k bamfil
 1) Make sure all of the paths are correct, especially the DATAPATH (= the path to the folder containing your bamfile and reference assembly).
 
 2) Check the `-d` and `-D` arguments after `crun vcfutils.pl vcf2fq`. These should reflect the minimum and maximum depth cutoffs you calculated in the previous step.
-
 
 Execute the script using
 
@@ -284,7 +283,6 @@ After running PSMC you can download the plot (.eps file) to your local computer 
 
 ## Step 7. Creating confidence intervals via bootstrapping.
 
-
 We now have an idea of how our Sfa population may have changed over time. We don't know, however, how confident we should be in the estimate of population size at any given time. One source of error is our sampling of the genome - if we sampled a different selection of regions, would we get the same result?
 
 PSMC has a built in bootstrapping feature that can create confidence intervals for our demographic history based on resampling chunks of the data.
@@ -294,7 +292,6 @@ Run this script (make sure to modify to match your paths/etc) to perform 100 rou
 ```
 sbatch Sfa_denovoSSL_100k_psmcboot.sbatch
 ```
-
 
 ## Step 8. Examining the outputs and making plots.
 
@@ -306,7 +303,14 @@ How does the confidence in our estimated demographic history change from the dis
 
 Take a look at the PSMC output files (.psmc and .par). These are the "raw" outputs from PSMC. What do all of these numbers mean?
 
+PSMC runs for multiple rounds (25 in this case). Each round the program generates output, and the iterations should get progressively closer to the "true" answer as they go. We can look at the results from the final iteration.
 
+The line starting with "TR" has the estimates for theta_0 (scaled genetic diversity) and rho_0 (scaled recombination rate).
 
+The following lines have estimates for other parameters, including time and population size at a given time.  
 
-Notably, the numbers are scaled to mutation rate and population size. How do we translate these to unscaled estimates of effective population size? 
+Notably, the numbers are scaled to mutation rate and population size. How do we translate these to unscaled estimates of effective population size?
+
+We have a handy R script, `plot_psmc.R`, that can translate these values for us. Use this script to plot the outputs.
+
+Compare the PSMC outputs from the shotgun_100k dataset to other datasets. Are the general trajectories the same? How do they differ? Which datasets provide higher certainty/smaller confidence intervals?
