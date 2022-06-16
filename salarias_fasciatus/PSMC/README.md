@@ -104,7 +104,7 @@ cp dDocentHPC/configs/config.5.cssl data/mkBAM/test_mapping
 cp scripts/dDocentHPC_ODU.sbatch data/mkBAM/test_mapping
 ```
 
-Let's try mapping to the filtered version of our shotgun genome with scaffolds >100kb. the Copy this reference genome files (`denovoSSL.Sfa100k`) to the appropriate folder.
+Let's try mapping to the filtered version of our shotgun genome with scaffolds >100kb. Copy this reference genome files (`denovoSSL.Sfa100k`) to the appropriate folder.
 
 ```
 cp data/reference.denovoSSL.Sfa100k.fasta data/mkBAM/test_mapping
@@ -297,7 +297,7 @@ sbatch Sfa_denovoSSL_100k_psmcboot.sbatch
 
 Let's take a look at our PSMC outputs.
 
-To plot the bootstrap result, use the `pmscbootplot.sbatch` script. Since this will include confidence intervals you will have to increase the maximum Y-axis value - 'pY100' will change it to 200x10^4. You can change the X-axis scale too. Try pY100 - does that capture the maximum bootstrapped value? Change and rerun the script if not.
+To plot the bootstrap result, use the `pmscbootplot.sbatch` script. Since this will include confidence intervals you will have to increase the maximum Y-axis value - 'pY100' will change it to 100x10^4. You can change the X-axis scale too. Try pY100 - does that capture the maximum bootstrapped value? Change and rerun the script if not.
 
 How does the confidence in our estimated demographic history change from the distant past (100,000 to 1,000,000 years ago) to the recent past (10,000 years ago)?
 
