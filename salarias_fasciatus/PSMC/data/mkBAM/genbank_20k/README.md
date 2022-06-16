@@ -10,4 +10,4 @@ Total length of filtered reference: 797427707
 
 Libraries used: All 3 Sfa shotgun libraries
 
-Average depth of coverage: 
+Average depth of coverage: 112

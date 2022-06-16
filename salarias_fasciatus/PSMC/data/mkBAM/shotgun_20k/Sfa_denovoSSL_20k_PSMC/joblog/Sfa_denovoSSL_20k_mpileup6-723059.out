@@ -1,0 +1,12 @@
+
+[warning] samtools mpileup option `u` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[mpileup] 3 samples in 1 input files
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+mv: 'Sfa_denovoSSL_20k_mpileup6-723073.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723073.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723074.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723074.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723075.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723075.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723076.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723076.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723077.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723077.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723078.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723078.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723079.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723079.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723080.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723080.out' are the same file

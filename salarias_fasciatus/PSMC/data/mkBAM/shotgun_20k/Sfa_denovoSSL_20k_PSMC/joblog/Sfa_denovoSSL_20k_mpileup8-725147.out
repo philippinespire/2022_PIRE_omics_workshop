@@ -1,0 +1,9 @@
+
+[warning] samtools mpileup option `u` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[mpileup] 3 samples in 1 input files
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+mv: 'Sfa_denovoSSL_20k_mpileup8-725159.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup8-725159.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup8-725160.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup8-725160.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup8-725161.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup8-725161.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup8-725162.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup8-725162.out' are the same file
+mv: cannot move 'Sfa_denovoSSL_20k_mpileup8-725163.out' to '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup8-725163.out': No such file or directory

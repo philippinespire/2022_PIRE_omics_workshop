@@ -1,0 +1,9 @@
+
+mv: 'Sfa_denovoSSL_20k_psmcfa7-734042.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734042.out' are the same file
+mv: cannot move 'Sfa_denovoSSL_20k_psmcfa7-734048.out' to '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734048.out': No such file or directory
+mv: cannot stat 'Sfa_denovoSSL_20k_psmcfa7-734050.out': No such file or directory
+mv: 'Sfa_denovoSSL_20k_psmcfa7-734051.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734051.out' are the same file
+mv: cannot stat 'Sfa_denovoSSL_20k_psmcfa7-734052.out': No such file or directory
+mv: cannot stat 'Sfa_denovoSSL_20k_psmcfa7-734053.out': No such file or directory
+mv: 'Sfa_denovoSSL_20k_psmcfa7-734054.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734054.out' are the same file
+mv: 'Sfa_denovoSSL_20k_psmcfa7-734055.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734055.out' are the same file

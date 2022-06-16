@@ -252,9 +252,9 @@ Execute the script using
 sbatch Sfa_denovoSSL_100k_mpileup.sbatch
 ```
 
-The maximum number of tasks the array can handle using this script is 1000. If you need to run more than that we also have a modified sbatch script `mpileup2.sbatch` that can run >1000.
+The maximum number of tasks the array can handle using this script is 1000. If you need to run more than that you can make multiple sbatch scripts that will run a large number of tasks in batches of ≤1000 (see `/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k` for an example).
 
-Check some of the output files - do we have heterozygous sites?
+Check some of the output files and IGV - do we have heterozygous sites?
 
 ## Step 5. Converting files to PSMC format.
 
@@ -305,9 +305,9 @@ Take a look at the PSMC output files (.psmc and .par). These are the "raw" outpu
 
 PSMC runs for multiple rounds (25 in this case). Each round the program generates output, and the iterations should get progressively closer to the "true" answer as they go. We can look at the results from the final iteration.
 
-The line starting with "TR" has the estimates for theta_0 (scaled genetic diversity) and rho_0 (scaled recombination rate).
+The line starting with "TR" has the estimates for theta_0 (the "scaled mutation rate") and rho_0 (the "scaled recombination rate").
 
-The following lines have estimates for other parameters, including time and population size at a given time.  
+The following lines have estimates for other parameters, including time and population size at a given time.
 
 Notably, the numbers are scaled to mutation rate and population size. How do we translate these to unscaled estimates of effective population size?
 

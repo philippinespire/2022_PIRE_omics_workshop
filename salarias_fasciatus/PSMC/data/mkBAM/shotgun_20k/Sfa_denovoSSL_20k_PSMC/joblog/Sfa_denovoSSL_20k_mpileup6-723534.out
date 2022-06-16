@@ -1,0 +1,9 @@
+
+[warning] samtools mpileup option `u` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[mpileup] 3 samples in 1 input files
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+mv: 'Sfa_denovoSSL_20k_mpileup6-723554.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723554.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723555.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723555.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723556.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723556.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723557.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723557.out' are the same file
+mv: 'Sfa_denovoSSL_20k_mpileup6-723558.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_mpileup6-723558.out' are the same file

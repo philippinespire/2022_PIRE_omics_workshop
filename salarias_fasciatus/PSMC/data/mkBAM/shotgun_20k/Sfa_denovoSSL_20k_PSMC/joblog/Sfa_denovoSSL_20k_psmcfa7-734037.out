@@ -1,0 +1,5 @@
+
+mv: cannot move 'Sfa_denovoSSL_20k_psmcfa7-734043.out' to '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734043.out': No such file or directory
+mv: 'Sfa_denovoSSL_20k_psmcfa7-734044.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734044.out' are the same file
+mv: cannot move 'Sfa_denovoSSL_20k_psmcfa7-734045.out' to '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734045.out': No such file or directory
+mv: 'Sfa_denovoSSL_20k_psmcfa7-734047.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC/joblog/Sfa_denovoSSL_20k_psmcfa7-734047.out' are the same file
