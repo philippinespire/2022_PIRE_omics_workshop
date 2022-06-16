@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=mkBAM_genbank_Sfa100k
-#SBATCH -o mkBAM_genbank_Sfa100k-%j.out
+#SBATCH --job-name=fltrBAM_genbank_Sfa100k
+#SBATCH -o fltrBAM_genbank_Sfa100k-%j.out
 #SBATCH -p main
 #SBATCH -c 4					# either < -c 4 > or < --ntasks=1 together withw --cpus-per-task=40 > We have been using -c 4 
 ##SBATCH --ntasks=1
@@ -42,10 +42,10 @@ export SINGULARITY_BIND=/home/e1garcia
 #dDocent mkREF.  We have to change directories, copy the reference*fasta to mkBAM, then run dDocent mkBAM 
 #cd ../mkBAM
 #cp ../mkREF/reference.*.fasta .
-crun bash dDocentHPC.bash mkBAM config.5.cssl
+#crun bash dDocentHPC.bash mkBAM config.5.cssl
 
 #this will use dDocent fltrBAM to filter the BAM files
-#crun bash dDocentHPC.bash fltrBAM config.4.all
+crun bash dDocentHPC.bash fltrBAM config.5.cssl
 
 #this will use freebayes to genotype the bam files and make a VCF
 #crun bash dDocentHPC.bash mkVCF config.4.all.cbirdq

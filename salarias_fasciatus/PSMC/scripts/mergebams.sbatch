@@ -16,3 +16,4 @@ export SINGULARITY_BIND=/home/e1garcia
 
 #merging .bam files with samtools merge. syntax = <outfile> <infile1> <infile2> ... <infileN>
 crun samtools merge Sfa_denovoSSL_100k.bam SfC0281G_CKDL210013395-1a-AK3911-AK845_HF33GDSX2_L4_clmp.fp2_repr.denovoSSL.Sfa100k-RG.bam SfC0281H_CKDL210013395-1a-5UDI245-GD07_HF33GDSX2_L4_clmp.fp2_repr.denovoSSL.Sfa100k-RG.bam SfC0282A_CKDL210013395-1a-AK8593-7UDI304_HF33GDSX2_L4_clmp.fp2_repr.denovoSSL.Sfa100k-RG.bam
+crun samtools index Sfa_denovoSSL_100k.bam

@@ -1,17 +1,17 @@
 # PSMC analysis pipeline
 ## Background and motivation
-Genomic data contains a wealth of information regarding the demographic history of populations. One of the most interesting insights to emerge from the genomic revolution is that genomic data from just a few individuals or even a single individual can be used to estimate demographic trends for entire species or populations. A number of methods, summarized in [Mather et al.](https://doi.org/10.1002/ece3.5888), have been developed to take advantage of this information. We are going to use the method developed in 2011 by [Li and Durbin](https://doi.org/10.1038/nature10231) for this workshop.
+Genomic data contain a wealth of information regarding the demographic history of populations. One of the most interesting insights to emerge from the genomic revolution is that genomic data from just a few individuals or even a single individual can be used to estimate demographic trends for entire species or populations. A number of methods, summarized in [Mather et al.](https://doi.org/10.1002/ece3.5888), have been developed to take advantage of this information. We are going to use the method developed in 2011 by [Li and Durbin](https://doi.org/10.1038/nature10231) for this workshop.
 
-Using the curated read data and the shotgun reference genome we have developed for *Salarias fasciatus*, as well as a published reference genome for the species, we will align reads to the genome, call genotypes and consensus sequences, and run the PSMC program to estimate a demographic trajectory for this species.
+Using the curated read data and the shotgun reference genome we have developed for *Salarias fasciatus*, as well as a published reference genome for the species, we will map reads to the genome, call genotypes and consensus sequences, and run the PSMC program to estimate a demographic trajectory for this species.
+
 ## Step 1. Preparing reference genomes.
+
 The reference genomes we will be using are located in the `data` folder. The file `scaffolds.fasta` is the best shotgun assembly we created, while `GCF_902148845.1_fSalaFa1.1_genomic.fna.gz` is a more complete reference genome that was downloaded from [Genbank](https://www.ncbi.nlm.nih.gov/genome/7248?genome_assembly_id=609472).
 
-Move to the `data` folder and rename our shotgun genome `Sfa_shotgun_assembly.fa`.
-
---> may need to rename dir to reflect student directory
+Move to your `data` folder and rename our shotgun genome `Sfa_shotgun_assembly.fa`.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/PSMC/data
+cd <yourdirectory>/workshop/salarias_fasciatus/PSMC/data
 mv scaffolds.fasta Sfa_shotgun_assembly.fa
 ```
 
@@ -41,13 +41,13 @@ cat reference.genbank.Sfa20k.fasta | grep "^>" | wc -l
 
 How many scaffolds did we keep for each genome?
 
-reference.denovoSSL.Sfa100k.fasta = 130
+-->reference.denovoSSL.Sfa100k.fasta = 130
 
-reference.genbank.Sfa100k.fasta = 103
+-->reference.genbank.Sfa100k.fasta = 103
 
-reference.denovoSSL.Sfa20k.fasta = 7488
+-->reference.denovoSSL.Sfa20k.fasta = 7488
 
-reference.genbank.Sfa20k.fasta = 196
+-->reference.genbank.Sfa20k.fasta = 196
 
 And here are scripts to calculate the total length of the filtered assemblies.
 
@@ -60,13 +60,13 @@ cat reference.genbank.Sfa20k.fasta | grep -v "^>" | tr "\n" "\t" | sed 's/\t//g'
 
 How long is each assembly?
 
-reference.denovoSSL.Sfa100k.fasta = 16815789
+-->reference.denovoSSL.Sfa100k.fasta = 16815789
 
-reference.genbank.Sfa100k.fasta = 792843668
+-->reference.genbank.Sfa100k.fasta = 792843668
 
-reference.denovoSSL.Sfa20k.fasta = 282010249
+-->reference.denovoSSL.Sfa20k.fasta = 282010249
 
-reference.genbank.Sfa20k.fasta = 797427707
+-->reference.genbank.Sfa20k.fasta = 797427707
 
 Our shotgun assembly has shorter scaffolds in general than the Genbank assembly. If we use only scaffolds >100k we are using a fraction of the genome, however this may still be enough to make robust inferences about demographic history. We will assess this in the next steps.
 
@@ -85,60 +85,37 @@ Now we're ready to map to the reference!
 
 We next need to map our shotgun reads to our reference genomes. This is a key step in many genomic workflows. We use a modified version of a pipeline called dDocent to do this mapping. We will use two steps in the dDocent pipeline, mkBAM (which creates .bam files that store mapping information) and fltrBAM (which filters out reads that mapped to the genome with low quality).
 
+Mapping can take a long time, especially when we have a lot of reads (our shotgun libraries for Sfa have >100 million reads each!). For the sake of expediency, we have created a 
+
 We first need to navigate back to our PSMC directory and clone the dDocent repo.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/PSMC
+cd <yourdirectory>/workshop/salarias_fasciatus/PSMC
 git clone https://github.com/cbirdlab/dDocentHPC.git
 ```
 
 --> set up dirs with reads already
 
-Folders containing the shotgun reads should be set up already. If you need to do this, use the following code. 
-
-Do not run this if you don't have to, copying these files takes a long time!!
-
-```
-mkdir data/mkBAM
-mkdir data/mkBAM/shotgun_100k
-mkdir data/mkBAM/genbank_100k
-mkdir data/mkBAM/shotgun_20k
-mkdir data/mkBAM/genbank_20k
-cp data/*.fq.gz data/mkBAM/shotgun_100k
-cp data/*.fq.gz data/mkBAM/genbank_100k
-cp data/*.fq.gz data/mkBAM/shotgun_20k
-cp data/*.fq.gz data/mkBAM/genbank_20k
-```
+Mapping can take a long time, especially when we have a lot of reads (our shotgun libraries for Sfa have >100 million read pairs each!). For the sake of expediency, we have created a smaller test dataset (only 5 million read pairs), which can be found in the folder `data/mkBAM/test_mapping`.
 
 Now we need to copy some scripts and configuration files to our folders. Note that we need to use a modified version of the sbatch file that works with the ODU HPCC.
 
 ```
-cp dDocentHPC/dDocentHPC.bash data/mkBAM/shotgun_100k
-cp dDocentHPC/dDocentHPC.bash data/mkBAM/genbank_100k
-cp dDocentHPC/dDocentHPC.bash data/mkBAM/shotgun_20k
-cp dDocentHPC/dDocentHPC.bash data/mkBAM/genbank_20k
-cp dDocentHPC/configs/config.5.cssl data/mkBAM/shotgun_100k
-cp dDocentHPC/configs/config.5.cssl data/mkBAM/genbank_100k
-cp dDocentHPC/configs/config.5.cssl data/mkBAM/shotgun_20k
-cp dDocentHPC/configs/config.5.cssl data/mkBAM/genbank_20k
-cp /home/e1garcia/dDocentHPC_ODU/dDocentHPC_ODU.sbatch data/mkBAM/shotgun_100k
-cp /home/e1garcia/dDocentHPC_ODU/dDocentHPC_ODU.sbatch data/mkBAM/genbank_100k
-cp /home/e1garcia/dDocentHPC_ODU/dDocentHPC_ODU.sbatch data/mkBAM/shotgun_20k
-cp /home/e1garcia/dDocentHPC_ODU/dDocentHPC_ODU.sbatch data/mkBAM/genbank_20k
+cp dDocentHPC/dDocentHPC.bash data/mkBAM/test_mapping
+cp dDocentHPC/configs/config.5.cssl data/mkBAM/test_mapping
+cp scripts/dDocentHPC_ODU.sbatch data/mkBAM/test_mapping
 ```
 
-Move the reference genome files to the appropriate folders
+Copy two of the reference genome files (`denovoSSL.Sfa100k` and `genbank.Sfa100k`) to the appropriate folders.
 
 ```
-mv data/reference.denovoSSL.Sfa100k.fasta data/mkBAM/shotgun_100k
-mv data/reference.genbank.Sfa100k.fasta data/mkBAM/genbank_100k
-mv data/reference.denovoSSL.Sfa20k.fasta data/mkBAM/shotgun_20k
-mv data/reference.genbank.Sfa100k.fasta data/mkBAM/genbank_100k
+cp data/reference.denovoSSL.Sfa100k.fasta data/mkBAM/shotgun_100k
+cp data/reference.genbank.Sfa100k.fasta data/mkBAM/genbank_100k
 ```
 
-Thus in each folder you must have: * reads to map (.R1.fq.gz/.R2.fq.gz) * reference genome (renamed scaffolds, with dDocent prefix reference.cutoff1.cutoff2.fasta) * dDocentHPC.bash * config file (currently config.5.cssl) * dDocentHPC_ODU.sbatch
+In your test_mapping folder you should have: * reads to map (.R1.fq.gz/.R2.fq.gz) * reference genome (renamed scaffolds, with dDocent prefix reference.cutoff1.cutoff2.fasta) * dDocentHPC.bash * config file (currently config.5.cssl) * dDocentHPC_ODU.sbatch
 
-Examine a `config.5.cssl` file - this file contains all of the setting that will be used to run dDocent. Most of these you can keep as they are. Recall that we used a specific convention to name our reference genome files - specifically the format is `reference.<cutoff1>.<cutoff2>.fasta`, where cutoff1 and cutoff2 refer to descriptive variables used by dDocent. We need to edit the config file `config.5.cssl` in each directory to so that dDocent can find the reference.  
+Examine the `config.5.cssl` file - this file contains all of the setting that will be used to run dDocent. Most of these you can keep as they are. Recall that we used a specific convention to name our reference genome files - specifically the format is `reference.<cutoff1>.<cutoff2>.fasta`, where cutoff1 and cutoff2 refer to descriptive variables used by dDocent. We need to edit the config file `config.5.cssl` in each directory to so that dDocent can find the reference.  
 --> Also, the default alignment score in config.5.cssl is 80, which is different from before and seems high! I am changing this to 30.
 
 Here is an example:
@@ -325,6 +302,11 @@ Let's take a look at our PSMC outputs.
 
 To plot the bootstrap result, use the `pmscbootplot.sbatch` script. Since this will include confidence intervals you will have to increase the maximum Y-axis value - 'pY100' will change it to 200x10^4. You can change the X-axis scale too. Try pY100 - does that capture the maximum bootstrapped value? Change and rerun the script if not.
 
-How does the confidence in our estimated demographic history change from the distant past to the recent past?
+How does the confidence in our estimated demographic history change from the distant past (100,000 to 1,000,000 years ago) to the recent past (10,000 years ago)?
 
-Take a look at the PSMC output files (.psmc and .par). These are the "raw" outputs from PSMC. Notably, the numbers are scaled to mutation rate and population size. How do we translate these to unscaled estimates of effective population size? 
+Take a look at the PSMC output files (.psmc and .par). These are the "raw" outputs from PSMC. What do all of these numbers mean?
+
+
+
+
+Notably, the numbers are scaled to mutation rate and population size. How do we translate these to unscaled estimates of effective population size? 

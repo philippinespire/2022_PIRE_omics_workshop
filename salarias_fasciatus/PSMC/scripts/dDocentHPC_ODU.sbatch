@@ -1,12 +1,12 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=fltrBAM_genbank_Sfa20k
-#SBATCH -o fltrBAM_genbank_Sfa20k-%j.out
+#SBATCH --job-name=fltr_denovoSSL_Sfa100k
+#SBATCH -o fltr_denovoSSL_Sfa100k-%j.out
 #SBATCH -p main
 #SBATCH -c 4					# either < -c 4 > or < --ntasks=1 together withw --cpus-per-task=40 > We have been using -c 4 
 ##SBATCH --ntasks=1
 ##SBATCH --cpus-per-task=40			# 40 for Wahab or 32 for Turing
-#SBATCH --mail-user=breid@rutgers.edu
+#SBATCH --mail-user=br450@rutgers.edu
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=END
 
