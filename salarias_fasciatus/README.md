@@ -279,23 +279,24 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 #runJellyfish.sbatch <Species 3-letter ID> <indir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sfa" "fq_fp1_clmparray_fp2_fqscrn_repaired"
 ```
-This jellyfish kmer-frequency [hitogram file](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/jellyfish_out/Sgr_all_reads.histo) 
+This jellyfish kmer-frequency [hitogram file](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa_all_reads.histo) 
 was uploaded into [Genomescope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the 
+[v1.report](http://qb.cshl.edu/genomescope/analysis.php?code=6BDQgRgA6gs0mfUBFxGd) and [v2.report](http://qb.cshl.edu/genomescope/genomescope2.0/analysis.php?code=tPlAOkAOnVClGCk51sOi). Highlights:
 [v1.report](http://genomescope.org/analysis.php?code=Bm6XRZmRpQ2dNxEo8fHs) and [v2.report](http://qb.cshl.edu/genomescope/genomescope2.0/analysis.php?code=Gl6gm6OeSCqMbM7Jx1SM). Highlights:
 
 Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions
 
-version    |stat    |min    |max    
-------  |------ |------ |------ 
-1  |Heterozygosity  |1.32565%       |1.34149%       
-2  |Heterozygosity  |1.32975%       |1.35795%       
-1  |Genome Haploid Length   |693,553,516 bp |695,211,827 bp 
-2  |Genome Haploid Length   |851,426,393 bp |853,706,410 bp 
-1  |Model Fit       |97.6162%       |98.7154%       
-2  |Model Fit       |65.11692%       |96.0314%       
+version    |stat    |min    |max
+------  |------ |------ |------
+1  |Heterozygosity  |1.0538%       |1.08547%
+2  |Heterozygosity  |1.08073%       |1.10271%
+1  |Genome Haploid Length   |577,739,654 bp |579,839,747 bp
+2  |Genome Haploid Length   |633,665,608 bp |634,636,698 bp
+1  |Model Fit       |90.9798%       |92.2947%
+2  |Model Fit       |80.1725%       |93.4093%
 
+No red flags. We will use V2 max value rounded up to 635000000 bp 
 
-We will use V2 max value rounded up/down to "____"
 
 ---
 
@@ -305,17 +306,28 @@ We will use V2 max value rounded up/down to "____"
 
 Executed [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runSPADEShimem_R1R2_noisolate.sbatch) for each library and for all combined
 ```sh
-exit
+#new window
 ssh username@turing.hpc.odu.edu
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <contam | decontam> <genome size in bp> <species dir>
 # do not use trailing / in paths. Example running contaminated data:
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "1" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "2" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "all_3libs" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "1" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "2" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "all_3libs" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
+ 
+JOB IDs:
+```
+[e1garcia@turing1 salarias_fasciatus]$ sq
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           9767803     himem     Sp8s e1garcia  R       0:01      1 coreV4-21-himem-003
+           9767802     himem     Sp8s e1garcia  R       0:16      1 coreV4-21-himem-002
+           9767801     himem     Sp8s e1garcia  R       0:27      1 coreV2-23-himem-004
+           9767800     himem     Sp8s e1garcia  R       1:11      1 coreV2-23-himem-003
+```
+
 
 This SPAdes scripts automatically runs `QUAST` but running `BUSCO` separately 
 

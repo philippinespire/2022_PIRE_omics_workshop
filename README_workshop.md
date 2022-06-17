@@ -260,12 +260,12 @@ Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both ver
 
 version    |stat    |min    |max
 ------  |------ |------ |------
-1  |Heterozygosity  |1.32565%       |1.34149%
-2  |Heterozygosity  |1.32975%       |1.35795%
-1  |Genome Haploid Length   |693,553,516 bp |695,211,827 bp
-2  |Genome Haploid Length   |851,426,393 bp |853,706,410 bp
-1  |Model Fit       |97.6162%       |98.7154%
-2  |Model Fit       |65.11692%       |96.0314%
+1  |Heterozygosity  |1.0538%       |1.08547%
+2  |Heterozygosity  |1.08073%       |1.10271%
+1  |Genome Haploid Length   |577,739,654 bp |579,839,747 bp 
+2  |Genome Haploid Length   |633,665,608 bp |634,636,698 bp
+1  |Model Fit       |90.9798%       |92.2947%
+2  |Model Fit       |80.1725%       |93.4093%
 ```
 Provide a link to both reports in your README. See other species READMEs for examples.
 
@@ -302,6 +302,11 @@ exit
 ssh username@turing.hpc.odu.edu
 ```
 
+Check how many high memory nodes "himem" are available in Turing
+```sh
+sinfo
+```
+
 ##### **2b. Get the genome size of your species, or Jellyfish estimate, in bp from the previous step**
  
 
@@ -333,7 +338,8 @@ cd YOURSPECIESDIR
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "1" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-Run 2 more assemblies with the contaminated data for the second and  third library by rreplacing the "1", with "2" and  "3". 
+Run 2 more assemblies for the second, third, and all library combined, by rreplacing the "1", with "2" and "3" respectively.
+ 
 Then, check the number of libraries you have and run a job combining all libraries together by choosing the appropiate "all_2libs" or "all_3libs" from the library options.
 
 ---
