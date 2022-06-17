@@ -105,17 +105,17 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash NAMEOFDEC
 
 ## **1. Check the quality of your data. Run `fastqc` (1-2 hours run time)**
 
-Fastqc and then Multiqc can be run using the [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh) script.
+Fastqc and then Multiqc can be run using the [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh) script. For the workshop **ONLY** we will run [`Multi_FASTQC_wkshp.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC_wkshp.sh) instead.
 
-Execute `Multi_FASTQC.sh` while providing, in quotations and in this order, 
-(1) the FULL path to these files and (2) a suffix that will identify the files to be processed. 
+Execute `Multi_FASTQC_wkshp.sh` while providing, in quotations and in this order, 
+(1) the FULL path to these files, (2) th FULL path to the directory you want the output files to go, and (3) a suffix that will identify the files to be processed. 
 
 ```sh
 cd YOURSPECIESDIR/shotgun_raw_fq
 
-#sbatch Multi_FASTQC.sh <indir> <file extension>
+#sbatch Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "<file extension>"
 #do not use trailing / in paths. Example:
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz"   
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz"   
 ```
 
 If you get a message about not finding "crun" then load the containers in your current session and run `Multi_FASTQC.sh` again
@@ -126,7 +126,7 @@ module load parallel
 module load container_env multiqc
 module load container_env fastqc
 
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz"   
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz" 
 ```
 
 *(can take several hours)*
