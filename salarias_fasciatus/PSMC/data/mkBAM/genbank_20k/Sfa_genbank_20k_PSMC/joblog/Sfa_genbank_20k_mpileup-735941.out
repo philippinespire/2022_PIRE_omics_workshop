@@ -1,0 +1,20 @@
+
+[warning] samtools mpileup option `u` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[E::fai_build3_core] Failed to open the file /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/reference.genbank.20k.fasta
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+Failed to read from standard input: unknown file type
+Use of uninitialized value $l in numeric lt (<) at /opt/intel64/bin/vcfutils.pl line 566.
+Use of uninitialized value $l in numeric lt (<) at /opt/intel64/bin/vcfutils.pl line 566.
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735946.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735947.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735948.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735949.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735950.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735951.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735952.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735953.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735954.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735955.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735956.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735957.out': No such file or directory
+mv: cannot stat 'Sfa_genbank_20k_mpileup-735958.out': No such file or directory

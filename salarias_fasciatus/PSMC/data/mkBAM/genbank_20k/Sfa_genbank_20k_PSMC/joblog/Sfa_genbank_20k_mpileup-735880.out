@@ -1,0 +1,21 @@
+
+[warning] samtools mpileup option `u` is functional, but deprecated. Please switch to using bcftools mpileup in future.
+[E::fai_build3_core] Failed to open the file /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/reference.genbank.20k.fasta
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+Failed to read from standard input: unknown file type
+Use of uninitialized value $l in numeric lt (<) at /opt/intel64/bin/vcfutils.pl line 566.
+Use of uninitialized value $l in numeric lt (<) at /opt/intel64/bin/vcfutils.pl line 566.
+mv: 'Sfa_genbank_20k_mpileup-735882.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735882.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735883.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735883.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735884.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735884.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735885.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735885.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735886.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735886.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735887.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735887.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735888.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735888.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735889.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735889.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735890.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735890.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735891.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735891.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735892.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735892.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735893.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735893.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735894.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735894.out' are the same file
+mv: 'Sfa_genbank_20k_mpileup-735895.out' and '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/genbank_20k/Sfa_genbank_20k_PSMC/joblog/Sfa_genbank_20k_mpileup-735895.out' are the same file

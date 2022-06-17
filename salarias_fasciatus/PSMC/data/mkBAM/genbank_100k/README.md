@@ -2,7 +2,7 @@
 
 Reference used: DenovoSSL
 
-Minimum scaffold length: 20k
+Minimum scaffold length: 100k
 
 Number of scaffolds: 103
 

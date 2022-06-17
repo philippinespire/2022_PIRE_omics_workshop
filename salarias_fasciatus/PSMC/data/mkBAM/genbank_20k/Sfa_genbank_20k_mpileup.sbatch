@@ -23,6 +23,6 @@ DATAPATH="/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatu
 mkdir -p $DATAPATH/Sfa_genbank_20k_PSMC/
 mkdir -p $DATAPATH/Sfa_genbank_20k_PSMC/joblog
 
-crun samtools mpileup -C50 -r $CHR -uf $DATAPATH/reference.genbank.20k.fasta $DATAPATH/Sfa_genbank_20k.bam | crun bcftools call -c - | crun vcfutils.pl vcf2fq -d 46 -D 276 > $DATAPATH/Sfa_genbank_20k_PSMC/Sfa_genbank_20k.$CHR.fq
+crun samtools mpileup -C50 -r $CHR -uf $DATAPATH/reference.genbank.Sfa20k.fasta $DATAPATH/Sfa_genbank_20k.bam | crun bcftools call -c - | crun vcfutils.pl vcf2fq -d 37 -D 224 > $DATAPATH/Sfa_genbank_20k_PSMC/Sfa_genbank_20k.$CHR.fq
 
 mv *mpileup*out $DATAPATH/Sfa_genbank_20k_PSMC/joblog
