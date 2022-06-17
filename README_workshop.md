@@ -233,27 +233,30 @@ ___
 ##### 1a. Fetch the genome properties for your species
 * From the literature or other sources
 	* [genomesize.com](https://www.genomesize.com/)
+	* [ncbi genome](https://www.ncbi.nlm.nih.gov/genome/)
 	* search the literature
 * Estimate properties with `jellyfish` and `genomescope`
 	* More details [here](https://github.com/philippinespire/denovo_genome_assembly/blob/main/jellyfish/JellyfishGenomescope_procedure.md)
 
 ##### 1b. **Execute [runJellyfish.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runJellyfish.sbatch) using decontaminated files**
+
 ```sh
+cd YOURSPECIESDIR
 #sbatch runJellyfish.sbatch <Species 3-letter ID> <indir>
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runJellyfish.sbatch "Sgr" "fq_fp1_clmp_fp2_fqscrn_rprd"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runJellyfish.sbatch "Sfa" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
 Jellyfish will create a histogram file (.hito) with kmer frequencies. 
 
-##### 1c. ** Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/)**
-* Add a proper description to both of your runs. Example "Sgr_fq_fp1_clmp_fp2_fqscrn_rprd_jfsh"
+##### 1c. **Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/)**
+* Add a proper description to both of your runs. Example "Sfa_fq_fp1_clmp_fp2_fqscrn_repaired_jfsh_v1" and  "Sfa_fq_fp1_clmp_fp2_fqscrn_repaired_jfsh_v2"
 * For version 1, Adjust the read lenght to that of in the Fastp2 trimming, 140 (unless you had to modify this in Fastp2)
 * Leave all other parameters with default settings for both versions. 
 * Submit (takes only few minutes)
  
 ##### 1d. **Complete the following table in your Species README. You can copy and paste this table straight into your README (no need to enclose it with quotes, i.e. a code block) and just substitute values.**
 ```sh
-Genome stats for Sgr from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions
+Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions
 
 version    |stat    |min    |max
 ------  |------ |------ |------
@@ -278,7 +281,7 @@ Most of the time v1-2 perform very similar. However, sometimes the two reports g
 * In Sob, the [Sob_GenScp_v1](http://qb.cshl.edu/genomescope/analysis.php?code=zQRfOkSqbDYAGYJrs7Ee) report estimates a genome of 532 Mbp and 0.965 for H. On the other hand,  [Sob_GenScp_v2](http://qb.cshl.edu/genomescope/genomescope2.0/analysis.php?code=5vZKBtdSgiAyFvzIusxT) reports a genome size of 259 Mbp (which is small for a fish) and it actually fails to estimate heterozygosity. Thus, version 1 was used for Sob. 
 * In Hte, the [Hte_GenScp_v1](http://qb.cshl.edu/genomescope/analysis.php?code=tHzBW2RjBK00gQMUSfl4) appears to have no red flags with a genome size of 846 Mbp and 0.49 for H but inspecting the first graph, you can see that the "uniqu sequence" line behaves diffently from the others. In contrast, [Hte_GenScp_v2](http://qb.cshl.edu/genomescope/genomescope2.0/analysis.php?code=8eVzhAQ8zSenObScLMGC) restores a tight relationship between lines with no red flags in estimates either (H=2.1, GenSize= 457 Mbp)
 
-Note the source and genome size (if you found one already availble) or the Genome Scope version and rounded genome size estimate (if you had to run jellyfish) in your species README. You will use this info later
+Note the Genome Scope version and rounded genome size estimate in your species README. You will use this info later
 
 ---
 
@@ -286,12 +289,12 @@ Note the source and genome size (if you found one already availble) or the Genom
 
 Congrats! You are now ready to assemble the genome of your species!
 
-After de novo assembler comparisons, we decided to move forward using SPADES (isolate and covcutoff flags off). 
-For the most part, we obtained better assemblies using single libraries (a library consists of one forward *r1.fq.gz and reverse file *r2.fq.gz) but in few instances using all the libraries was better.
-In addition, we also noted that assembling contaminated data (i.e. files in the `fq_fp1_clmp_fp2` dir)  produced better results for mtDNA (mt = mitochondrial) and decontaminated (i.e. files in the `fq_fp1_clmp_fp2_fqscrn_repaired` dir) was better for nDNA (n=nuclear). 
+After a comparions of multiple assemblers with PIRE data, we decided to use **SPADES (noisolate and covcutoff-off)**. 
 
-Thus, use the contaminated files to run one assembly for each of your libraries independently and then one combining all.
-2a. **You need to be in `turing.hpc.odu.edu` for this step.** SPAdes requires high memory nodes (only avail in Turing)
+For the most part, we obtained better assemblies using single libraries (a library consists of one forward *r1.fq.gz and reverse file *r2.fq.gz) but in few instances using all the libraries was better.
+
+
+##### **2a. You need to be in `turing.hpc.odu.edu` for this step.** SPAdes requires high memory nodes (only avail in Turing)
 
 ```bash
 #from wahab.hpc.odu.edu
@@ -299,34 +302,35 @@ exit
 ssh username@turing.hpc.odu.edu
 ```
 
-2b. **Get the genome size of your species, or Jellyfish estimate, in bp from the previous step**
+##### **2b. Get the genome size of your species, or Jellyfish estimate, in bp from the previous step**
  
 
-We produced 3 libraries (from the same individual) for the last 5 spp with ssl data resulting in 3 sets of files. Sgr example:
+We produced 3 libraries (from the same individual) for each spp with ssl data. Sfa example:
 ```bash
-ls /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis/fq
+ls /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq/*gz
 
-SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_1.fq.gz
-SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_2.fq.gz
-SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_1.fq.gz
-SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_2.fq.gz
-SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_1.fq.gz
-SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_2.fq.gz
+Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
 ```
 Yet, every now and then one library can fail and you might end up with only 2 sets of files. 
-Thus, the following SPAdes script is optimized to run the first 3 libraries independently and 2 or 3 libraries together for your "all" assembly.
-. 
+Thus, the following SPAdes script is optimized to run the first 3 libraries independently and 2 or 3 libraries together for your "all" assembly as needed.
+ 
 Note: If your species has 4 or more libraries, you will need to modify the script to run the 4th,5th,.. library and so on (you'll only need to add the necessary libraries to the SPAdes command)
 No changes necessary for running the first, second, thrid, or all the libraries together (if you have 2 or 3 libraries only).  
 
-**Use the decontaminated files to run one assembly for each of your libraries independently and then one combining all**
+##### **2c. Use the decontaminated files to run one assembly for each of your libraries independently and then one combining all**
 
-**Execute [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runSPADEShimem_R1R2_noisolate.sbatch). Example using the 1st library***
-
+Execute [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runSPADEShimem_R1R2_noisolate.sbatch). Example using the 1st library:
 ```bash
+cd YOURSPECIESDIR
+
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir> <fq data dir>
 # do not use trailing / in paths. Example running contaminated data:
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "1" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis" "fq_fp1_clmp_fp2_fqscrn_rprd"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "1" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
 Run 2 more assemblies with the contaminated data for the second and  third library by rreplacing the "1", with "2" and  "3". 
@@ -360,6 +364,8 @@ Those are basic assembly statistics but we still need to run BUSCO to know how m
 **Execute [runBUCSO.sh](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runBUSCO.sh) on the `contigs` and `scaffolds` files for each assembly**
 
 ```bash
+cd YOURSPECIESDIR
+
 #runBUSCO.sh <species dir> <SPAdes dir> <contigs | scaffolds>
 # do not use trailing / in paths. Example using contigs:
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis" "SPAdes_decontam_R1R2_noIsolate" "contigs"
@@ -419,6 +425,8 @@ If you are still undecided on which is the best assembly, post the best candidat
 #### 7. Assemble contaminated data for best library 
 
 ```bash
+cd YOURSPECIESDIR
+
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir>
 # do not use trailing / in paths. Example running contaminated data:
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "1" "contam" "854000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
@@ -435,6 +443,8 @@ Please note that you cannot paste a tab in nano as it interprets tabs as spaces.
 Once done, push your changes to GitHub and confirm the that tsv format is correct by opening the [best_ssl_assembly_per_sp.tsv](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/best_ssl_assembly_per_sp.tsv) that your browser is displaying code but a nice looking table (aligned columns, etc). 
 
 ```sh
+cd YOURSPECIESDIR
+
 # add your info in a new row
 nano ../best_ssl_assembly_per_sp.tsv
 ```

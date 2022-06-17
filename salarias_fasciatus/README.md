@@ -264,23 +264,26 @@ Reads remaining:
 
 ---
 
-## **Assembly Section**
+## **B Genome Assembly Section**
 
-## Step 8. Genome properties
+## Step 1. Genome properties
 
-I could not find Sgr in the [genomesize.com](https://www.genomesize.com/) database,
- thus I estimated the genome size of Sgr using jellyfish
+Sfa has a genome available at the genomesize.com (C-value= "___" pg) and NCBI Genome databases. 
+ 
+Yet, we will still estimated the genome size of Sgr using jellyfish to remain consistent with other species.
 
-From species home directory: Executed runJellyfish.sbatch using decontaminated files
+Executed runJellyfish.sbatch using decontaminated files
 ```sh
-#runJellyfish.sbatch <Species 3-letter ID> <indir> <outdir>
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sgr" "fq_fp1_clmparray_fp2_fqscrn_repaired" "jellyfish_decontam"
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+
+#runJellyfish.sbatch <Species 3-letter ID> <indir>
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sfa" "fq_fp1_clmparray_fp2_fqscrn_repaired"
 ```
 This jellyfish kmer-frequency [hitogram file](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/jellyfish_out/Sgr_all_reads.histo) 
 was uploaded into [Genomescope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the 
 [v1.report](http://genomescope.org/analysis.php?code=Bm6XRZmRpQ2dNxEo8fHs) and [v2.report](http://qb.cshl.edu/genomescope/genomescope2.0/analysis.php?code=Gl6gm6OeSCqMbM7Jx1SM). Highlights:
 
-Genome stats for Sgr from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions
+Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions
 
 version    |stat    |min    |max    
 ------  |------ |------ |------ 
@@ -291,62 +294,27 @@ version    |stat    |min    |max
 1  |Model Fit       |97.6162%       |98.7154%       
 2  |Model Fit       |65.11692%       |96.0314%       
 
----
 
-**Note:** the initial commands for assembly used the mid-point between min and max of Genome Scope V1, meaning that the first set of QUAST runs were feed this number.
- After these runs were completed, we decided to use Genome Scope V2 instead. Giving that the model fit for the min is usually low, I recommended using the max estimate (rounded up or down to the nearest million).
-
-SPAdes and BUSCO do not incoorporate the genome estimate so these don't need to be re-ran. Thus, I am only rerunning QUAST with the max estimate of V2.
-
-QUAST stat table has also been updated to include the genome scope version and "#N's per 100 kbp"
+We will use V2 max value rounded up/down to "____"
 
 ---
 
 ## Step 9. Assemble the genome using [SPAdes](https://github.com/ablab/spades#sec3.2)
 
-In our previous tests, contaminated data has produced the best assemblies for nDNA but decontaminated assemblies were better for mtDNA. The effect of using merged files remains unclear
 
-Thus, I ran 4 assembly treatments: Contam with and without merged files and the same for Decontam. See [SPADES_Test_info](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/spratelloides_gracilis/SPADES_Test_info) for full details
+
+Executed [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runSPADEShimem_R1R2_noisolate.sbatch) for each library and for all combined
 ```sh
-CONCLUSION: Recommending running contam and decontam but skipping MRDG all together
-```
+exit
+ssh username@turing.hpc.odu.edu
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
-***UPDATE SEE BELOW: Recommending running contam for each library independently and one run using all the libraries. Then run the decontaminated data for the best assembly only***
-
-LOG:
-Executed [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runSPADEShimem_R1R2_noisolate.sbatch). *Do this for other species*
-```sh
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <contam | decontam> <genome size in bp> <species dir>
 # do not use trailing / in paths. Example running contaminated data:
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "contam" "694000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "decontam" "694000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
-```
-
-Testing the merging reads option. *Not needed to repeat this for other spp*
-
-Executed [runSPADEShimem_Onlymrgd_cont_noisolate.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runSPADEShimem_Onlymrgd_cont_noisolate.sbatch)
-```sh
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_Onlymrgd_cont_noisolate.sbatch "e1garcia" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/pire_ssl_data_processing/blob/main/spratelloides_gracilis"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_Onlymrgd_cont_noisolate.sbatch
-```
-
-Also testing the effect of `--cov-cutoff auto`. *Do this in other species if BUSCO values are too low with `--cov-cutoff off`*
-```sh
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "contam_covAUTO" "694000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "decontam_covAUTO" "694000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
-```
-
-Using merged files and applying `--cov-cutoff auto` did not make a big difference, see table below (merged results not shown but available at /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis)
-
-**Running the 3 libraries independently**
-
-I modified the SPAdes script to provide the option of running libraries together or independently up to 3 libraries <library: all | 1 | 2 | 3> given that all ssl dataset (5 spp as in August) have 3 libraries sequenced. Everything before this point was using all the libraries together. Running independently now using only the contaminated data. After determining which is the best library for assembly, I will run the decontaminated files as well.
-```sh
-#runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir>
-# do not use trailing / in paths.
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "1" "contam" "694000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "2" "contam" "694000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "3" "contam" "694000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "1" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "2" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "all_3libs" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
 This SPAdes scripts automatically runs `QUAST` but running `BUSCO` separately 
