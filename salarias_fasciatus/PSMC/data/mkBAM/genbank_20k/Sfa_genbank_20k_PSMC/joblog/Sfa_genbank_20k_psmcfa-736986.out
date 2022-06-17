@@ -1,0 +1,3 @@
+
+/var/spool/slurmd/job736986/slurm_script: line 26: 39505 Segmentation fault      crun fq2psmcfa -q 20 $DATAPATH/Sfa_genbank_20k.$CHR.fq.gz > $DATAPATH/Sfa_genbank_20k.$CHR.psmcfa
+mv: cannot stat '*psmcfa*out': No such file or directory

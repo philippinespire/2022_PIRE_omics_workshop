@@ -1,0 +1,10 @@
+
+ls: cannot access 'fq.gz/*/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired': No such file or directory
+Usage: multiqc [OPTIONS] <analysis directory>
+
+Error: Invalid value for '<analysis directory>': Path 'fq.gz' does not exist.
+
+This is MultiQC v1.9
+
+For more help, run 'multiqc --help' or visit http://multiqc.info
+
