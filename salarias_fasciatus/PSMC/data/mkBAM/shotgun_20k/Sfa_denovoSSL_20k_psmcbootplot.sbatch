@@ -18,4 +18,4 @@ export SINGULARITY_BIND=/home/e1garcia
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_20k/Sfa_denovoSSL_20k_PSMC
 
 cat SfadenovoSSL20kall.psmc SfadenovoSSL20kround-*.psmc > SfadenovoSSL20kcombined.psmc
-crun psmc_plot.pl -pY50 -g 4 SfadenovoSSL20kcombined SfadenovoSSL20kcombined.psmc
+crun psmc_plot.pl -pY100 -g 4 SfadenovoSSL20kcombined_y100 SfadenovoSSL20kcombined.psmc
