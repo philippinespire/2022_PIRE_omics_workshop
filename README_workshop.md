@@ -235,10 +235,11 @@ ___
 	* [genomesize.com](https://www.genomesize.com/)
 	* [ncbi genome](https://www.ncbi.nlm.nih.gov/genome/)
 	* search the literature
+		* Record the size and other potentially important information in your species README if the genome of your species is available
 * Estimate properties with `jellyfish` and `genomescope`
 	* More details [here](https://github.com/philippinespire/denovo_genome_assembly/blob/main/jellyfish/JellyfishGenomescope_procedure.md)
 
-##### 1b. **Execute [runJellyfish.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runJellyfish.sbatch) using decontaminated files**
+##### 1b. **Execute [runJellyfish.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runJellyfish.sbatch) using decontaminated files (couple of hours)**
 
 ```sh
 cd YOURSPECIESDIR
@@ -248,7 +249,15 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runJellyfish
 
 Jellyfish will create a histogram file (.hito) with kmer frequencies. 
 
-##### 1c. **Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/)**
+##### 1c. **Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) (few minutes)**
+* To download, sftp into wahab in a new terminal window and download the histogram file.
+```sh
+sftp userID@wahab.hpc.odu.edu
+cd YOURSPECIESDIR/   
+lpwd  #This is your local working  directory
+get fq_fp1_clmp_fp2_fqscrn_repaired/<histofile.histo>
+```
+* Open the GenomeScope v1-2 and upload file.
 * Add a proper description to both of your runs. Example "Sfa_fq_fp1_clmp_fp2_fqscrn_repaired_jfsh_v1" and  "Sfa_fq_fp1_clmp_fp2_fqscrn_repaired_jfsh_v2"
 * For version 1, Adjust the read lenght to that of in the Fastp2 trimming, 140 (unless you had to modify this in Fastp2)
 * Leave all other parameters with default settings for both versions. 
@@ -260,28 +269,31 @@ Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both ver
 
 version    |stat    |min    |max
 ------  |------ |------ |------
-1  |Heterozygosity  |1.0538%       |1.08547%
-2  |Heterozygosity  |1.08073%       |1.10271%
-1  |Genome Haploid Length   |577,739,654 bp |579,839,747 bp 
-2  |Genome Haploid Length   |633,665,608 bp |634,636,698 bp
-1  |Model Fit       |90.9798%       |92.2947%
-2  |Model Fit       |80.1725%       |93.4093%
+1  |Heterozygosity  |?%       |?%
+2  |Heterozygosity  |?%       |?%
+1  |Genome Haploid Length   |? bp |? bp 
+2  |Genome Haploid Length   |? bp |? bp
+1  |Model Fit       |? %       |? %
+2  |Model Fit       |? %       |? %
 ```
-Provide a link to both reports in your README. See other species READMEs for examples.
+* Provide a link to both reports in your README. See other species READMEs for examples. 
 
 ##### 1e. **Inspect your table and reports for red flags and choose a genome scope version.**
-* In your table, check the heterozygosity (values around 1% are common) and check for good model fit (>90%) in the max values (sometimes the min value might have a low fit but th$
+* In your table, check the heterozygosity (values around 1% or less are common) and check for good model fit (>90%) in the max values (sometimes the min value might have a low fit for version 2 but this is ok)
 * In your reports, check for a tight relationship between the "observed", "full model" and "unique sequences" lines in the first graph.
 
 If values in your table are relative similar for v1 and v2 and you found no red flags in reports, then use v2 estimates.
 
-** Please use the "Genome Haploid Length" max value rounded up or down to the nearest million.** In the above example, this number is 853706410 for v2. Thus, 854000000 will be used in following steps
+* **Please use the "Genome Haploid Length" max value rounded up or down to the nearest million** 
 
-Most of the time v1-2 perform very similar. However, sometimes the two reports give contrasting values such as very different genome sizes or unrealistic estimates of heterozygosity. For example:
+Most of the time v1-2 perform very similar. However, sometimes the two reports give contrasting values such as very different genome sizes or unrealistic estimates of heterozygosity.
+
+For example:
 * In Sob, the [Sob_GenScp_v1](http://qb.cshl.edu/genomescope/analysis.php?code=zQRfOkSqbDYAGYJrs7Ee) report estimates a genome of 532 Mbp and 0.965 for H. On the other hand,  [Sob_GenScp_v2](http://qb.cshl.edu/genomescope/genomescope2.0/analysis.php?code=5vZKBtdSgiAyFvzIusxT) reports a genome size of 259 Mbp (which is small for a fish) and it actually fails to estimate heterozygosity. Thus, version 1 was used for Sob. 
+
 * In Hte, the [Hte_GenScp_v1](http://qb.cshl.edu/genomescope/analysis.php?code=tHzBW2RjBK00gQMUSfl4) appears to have no red flags with a genome size of 846 Mbp and 0.49 for H but inspecting the first graph, you can see that the "uniqu sequence" line behaves diffently from the others. In contrast, [Hte_GenScp_v2](http://qb.cshl.edu/genomescope/genomescope2.0/analysis.php?code=8eVzhAQ8zSenObScLMGC) restores a tight relationship between lines with no red flags in estimates either (H=2.1, GenSize= 457 Mbp)
 
-Note the Genome Scope version and rounded genome size estimate in your species README. You will use this info later
+***Note the Genome Scope version and rounded genome size estimate in your species README. You will use this info later***
 
 ---
 
@@ -299,13 +311,62 @@ For the most part, we obtained better assemblies using single libraries (a libra
 ```bash
 #from wahab.hpc.odu.edu
 exit
-ssh username@turing.hpc.odu.edu
+ssh userID@turing.hpc.odu.edu
 ```
 
 Check how many high memory nodes "himem" are available in Turing
 ```sh
 sinfo
 ```
+```sh
+PARTITION     AVAIL  TIMELIMIT  NODES  STATE NODELIST
+main*            up   infinite      2  inval coreV1-22-019,coreV2-25-005
+main*            up   infinite     18  fail* coreV1-22-[006-009,017],coreV2-22-[006,012,033],coreV2-25-[003,008,012,023,025,039,043,055],coreV2-25-knc-[0
+main*            up   infinite      2   fail coreV1-22-016,coreV2-25-017
+main*            up   infinite      8  down* coreV1-22-028,coreV2-22-[018-020,026],coreV2-25-016,coreV2-25-knc-006,coreV3-23-017
+main*            up   infinite     36    mix coreV1-22-[001-003,025,027],coreV2-22-[004,025,036],coreV2-25-[001,004,006,009,011,013-015,018-022,024,038,0
+main*            up   infinite     62  alloc coreV1-22-[012-013,015,020-024],coreV2-22-[001-003,005,007-011,013-017,021-024,027-032,034],coreV2-25-[044-0
+main*            up   infinite     70   idle coreV1-22-026,coreV2-22-035,coreV2-25-[002,007,010,026-037,048-054,056-073],coreV3-23-[008-016,041-050],core
+main*            up   infinite      4   down coreV1-22-[004-005,014,018]
+timed-main       up    2:00:00      2  inval coreV1-22-019,coreV2-25-005
+timed-main       up    2:00:00     18  fail* coreV1-22-[006-009,017],coreV2-22-[006,012,033],coreV2-25-[003,008,012,023,025,039,043,055],coreV2-25-knc-[0
+timed-main       up    2:00:00      2   fail coreV1-22-016,coreV2-25-017
+timed-main       up    2:00:00      8  down* coreV1-22-028,coreV2-22-[018-020,026],coreV2-25-016,coreV2-25-knc-006,coreV3-23-017
+timed-main       up    2:00:00     36    mix coreV1-22-[001-003,025,027],coreV2-22-[004,025,036],coreV2-25-[001,004,006,009,011,013-015,018-022,024,038,0
+timed-main       up    2:00:00     62  alloc coreV1-22-[012-013,015,020-024],coreV2-22-[001-003,005,007-011,013-017,021-024,027-032,034],coreV2-25-[044-0
+timed-main       up    2:00:00     70   idle coreV1-22-026,coreV2-22-035,coreV2-25-[002,007,010,026-037,048-054,056-073],coreV3-23-[008-016,041-050],core
+timed-main       up    2:00:00      4   down coreV1-22-[004-005,014,018]
+himem            up   infinite      1  fail* coreV4-21-himem-001
+himem            up   infinite      1   fail coreV2-23-himem-001
+himem            up   infinite      1  down* coreV2-23-himem-002
+himem            up   infinite      4   idle coreV2-23-himem-[003-004],coreV4-21-himem-[002-003]
+timed-himem      up    2:00:00      1  fail* coreV4-21-himem-001
+timed-himem      up    2:00:00      1   fail coreV2-23-himem-001
+timed-himem      up    2:00:00      1  down* coreV2-23-himem-002
+timed-himem      up    2:00:00      4   idle coreV2-23-himem-[003-004],coreV4-21-himem-[002-003]
+gpu              up   infinite      1  fail* coreV3-23-k40-006
+gpu              up   infinite      1  drain coreV5-21-v100-003
+gpu              up   infinite      6    mix coreV3-23-k40-[003-004],coreV4-24-v100-[001,003-004],coreV5-21-v100-002
+gpu              up   infinite     12   idle coreV3-23-k40-[005,007-010],coreV4-21-k80-[001-005],coreV4-22-p100-[001-002]
+timed-gpu        up    2:00:00      1  fail* coreV3-23-k40-006
+timed-gpu        up    2:00:00      1  drain coreV5-21-v100-003
+timed-gpu        up    2:00:00      6    mix coreV3-23-k40-[003-004],coreV4-24-v100-[001,003-004],coreV5-21-v100-002
+timed-gpu        up    2:00:00      1  alloc coreV5-21-v100-001
+timed-gpu        up    2:00:00     12   idle coreV3-23-k40-[005,007-010],coreV4-21-k80-[001-005],coreV4-22-p100-[001-002]
+pire             up   infinite      4   idle coreV1-22-[010-011],coreV3-23-k40-[001-002]
+reserved-gpu     up   infinite      2   idle coreV4-22-p100-[001-002]
+reserved-khan    up   infinite      1  alloc coreV5-21-v100-001
+phi              up   infinite      2  fail* coreV2-25-knc-[002,004]
+phi              up   infinite      1  down* coreV2-25-knc-006
+phi              up   infinite      4    mix coreV2-25-knc-[001,005,008,010]
+phi              up   infinite      3  alloc coreV2-25-knc-[003,007,009]
+timed-phi        up    2:00:00      2  fail* coreV2-25-knc-[002,004]
+timed-phi        up    2:00:00      1  down* coreV2-25-knc-006
+timed-phi        up    2:00:00      4    mix coreV2-25-knc-[001,005,008,010]
+timed-phi        up    2:00:00      3  alloc coreV2-25-knc-[003,007,009]
+MSIM715          up   infinite      4   idle coreV3-23-[001-003],coreV4-24-v100-002
+```
+
 
 ##### **2b. Get the genome size of your species, or Jellyfish estimate, in bp from the previous step**
  
@@ -324,10 +385,10 @@ Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
 Yet, every now and then one library can fail and you might end up with only 2 sets of files. 
 Thus, the following SPAdes script is optimized to run the first 3 libraries independently and 2 or 3 libraries together for your "all" assembly as needed.
  
-Note: If your species has 4 or more libraries, you will need to modify the script to run the 4th,5th,.. library and so on (you'll only need to add the necessary libraries to the SPAdes command)
-No changes necessary for running the first, second, thrid, or all the libraries together (if you have 2 or 3 libraries only).  
+Note: If your species has 4 or more libraries, you will need to modify the script to run the 4th,5th,.. library and so on (you'll only need to add the necessary libraries to the SPAdes command).
+ No changes necessary for running the first, second, thrid, or all the libraries together (i.e. if you have 2 or 3 libraries only).  
 
-##### **2c. Use the decontaminated files to run one assembly for each of your libraries independently and then one combining all**
+##### **2c. Run SPAdes and QUAST. Use the decontaminated files to run one assembly for each of your libraries independently and then one combining all (multiple days)**
 
 Execute [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runSPADEShimem_R1R2_noisolate.sbatch). Example using the 1st library:
 ```bash
@@ -335,18 +396,23 @@ cd YOURSPECIESDIR
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir> <fq data dir>
 # do not use trailing / in paths. Example running contaminated data:
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "1" "decontam" "854000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your_user_ID" "Sfa" "1" "decontam" "?" "/home/your_user_ID/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-Run 2 more assemblies for the second, third, and all library combined, by rreplacing the "1", with "2" and "3" respectively.
+Run 2 more assemblies for the second, third, by replacing the "1", with "2" and "3" respectively.
  
 Then, check the number of libraries you have and run a job combining all libraries together by choosing the appropiate "all_2libs" or "all_3libs" from the library options.
 
 ---
 
-#### 3. Review Info on Assembly Quality from Quast Output
+#### 3. Review the output of SPAdes and Info on Assembly Quality from Quast Output.
 
-`QUAST` was automatically ran by the SPAdes script. Look for the `quast_results` dir and for each of your assemblies note the: 
+For `SPAdes` check that you have:
+1. k22-99 directories
+2. contigs.fasta and scaffolds.fasta files
+3. Open the params.txt files and check the settings ran in SPAdes
+
+`QUAST` was automatically ran by the SPAdes script. Look for the `quast_results` dir and for each of your assemblies check the: 
 1. Number of contigs in assembly (this is the last contig column in quast report with the name "# contigs")
 2. the size of the largest contig
 3. total length of assembly
@@ -355,11 +421,25 @@ Then, check the number of libraries you have and run a job combining all librari
 
 *Tip: you can align the columns of any .tsv for easy viewing with the comand `column` in bash. Example:
 ```sh
+cd your_assembly_dir
+
 bash
 cat quast-reports/quast-report_scaffolds_Sgr_spades_contam_R1R2_21-99_isolate-off.tsv | column -ts $'\t' | less -S
 ```
 
-Enter your stats in the table below
+**Enter your stats in the table below**
+```sh
+Species    |Library    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
+------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------ 
+Sgr  |allLibs  |decontam       |contigs       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |1G  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |1G  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |1H  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |1H  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |2A  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |2A  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+```
 
 ---
 
@@ -374,7 +454,7 @@ cd YOURSPECIESDIR
 
 #runBUSCO.sh <species dir> <SPAdes dir> <contigs | scaffolds>
 # do not use trailing / in paths. Example using contigs:
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis" "SPAdes_decontam_R1R2_noIsolate" "contigs"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh "/home/your_user_ID/shotgun_PIRE/2022_PIRE_omics_workshop/spratelloides_gracilis" "SPAdes_decontam_R1R2_noIsolate" "contigs"
 ```
 
 Repeat the comand using scaffolds.
