@@ -258,7 +258,6 @@ The psmc.sbatch script will run PSMC and generate a basic plot. Make sure all of
 
 ```
 sbatch Sfa_denovoSSL_100k_psmc.sbatch
-
 ```  
 
 After running PSMC you can download the plot (.eps file) to your local computer and see the estimated demographic history of your species.
