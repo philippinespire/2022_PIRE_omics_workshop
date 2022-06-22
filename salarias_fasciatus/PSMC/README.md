@@ -41,14 +41,6 @@ cat reference.genbank.Sfa20k.fasta | grep "^>" | wc -l
 
 How many scaffolds did we keep for each genome?
 
--->reference.denovoSSL.Sfa100k.fasta = 130
-
--->reference.genbank.Sfa100k.fasta = 103
-
--->reference.denovoSSL.Sfa20k.fasta = 7488
-
--->reference.genbank.Sfa20k.fasta = 196
-
 And here are scripts to calculate the total length of the filtered assemblies.
 
 ```
@@ -60,15 +52,7 @@ cat reference.genbank.Sfa20k.fasta | grep -v "^>" | tr "\n" "\t" | sed 's/\t//g'
 
 How long is each assembly?
 
--->reference.denovoSSL.Sfa100k.fasta = 16815789
-
--->reference.genbank.Sfa100k.fasta = 792843668
-
--->reference.denovoSSL.Sfa20k.fasta = 282010249
-
--->reference.genbank.Sfa20k.fasta = 797427707
-
-Our shotgun assembly has shorter scaffolds in general than the Genbank assembly. If we use only scaffolds >100k we are using a fraction of the genome, however this may still be enough to make robust inferences about demographic history. We will assess this in the next steps.
+Our shotgun assembly has shorter scaffolds in general than the Genbank assembly. If we use only scaffolds >100k we are using a fraction of the genome, however this may still be enough to make robust inferences about demographic history at some time points. We will assess this in the next steps.
 
 Before we move forward, we need to change the names of the scaffolds to numerals (1,2,3...x). We can do that with another simple line of code.
 
@@ -224,8 +208,6 @@ samtools depth Sfa_reduced_denovoSSL_100k.bam | awk '{sum+=$3} END { print "Aver
 
 What was the average depth of coverage? What range of coverage would we use?
 
--->The average coverage is ~12, so we will use minimum depth 4 and maximum depth 24.
-
 Update the README.md file with this statistic.
 
 With this level of coverage we would be fairly confident in calling heterozygous sites, but we might have some false negatives.
@@ -307,7 +289,7 @@ PSMC runs for multiple rounds (25 in this case). Each round the program generate
 
 The line starting with "TR" has the estimates for theta_0 (the "scaled mutation rate") and rho_0 (the "scaled recombination rate").
 
-The following lines have estimates for other parameters, including time and population size at a given time.
+The following lines have estimates for other parameters, including scaled time and the scaling factor for population size at a given time.
 
 Notably, the numbers are scaled to mutation rate and population size. How do we translate these to unscaled estimates of effective population size?
 
