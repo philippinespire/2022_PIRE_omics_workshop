@@ -299,7 +299,7 @@ No red flags. We will use V2 max value rounded up to 635000000 bp
 
 ---
 
-## Step 9. Assemble the genome using [SPAdes](https://github.com/ablab/spades#sec3.2)
+## Step 2. Assemble the genome using [SPAdes](https://github.com/ablab/spades#sec3.2)
 
 
 
@@ -311,10 +311,10 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <contam | decontam> <genome size in bp> <species dir>
 # do not use trailing / in paths. Example running contaminated data:
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "1" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "2" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "all_3libs" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your_user_ID" "Sfa" "1" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your_user_ID" "Sfa" "2" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your_user_ID" "Sfa" "3" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your_user_ID" "Sfa" "all_3libs" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
  
 JOB IDs:
@@ -338,7 +338,7 @@ C | 2A
 This SPAdes scripts automatically runs `QUAST` but running `BUSCO` separately
 
 
-## Step 10. Assessing the best assembly
+## Step 4. Running BUSCO
 
 **Executed [runBUCSO.sh](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runBUSCO.sh) on the `contigs` and `scaffolds` files**
 ```sh
@@ -354,7 +354,9 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh 
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh "/home/your_user_ID/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "SPAdes_allLibs_decontam_R1R2_noIsolate" "scaffolds"
 ```
 
-### Summary of QUAST (using Genome Scope v.2 "___" estimate) and BUSCO Results
+## Step 5. Fill in QUAST and BUSCO values
+
+### Summary of QUAST (using Genome Scope v.2 635000000 estimate) and BUSCO Results
 
 Species    |Assembly    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
 ------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------
@@ -367,18 +369,34 @@ Sgr  |C  |decontam       |scaffolds       |off       |2    |  51239  |  176566  
 Sgr  |allLibs  |decontam       |contigs       |off       |2    |  67941  |  81176 |   494984098  |  80 % |  8354  | 17737  |  0  | 54.1 %
 Sgr  |allLibs  |decontam       |scaffolds       |off       |2   |  51674  |  142490  |   553408247  |  87? % |  15053  |  10228  | 733.46 | 69 %
 
+## Step 6. Best Assembly
 
-SgC0072C contam created the best assembly.
 
+* Scaffold Assembly B of library 1H created the best assembly. 
 
-#### Updating the main assembly stats table with your species
+Assembles B and allLibs were very similar and different metrics were slightly higher in one or the other but at end, I went for assembly B based on higher BUSCO score.
 
-Added a new record for Sgr SgC0072C contam to the [best_ssl_assembly_per_sp.tsv](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/best_ssl_assembly_per_sp.tsv)
-```sh
-nano ../best_ssl_assembly_per_sp.tsv
+## Step 7. Assemble contaminated data for best library
+
+``sh
+cd YOURSPECIESDIR
+
+#runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir>
+# do not use trailing / in paths. Example running contaminated data:
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "2" "contam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-## Step 11. Probe design - regions for probe development
+## Skipping Step 8-10 for the workshop BUT please do Clean up:
+
+Move your out files into the `logs` dir
+```sh
+cd YOURSPECIESDIR
+mv *out logs
+```
+
+--- 
+
+## **C. Probe design - regions for probe development**
 
 From species directory. Made probe dir, renamed assembly and copied scripts
 ```sh
