@@ -476,35 +476,21 @@ Few notes:
 * No. of contigs is the last contig column in quast report with the name "# contigs"
 * % Genome size completeness = "Total lenght"/genome size(or rounded genome max value) *100
 * **For QUAST, only report the row for the actual assembly (i.e. report "scaffolds" not "scaffolds_broken"**
-* **For BUSCO, only report the "Complete and single-copy BUSCOs (S)"
+* **For BUSCO, only report the "Complete and single-copy BUSCOs (S)"**
 
 ```sh
-Species    |Library    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
+Species    |Assembly    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
 ------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------ 
-Sgr  |allLibs  |decontam       |contigs       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1G  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1G  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1H  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1H  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |2A  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |2A  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |A  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |A  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |B  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |B  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |C  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |C  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
+Sgr  |allLibs  |decontam       |contigs       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? %
+Sgr  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? %
 ```
 
-```sh
-Species    |Library    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
-------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------ 
-Sgr  |allLibs  |contam       |contigs       |off       |1       |2253577  |309779       |489995603       |70.5%       |5515       |28571       |0       |29.9%
-Sgr  |allLibs  |contam       |scaffolds       |off       |1       |2237565  |309779       |517068774       |74.5%       |5806       |28041       |147.59       |29.9%
-Sgr  |SgC0072B  |contam       |contgs       |off       |2       |82681  |68606       |441333876       |51.7%       |5405       |26613       |0   |29.2%
-Sgr  |SgC0072B  |contam       |scaffolds       |off       |2       |84110  |68606       |460942092       |54%       |5587       |26490       |147.59   |31.3%
-Sgr  |SgC0072C  |contam       |contgs       |off       |2       |85876  |105644       |531350946       |62.2%       |6617       |24450       |0   |37.9%
-Sgr  |SgC0072C  |contam       |scaffolds       |off       |2       |85997  |105644       |536156621       |62.8%       |6686      |24304       |14.73   |38.4%
-Sgr  |SgC0072D  |contam       |contgs       |off       |2       |83191  |68563       |441118097       |51.7%       |5352      |26844       |0   |29.7%
-Sgr  |SgC0072D  |contam       |scaffolds       |off       |2       |84615  |120121       |462780087       |54.2%       |5570      |26612       |167.75   |31.5%
-Sgr  |SgC0072C  |decontam       |contgs       |off       |2       |69371  |103720       |395865756       |46.6%       |5946     |21196       |0   |32.2%
-Sgr  |SgC0072C  |decontam       |scaffolds       |off     |2       |69932  |103720       |406306057       |47.6%       |6080      |21004       |42.77   |33.2%
-```
 
 ---
 
@@ -523,6 +509,9 @@ Importance    |Metric    |Direction    |Description
  
 If you are still undecided on which is the best assembly, post the best candidates on the species slack channel and ask for opinions
 
+**Note what is your best assembly in your species README**
+
+
 ---
 
 #### 7. Assemble contaminated data for best library 
@@ -533,6 +522,8 @@ cd YOURSPECIESDIR
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir>
 # do not use trailing / in paths. Example running contaminated data:
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sgr" "1" "contam" "854000000" "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your_user_ID" "Sfa" "1" "decontam" "?" "/home/your_user_ID/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+
 ```
 
 ---

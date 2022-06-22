@@ -327,8 +327,16 @@ JOB IDs:
            9767800     himem     Sp8s e1garcia  R       1:11      1 coreV2-23-himem-003
 ```
 
+Libraries for each assembly:
+Assembly  |  Library
+--- | ---
+A | 1G
+B | 1H
+C | 2A
 
-This SPAdes scripts automatically runs `QUAST` but running `BUSCO` separately 
+
+This SPAdes scripts automatically runs `QUAST` but running `BUSCO` separately
+
 
 ## Step 10. Assessing the best assembly
 
@@ -348,53 +356,16 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh 
 
 ### Summary of QUAST (using Genome Scope v.2 "___" estimate) and BUSCO Results
 
-Species    |Library    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
-------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------ 
-Sgr  |allLibs  |decontam       |contigs       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1G  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1G  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1H  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |1H  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |2A  |decontam       |contgs       |off       |2       |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-Sgr  |2A  |decontam       |scaffolds       |off       |2    |  ?  |  ?  |   ?  |   ? % |  ?  |  ?  |  ?  |  ? % 
-
-
-Species    |Library    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs >0    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |BUSCO single copy
-------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ 
-Sgr  |allLibs  |contam       |contigs       |off       |1       |2253577  |309779       |489995603       |70.5%       |5515       |28571       |29.9%       
-Sgr  |allLibs  |contam       |scaffolds       |off       |1       |2237565  |309779       |517068774       |74.5%       |5806       |28041       |29.9%
-Sgr  |allLibs  |contam       |contigs       |auto       |1       |2220821  |309779       |489827781       |70.6%       |5800       |28040       |30%
-Sgr  |allLibs  |contam       |scaffolds       |auto       |1       |2204948  |309779       |516942564       |74.5%       |5800       |28041       |32.2%
-Sgr  |allLibs  |decontam       |contgs       |off       |1       |2316449  |197090       |411716418       |59.3%       |5443       |24590       |27.1%
-Sgr  |allLibs  |decontam       |scaffolds       |off       |1       |2295872  |197090       |440572995       |63.5%       |5751       |24463       |29.5%
-Sgr  |allLibs  |decontam       |contgs       |auto       |1       |2290268  |197090       |411810888       |59.4%       |5442       |24601       |27.1%
-Sgr  |allLibs  |decontam       |scaffolds       |auto       |1       |2269777  |197090       |440612739       |63.5%       |5750       |24463       |29.5%
-Sgr  |SgC0072B  |contam       |contgs       |off       |1       |3375654  |68606       |441333876       |63.6%       |5405       |26613       |29.2%
-Sgr  |SgC0072B  |contam       |scaffolds       |off       |1       |3358197  |68606       |460942092       |66.4%       |5587       |26490       |31.3%
-Sgr  |SgC0072C  |contam       |contgs       |off       |1       |502823  |105644       |531230550       |76.5%       |6597       |24512       |37.9%
-Sgr  |SgC0072C  |contam       |scaffolds       |off       |1       |496944  |105644       |536090329       |77.2%       |6662      |24355       |38.4%
-Sgr  |SgC0072D  |contam       |contgs       |off       |1       |3534280  |68563       |441118097       |63.6%       |5352      |26844       |29.7%
-Sgr  |SgC0072D  |contam       |scaffolds       |off       |1       |3515909  |120121       |462780087       |66.7%       |5570      |26612       |31.5%
-Sgr  |SgC0072C  |contam       |contgs       |auto       |1       |13018  |29230       |5972351       |1%       |7942	|242       |0.1%
-Sgr  |SgC0072C  |contam       |scaffolds       |auto	  |1       |13125  |29230	 |5849289	  |1%       |7942	  |240       |0.1%
-Sgr  |SgC0072C  |decontam       |contgs       |off       |1       |502823  |105644       |531230550       |76.5%       |6597	|24512       |32.2%
-Sgr  |SgC0072C  |decontam       |scaffolds       |off	  |1       |496944  |105644	 |536090329	  |77.2%       |6662	  |24355       |33.2%
-
-
-### Summary of QUAST (using Genome Scope v.2 854000000 estimate) and BUSCO Results
-
-Species    |Library    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
-------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------ 
-Sgr  |SgC0072B  |contam       |contgs       |off       |2       |82681  |68606       |441333876       |51.7%       |5405       |26613       |0   |29.2%
-Sgr  |SgC0072B  |contam       |scaffolds       |off       |2       |84110  |68606       |460942092       |54%       |5587       |26490       |147.59   |31.3%
-Sgr  |SgC0072C  |contam       |contgs       |off       |2       |85876  |105644       |531350946       |62.2%       |6617       |24450       |0   |37.9%
-Sgr  |SgC0072C  |contam       |scaffolds       |off       |2       |85997  |105644       |536156621       |62.8%       |6686      |24304       |14.73   |38.4%
-Sgr  |SgC0072D  |contam       |contgs       |off       |2       |83191  |68563       |441118097       |51.7%       |5352      |26844       |0   |29.7%
-Sgr  |SgC0072D  |contam       |scaffolds       |off       |2       |84615  |120121       |462780087       |54.2%       |5570      |26612       |167.75   |31.5%
-Sgr  |SgC0072C  |decontam       |contgs       |off       |2       |69371  |103720       |395865756       |46.6%       |5946	|21196       |0   |32.2%
-Sgr  |SgC0072C  |decontam       |scaffolds       |off	  |2       |69932  |103720	 |406306057	  |47.6%       |6080	  |21004       |42.77   |33.2%
-
+Species    |Assembly    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
+------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------
+Sgr  |A  |decontam       |contgs       |off       |2       |  67123  | 76658  | 485971358  | 77 % | 8294  |  17506  |  0  | 53.9 %
+Sgr  |A  |decontam       |scaffolds       |off       |2    |  52432  |  129917  |   540390606  |  85 % | 14081  | 10678  | 687.92  | 68.5 %
+Sgr  |B  |decontam       |contgs       |off       |2       |  66179  |  89863  |   503699552  |  79 % |  8954  |  16792  |  0  | 56.8 %
+Sgr  |B  |decontam       |scaffolds       |off       |2    |  52101  |  155803  |   548869041  |  86 % |  14587  |  10542  |  580.13  | 70.8 %
+Sgr  |C  |decontam       |contgs       |off       |2       |  65353  |  92853  |  489986080  | 77 % | 8743  | 16693  |  0  |  55.9 %
+Sgr  |C  |decontam       |scaffolds       |off       |2    |  51239  |  176566  |   539924893  | 86 % |  14784  |  10318  | 641.53 | 69.5 %
+Sgr  |allLibs  |decontam       |contigs       |off       |2    |  67941  |  81176 |   494984098  |  80 % |  8354  | 17737  |  0  | 54.1 %
+Sgr  |allLibs  |decontam       |scaffolds       |off       |2   |  51674  |  142490  |   553408247  |  87? % |  15053  |  10228  | 733.46 | 69 %
 
 
 SgC0072C contam created the best assembly.
