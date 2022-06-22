@@ -248,7 +248,7 @@ cd YOURSPECIESDIR
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runJellyfish.sbatch "Sfa" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-Jellyfish will create a histogram file (.hito) with kmer frequencies. 
+Jellyfish will create a histogram file (.histo) with kmer frequencies. 
 
 ##### 1c. **Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) (few minutes)**
 * To download, sftp into wahab in a new terminal window and download the histogram file.
@@ -797,4 +797,8 @@ Move the cleaning files into the logs dir
 mv Sgr_ssl* logs
 mv deleted_files_log logs
 ```
+
+## Next steps: PSMC
+
+Now that we have a reference genome, what can we do with it? Follow the [PSMC](https://github.com/philippinespire/2022_PIRE_omics_workshop/tree/main/salarias_fasciatus/PSMC) link to learn how we can use genomic data from a single individual to infer demographic history! 
 
