@@ -24,7 +24,9 @@ hmmsearch_out.log
 *lmiss*
 *before*
 *zip
-
+*.nsq
+*.nhr
+*.scafSeq*
 
 # Directories
 dDocentHPC/
