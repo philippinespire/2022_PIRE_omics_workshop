@@ -248,12 +248,17 @@ cd YOURSPECIESDIR
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runJellyfish.sbatch "Sfa" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
+Check your queue!
+```sh
+squeue -u <your_user_ID>
+```
+
 Jellyfish will create a histogram file (.histo) with kmer frequencies. 
 
 ##### 1c. **Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) (few minutes)**
 * To download, sftp into wahab in a new terminal window and download the histogram file.
 ```sh
-sftp userID@wahab.hpc.odu.edu
+sftp your_user_ID@wahab.hpc.odu.edu
 cd YOURSPECIESDIR/   
 lpwd  #This is your local working  directory
 get fq_fp1_clmp_fp2_fqscrn_repaired/<histofile.histo>
@@ -409,6 +414,14 @@ Then, check the number of libraries you have and run a job combining all librari
 ---
 
 #### 3. Review the output of SPAdes and Info on Assembly Quality from Quast Output.
+
+`runSPADEShimem_R1R2_noisolate.sbatch` names the output directories with the suffix A for the first, B for the second, and C for the third if any. Thus, in this case:
+Assembly  |  Library
+--- | --- 
+A | 1G
+B | 1H
+C | 2A
+
 
 For `SPAdes` check that you have:
 1. k22-99 directories
