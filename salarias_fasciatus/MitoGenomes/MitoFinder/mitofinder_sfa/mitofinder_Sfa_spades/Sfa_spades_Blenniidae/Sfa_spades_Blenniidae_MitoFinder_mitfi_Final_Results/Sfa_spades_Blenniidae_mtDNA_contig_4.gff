@@ -1,0 +1,5 @@
+NODE_80834_length_1205_cov_17.222423	mitofinder	source	1	1205	.	+	.	Name=source NODE 80834 length 1205 cov 17.222423
+NODE_80834_length_1205_cov_17.222423	mitofinder	gene	669	724	.	+	0	Name=tRNA-Leu gene
+NODE_80834_length_1205_cov_17.222423	mitofinder	tRNA	669	724	.	+	0	Name=tRNA-Leu 
+NODE_80834_length_1205_cov_17.222423	mitofinder	gene	1009	1084	.	+	0	Name=tRNA-Thr gene
+NODE_80834_length_1205_cov_17.222423	mitofinder	tRNA	1009	1084	.	+	0	Name=tRNA-Thr 

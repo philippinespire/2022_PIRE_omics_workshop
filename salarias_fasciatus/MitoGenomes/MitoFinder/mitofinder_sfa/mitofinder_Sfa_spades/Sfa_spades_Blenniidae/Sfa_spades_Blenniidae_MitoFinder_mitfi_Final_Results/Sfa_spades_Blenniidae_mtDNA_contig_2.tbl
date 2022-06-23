@@ -1,0 +1,12 @@
+>Feature NODE_59731_length_1891_cov_8249.270647
+2	1486	gene
+			gene	ND5
+2	1486	CDS
+			product	NADH dehydrogenase subunit 5
+			transl_table	2
+<1890	1483	gene
+			gene	ND6
+<1890	1483	CDS
+			product	NADH dehydrogenase subunit 6
+			transl_table	2
+			note	5' Partial CDS

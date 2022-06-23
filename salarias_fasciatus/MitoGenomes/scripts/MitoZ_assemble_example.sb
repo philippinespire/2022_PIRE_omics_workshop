@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name=MitoZ_example
+#SBATCH --output=MitoZ_example_out
+#SBATCH -c 8
+
+enable_lmod
+
+module load container_env MitoZ
+
+export SINGULARITY_BIND=/home/e1garcia
+
+crun MitoZ.py all2 --genetic_code 2 --clade Chordata --outprefix [test] --insert_size 250 --thread_number 8 --fastq1 [test.1.fq.gz] --fastq2 [test.2.fq.gz] --fastq_read_length 150
+

@@ -79,3 +79,50 @@ Reads length: 150
   0:00:00.134     1M / 12M   INFO    General                 (kmer_splitter.hpp         :  93)   Memory available for splitting buffers: 7.8125 Gb
   0:00:00.138     1M / 12M   INFO    General                 (kmer_splitter.hpp         : 101)   Using cell size of 4194304
   0:00:00.538    19G / 19G   INFO   K-mer Splitting          (kmer_data.cpp             :  97)   Processing /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R1.fq.gz
+  0:01:10.318    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 7863070 reads
+  0:02:18.060    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 15682714 reads
+  0:03:23.485    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 23339231 reads
+  0:04:27.414    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 30740103 reads
+  0:05:35.713    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 38500038 reads
+  0:06:42.961    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 46126097 reads
+  0:07:51.101    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 53806074 reads
+  0:08:57.910    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 61371113 reads
+  0:10:04.360    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 68990927 reads
+  0:11:11.984    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 76741891 reads
+  0:12:16.510    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 84172793 reads
+  0:13:25.226    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 91948387 reads
+  0:16:21.110    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             :  97)   Processing /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R2.fq.gz
+  0:20:25.972    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 107)   Processed 135046094 reads
+  0:36:28.231    19G / 31G   INFO   K-mer Splitting          (kmer_data.cpp             : 112)   Total 224053078 reads processed
+  0:36:28.269     1M / 31G   INFO    General                 (kmer_index_builder.hpp    : 249)   Starting k-mer counting.
+  0:39:22.421     1M / 110G  INFO    General                 (kmer_index_builder.hpp    : 260)   K-mer counting done. There are 3079787530 kmers in total.
+  0:39:22.431     1M / 110G  INFO   K-mer Index Building     (kmer_index_builder.hpp    : 395)   Building perfect hash indices
+  0:42:21.109  2154M / 110G  INFO   K-mer Index Building     (kmer_index_builder.hpp    : 431)   Index built. Total 3079787530 kmers, 2224432072 bytes occupied (5.77814 bits per kmer).
+  0:42:21.121  2154M / 110G  INFO   K-mer Counting           (kmer_data.cpp             : 354)   Arranging kmers in hash map order
+  0:44:48.458    49G / 110G  INFO    General                 (main.cpp                  : 148)   Clustering Hamming graph.
+  1:22:38.969    49G / 110G  INFO    General                 (main.cpp                  : 155)   Extracting clusters:
+  1:22:38.974    49G / 110G  INFO    General                 (concurrent_dsu.cpp        :  18)   Connecting to root
+  1:22:46.204    49G / 110G  INFO    General                 (concurrent_dsu.cpp        :  34)   Calculating counts
+  1:34:08.085    83G / 110G  INFO    General                 (concurrent_dsu.cpp        :  63)   Writing down entries
+  1:57:11.134    49G / 115G  INFO    General                 (main.cpp                  : 167)   Clustering done. Total clusters: 1235067095
+  1:57:11.259    26G / 115G  INFO   K-mer Counting           (kmer_data.cpp             : 371)   Collecting K-mer information, this takes a while.
+  1:57:51.288    94G / 115G  INFO   K-mer Counting           (kmer_data.cpp             : 377)   Processing /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R1.fq.gz
+  2:10:19.485    94G / 115G  INFO   K-mer Counting           (kmer_data.cpp             : 377)   Processing /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R2.fq.gz
+  2:23:05.231    94G / 115G  INFO   K-mer Counting           (kmer_data.cpp             : 384)   Collection done, postprocessing.
+  2:23:33.060    94G / 115G  INFO   K-mer Counting           (kmer_data.cpp             : 397)   There are 3079787530 kmers in total. Among them 1594967074 (51.7882%) are singletons.
+  2:23:33.066    94G / 115G  INFO    General                 (main.cpp                  : 173)   Subclustering Hamming graph
+  3:12:11.614    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 650)   Subclustering done. Total 367177 non-read kmers were generated.
+  3:12:11.623    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 651)   Subclustering statistics:
+  3:12:11.632    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 652)     Total singleton hamming clusters: 657624298. Among them 398066066 (60.5309%) are good
+  3:12:11.638    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 653)     Total singleton subclusters: 155933439. Among them 154757935 (99.2462%) are good
+  3:12:11.642    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 654)     Total non-singleton subcluster centers: 679307894. Among them 463482681 (68.2287%) are good
+  3:12:11.649    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 655)     Average size of non-trivial subcluster: 3.56652 kmers
+  3:12:11.653    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 656)     Average number of sub-clusters per non-singleton cluster: 1.44645
+  3:12:11.657    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 657)     Total solid k-mers: 1016306682
+  3:12:11.661    94G / 115G  INFO   Hamming Subclustering    (kmer_cluster.cpp          : 658)     Substitution probabilities: [4,4]((0.91192,0.031855,0.0199826,0.0362422),(0.0384726,0.9255,0.015437,0.0205902),(0.020007,0.0152939,0.925692,0.0390073),(0.0359295,0.0200243,0.0318978,0.912148))
+  3:12:14.857    94G / 115G  INFO    General                 (main.cpp                  : 178)   Finished clustering.
+  3:12:14.860    94G / 115G  INFO    General                 (main.cpp                  : 197)   Starting solid k-mers expansion in 32 threads.
+  3:28:45.940    94G / 115G  INFO    General                 (main.cpp                  : 218)   Solid k-mers iteration 0 produced 259276152 new k-mers.
+  3:45:08.978    94G / 115G  INFO    General                 (main.cpp                  : 218)   Solid k-mers iteration 1 produced 8815710 new k-mers.
+  4:01:49.995    94G / 115G  INFO    General                 (main.cpp                  : 218)   Solid k-mers iteration 2 produced 319954 new k-mers.
+  4:18:44.588    94G / 115G  INFO    General                 (main.cpp                  : 218)   Solid k-mers iteration 3 produced 19985 new k-mers.

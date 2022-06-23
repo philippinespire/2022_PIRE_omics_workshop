@@ -1,0 +1,46 @@
+
+# where circos you install
+circos_path     =   circos
+bwa             =   bwa
+samtools        =   samtools
+
+threads         =   8
+
+# optional arguments for samtools
+opts_samtools   =  -a -a
+
+#color
+cds             =   141,211,199
+rRNA            =   253,192,134
+tRNA            =   251,128,114
+
+# whether draw GC content circle
+gc              =   yes
+win             =   50
+gc_fill         =   128,177,211
+
+# whether draw depth abundance circle
+run_map           =   yes
+depth_file      =   
+depth_fill      =   190,186,218
+fq              =   /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library1_reduced.R1.fq.gz,/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library1_reduced.R2.fq.gz
+
+# whether draw base around circle
+base            =   no
+
+# locus name's clolor showed on center of circle
+locus_color     =   black
+
+# gene name label color
+label_color     =   black
+
+# image
+outdir          =   visualization
+png             =   yes
+svg             =   yes
+
+# color or file
+background      =   white
+#background     =   ./background.png
+
+    

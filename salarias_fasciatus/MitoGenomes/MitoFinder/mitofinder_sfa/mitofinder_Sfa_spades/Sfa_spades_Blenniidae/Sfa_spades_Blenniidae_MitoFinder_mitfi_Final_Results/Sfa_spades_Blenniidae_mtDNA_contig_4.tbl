@@ -1,0 +1,9 @@
+>Feature NODE_80834_length_1205_cov_17.222423
+669	724	gene
+			gene	tRNA-Leu
+669	724	tRNA
+			product	tRNA-Leu
+1009	1084	gene
+			gene	tRNA-Thr
+1009	1084	tRNA
+			product	tRNA-Thr

@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name=MitoZ_example
+#SBATCH --output=MitoZ_example_out
+#SBATCH -c 8
+
+enable_lmod
+
+module load container_env MitoZ
+
+export SINGULARITY_BIND=/home/e1garcia
+
+crun MitoZ.py all2 --genetic_code 2 --clade Chordata --outprefix Sfa --insert_size 250 --thread_number 8 --fastq1 /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library1_reduced.R1.fq.gz --fastq2 /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library1_reduced.R2.fq.gz --fastq_read_length 150
+

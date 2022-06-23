@@ -1,0 +1,40 @@
+LOCUS       NODE_80834_draft        1205 bp    DNA              UNK 01-JAN-1980
+DEFINITION  NODE_80834_length_1205_cov_17.222423
+ACCESSION   NODE_80834_draft
+VERSION     NODE_80834_draft
+KEYWORDS    .
+SOURCE      
+  ORGANISM  . .
+            .
+FEATURES             Location/Qualifiers
+     gene            669..724
+                     /product="tRNA-Leu"
+     tRNA            669..724
+                     /product="tRNA-Leu"
+     gene            1009..1084
+                     /product="tRNA-Thr"
+     tRNA            1009..1084
+                     /product="tRNA-Thr"
+ORIGIN
+        1 tttaaccggc cctgtaggct tataactaag tcaagttttc acttattgct taatatttat
+       61 cactgctgag tgattcgtgc ccattccaca cggcgtgtgg tggcctctgc ggtcctgtgc
+      121 aggggggtca cggtgggtga catctgccag gctgcctcct gggcctctgc atccaccttc
+      181 gtgtgtttat atctgatgga tatgtgcaca gactctgtgg ccatgtcggg ttgcagcgag
+      241 aacacaagtt ctgtctctta accatttcgg tcttttagcc tgtctgccgc atcccgagtg
+      301 ggaccgtgga ccagggcttt ccccgcctgc cgcttggctt tgccgcggtc tgcggatgtt
+      361 gttgcatgtt gttgcggctt gctgtattgg attctctagc ccggctgcca cttcctgtgt
+      421 gtggatcgcg gaccaggggt ttccccgcct gccgctgtgg cttgccccgg ccggcgtgtg
+      481 tgtgtgtgtg tcgctgtggc gatgcttgtt catgtcgcgg gcggcacttc ggcgcatgga
+      541 tgcccgcctt gttcttcggg agttctgcgg ccgttctgga tgtacggatt gtttacgtcc
+      601 gtcttacgca ccgatcgtca gcaggccagc tgggaggaca ttcatcgacc tacgacctac
+      661 ggcttagcac ttacgaagta gaattaatag ttactggacg taactccagt tctaccagta
+      721 agtgtgtgcc cgcctgcctg ctggcccagc tgtctgcttc ccttcctttg ctgacgtcag
+      781 aaggagggtt tgcggaagcg tcctcctggg tattataccc tccggggtgt ggcgctgcgc
+      841 catcgcgcgt cggggattgg tgcgtcgagc tttccttgtc tcagtggatt ggctaagaga
+      901 gaggagtgcc actagtgaag tccgtaggcg tgctaagcac ttactcgtag aactggagtt
+      961 acgtagtagc tattaattat atgtatattt ggtttgtttc agttttacag ccttcaggag
+     1021 aaagaactct ctctgaagaa ctgttctcta caggccaaac tgaacccaac attcaggagg
+     1081 gctgaattat taatgttcat gaagctgaat agaacttgag tttgatggtt ataaagttat
+     1141 ttacaccatt aatgcagtta ttgaaccttt gaggttctta attgttgctt attgctgctt
+     1201 atttt
+//

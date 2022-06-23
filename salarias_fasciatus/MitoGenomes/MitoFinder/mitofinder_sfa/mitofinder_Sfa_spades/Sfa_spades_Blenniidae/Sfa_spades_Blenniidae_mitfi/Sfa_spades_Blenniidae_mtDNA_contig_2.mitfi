@@ -1,0 +1,4 @@
+#header	start	stop	score	evalue	AC	AA	model	strand
+NODE_59731_length_1891_cov_8249.270647	33	96	11.47	0.01157	UGC	A	Metazoa_A.cm	-
+NODE_59731_length_1891_cov_8249.270647	204	260	3.31	0.3477	GUC	D	Metazoa_D.cm	-
+NODE_59731_length_1891_cov_8249.270647	1025	1077	1.65	0.9102	GCA	C	Metazoa_C.cm	-

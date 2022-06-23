@@ -1,0 +1,75 @@
+LOCUS       NODE_59731_draft        1891 bp    DNA              UNK 01-JAN-1980
+DEFINITION  NODE_59731_length_1891_cov_8249.270647
+ACCESSION   NODE_59731_draft
+VERSION     NODE_59731_draft
+KEYWORDS    .
+SOURCE      
+  ORGANISM  . .
+            .
+FEATURES             Location/Qualifiers
+     gene            2..1486
+                     /gene="ND5"
+     CDS             2..1486
+                     /translation="ISRFFKYLLIFLTAMLVLVTANNMFQLFIGWEGVGIMSFLLIGWW
+                     YGRADANTAALQAVLYNRVGDIGLILAMAWLATTLNSWELQQVFMASKDMDLTLPLIGL
+                     ILAATGKSAQFGLHPWLPSAMEGPTPVSALLHSSTMVVAGIFLLIRLSPLMDSNYTAQT
+                     TCLCLGALTTLFTATCALTQNDIKKIVAFSTSSQLGLMMVTIGLNQPQLAFLHICTHAF
+                     FKAMLFLCSGSIIHCLNDEQDIRKMGGMNNLAPTTASALTIGSLALTGTPFLAGFFSKD
+                     AIIEALNTSHLNAWALILTLLATSFTAVYSLRVVFFVCMGNPRFNAYTPINENDPHTVN
+                     PIKRLAWGSILAGLIITSNILPMKTPVMTMPPLLKLAALAVSILGLLTALELASLTNKQ
+                     FKPTPFITTHHFSNMLGYFPTLVHRLNPKISLSLGQFVATQMVDQTWMEKTGPKAISEI
+                     NNPIISTVSNIQQGMIKTYLSLFFFTLAISTVAFAL*"
+                     /gene="ND5"
+     gene            complement(33..96)
+                     /product="tRNA-Ala"
+     tRNA            complement(33..96)
+                     /product="tRNA-Ala"
+     gene            complement(204..260)
+                     /product="tRNA-Asp"
+     tRNA            complement(204..260)
+                     /product="tRNA-Asp"
+     gene            complement(1025..1077)
+                     /product="tRNA-Cys"
+     tRNA            complement(1025..1077)
+                     /product="tRNA-Cys"
+     gene            complement(1483..1890)
+                     /gene="ND6"
+     CDS             complement(1483..1890)
+                     /translation="GCGILVGWGGSFLSLILFLIYLGGMLVVFAYSAALAAEPYPESWM
+                     SWPVLATMVCYLVGVGVVGVLVVDWGGGASVEPVVGGLELGVLRGDISGVALMYSMGGG
+                     MLVGGAWVLLLTLFVVLELTRGASRGALRYV*"
+                     /gene="ND6"
+ORIGIN
+        1 tatctcacgc ttttttaagt atctcctgat ctttctcacc gcaatactgg tcctcgttac
+       61 tgcaaataac atatttcaac tgttcattgg atgagaaggt gtcggtatca tatccttcct
+      121 tctcatcggg tgatgatacg gccgggcaga tgcaaacacc gcagccctcc aagccgtcct
+      181 gtataaccgt gtaggtgata tcgggctgat ccttgcaatg gcttgactag ccactactct
+      241 gaactcctgg gagcttcagc aagtctttat agcctcaaaa gacatagacc tcacccttcc
+      301 cctcattgga ttaattttag ctgccactgg gaagtctgcc caatttggcc tccacccttg
+      361 acttccctcg gccatagaag gccccacccc tgtatcagcc ctactgcact ctagtacaat
+      421 agttgttgct ggaatctttc tactaatccg cctgagcccc ctaatagata gtaattacac
+      481 cgcccaaacc acctgcctat gcctgggcgc cctaaccacc ctttttacag caacctgcgc
+      541 acttactcag aatgacatca agaaaatcgt tgccttttcc acttcaagcc aactcggcct
+      601 aataatagtc actatcggcc taaaccaacc tcagctggcc ttcttgcata tttgcaccca
+      661 cgccttcttt aaagctatgc ttttcctctg ctcaggctct attatccatt gtcttaatga
+      721 tgaacaggac atccgaaaaa taggcggaat aaataacctt gccccaacaa cagcctcagc
+      781 cttaacaatc ggcagtctag ccttaacagg aacccccttt ttggccggat ttttttccaa
+      841 agacgcaatc atcgaagccc tgaacacatc ccacttaaac gcctgggccc tcattctcac
+      901 cctcttggct acctctttca cggcggtcta tagtctccga gtcgtctttt tcgtatgcat
+      961 aggcaacccc cggtttaacg cctacacccc cattaatgaa aatgaccccc acactgttaa
+     1021 tcccatcaaa cgacttgcat gaggcagtat ccttgcagga ctaattatta cgtctaacat
+     1081 tcttccaata aaaacgcccg tcatgaccat gccccctcta cttaagctag cagccctggc
+     1141 agtgtccatc ctcggtctct taactgccct agaactcgcc tccttaacta acaaacaatt
+     1201 taaaccaacc ccctttatta ctacccatca cttctcaaac atactaggat acttcccgac
+     1261 tcttgtccac cgcctaaacc ctaaaatctc tctctctctt ggccagtttg tagccacaca
+     1321 gatagtggac caaacttgaa tggagaagac tggccccaaa gcaatctcag aaatcaacaa
+     1381 ccctattatc tcaacagtaa gtaacattca acagggaatg attaaaacct acctctccct
+     1441 cttcttcttc acactagcaa tctccacagt tgcatttgcc ctctagacat aacgcaacgc
+     1501 ccctcggctg gccccccgag ttagctctaa cactacaaac aatgtcagca ggagcactca
+     1561 cgccccgccc actaacatac caccacccat agaatatata agtgccaccc cactaatgtc
+     1621 cccccgcagc acccctaact ccaaccctcc aaccacaggt tcaacactcg ccccgccccc
+     1681 tcaatccact accaacactc ccaccacccc cacccccacc aggtaacaaa ccattgtcgc
+     1741 gagcaccggc cagcttattc aagactccgg atacggctcg gccgccaaag cagccgaata
+     1801 agcaaataca accaacattc ctcctagata aataaggaaa agaattaaag acaagaagct
+     1861 cccaccccat cctaccaaaa taccacaccc a
+//

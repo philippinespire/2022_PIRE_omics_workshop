@@ -1,0 +1,5 @@
+NODE_59731_length_1891_cov_8249.270647	mitofinder	source	1	1891	.	+	.	Name=source NODE 59731 length 1891 cov 8249.270647
+NODE_59731_length_1891_cov_8249.270647	mitofinder	gene	2	1486	.	+	0	Name=ND5 gene 
+NODE_59731_length_1891_cov_8249.270647	mitofinder	CDS	2	1486	.	+	0	Name=ND5 CDS 
+NODE_59731_length_1891_cov_8249.270647	mitofinder	gene	1483	1890	.	-	0	Name=ND6 gene 5' Partial CDS
+NODE_59731_length_1891_cov_8249.270647	mitofinder	CDS	1483	1890	.	-	0	Name=ND6 CDS 5' Partial CDS
