@@ -1,0 +1,8 @@
+max_rd_len=150
+[LIB]
+avg_ins=250
+reverse_seq=0
+asm_flags=3
+map_len=32
+q1=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/SfC0281G_CKDL210013395-1a-AK3911-AK845_HF33GDSX2_L4_clmp.fp2_repr.R1.fq.gz
+q2=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/SfC0281G_CKDL210013395-1a-AK3911-AK845_HF33GDSX2_L4_clmp.fp2_repr.R2.fq.gz

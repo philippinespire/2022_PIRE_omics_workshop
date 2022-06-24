@@ -31,17 +31,25 @@ This will take a little while to run.
 
 Check the output for MitoFinder once it has run. You can find the full sequences for the mitochondrial genome(s) recovered, as well as sequences for the individual genes found in each genome.
 
-How many mitochondrial scaffolds did MitoFinder recover?
+How many "mitochondrial" scaffolds did MitoFinder recover? How many genes did MitoFinder recover? You can find this information in the .out file.
 
-How many genes did MitoFinder recover?
+Which scaffolds in the reference genome correspond to "mitochondrial" scaffolds? You will have to dig a little deeper into the results (the .infos files in the Final_Results folder) to find this.
 
-Which scaffolds in the reference genome correspond to mitochondrial scaffolds?
+Note that MitoFinder actually found >1 scaffold that it identified as mtDNA! There could be a few explanations for this, including (1) the mitochondrial genome was assembled in several fragments; (2) there are regions of the nuclear genome that resemble the mitochondrial genome (these are often called "nuclear mitochondrial insertions", or NUMTS); (3) we have contamination from another species. 
 
-Check the output of MitoZ. Is it similar to MitoFinder?
+Recall how we evaluated coverage using samtools for PSMC yesterday. If you have time, you can check the coverage of the MitoFinder scaffolds and compare to what we found for the whole genome. True mitochondrial genomes should have depth of coverage >> the nuclear genome, NUMTS should have coverage roughly equal to the nuclear genome, and contaminants should have coverage << the nuclear genome. 
 
-MitoZ outputs the coverage of the 
+Start an interactive node and load samtools. You will need to use a .bam file aligned to the full Sfa denovo reference genome - you can find these in `/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_full/`
 
-Recall how we evaluated coverage using samtools for PSMC yesterday. If you have time, you can check the coverage of the MitoFinder scaffolds and compare to what we found for the whole genome.
+The basic syntax for evaluating the coverage for a specific scaffold is similar to what we used yesterday but with an -r flag added to identify which region we are interested in:
+
+`
+samtools depth -r <scaffold name> <.bam file> | awk '{sum+=$3} END { print "Average (covered sites) = ",sum/NR}'
+`
+
+Use this template to check coverage. Which scaffolds look like they represent the true mitochondrial genome?
+
+Check the output of MitoZ when it is finished. Is it similar to MitoFinder?
 
 ## Species identification and searching genetic databases
 
@@ -51,6 +59,8 @@ Go to the BLAST website and click on "Nucleotide BLAST". Enter a query sequence 
 
 YOu should have results in a matter of seconds. The best "hits" are at the top. Which species does our sequence match? How similar is our sequence to the sequences in the NCBI database?
 
-The NCBI database has data from all sorts of genes. We can also search another database, the Barcode of Life Database ([BOLD](https://boldsystems.org/)) that is much more focused. BOLD is specifically designed for species identifcation and contains mainly mitochondrial cytochrome oxidase I (COI) gene sequences.
+The NCBI database has data from all sorts of genes. We can also search another database, the Barcode of Life Database ([BOLD](https://boldsystems.org/)) that is much more focused. BOLD is specifically designed for species identifcation and contains mainly mitochondrial cytochrome oxidase I (COI or COX1) gene sequences.
 
-Go to the BOLD website and click on the "Identification" link at the top of the page. Copy and paste a COI sequence into this box and search. What species does this sequence belong to?
+Go to the BOLD website and click on the "Identification" link at the top of the page. Copy and paste a COI sequence into this box and search. What species does this sequence most resemble?
+
+BOLD also creates a tree of results so you can visualize how similar your query sequence is to sequences in the database. Examine the tree. Do you feel confident that your sequence belongs to the species to which it was assigned?

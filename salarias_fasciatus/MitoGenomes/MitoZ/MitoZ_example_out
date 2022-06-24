@@ -800,3 +800,9 @@ cp Sfa_mitoscaf.fa.gbf Sfa_mitoscaf.fa.sqn Sfa_mitoscaf.fa.val errorsummary.val 
 /opt/conda/bin/python3 /opt/MitoZ/bin/common/get_result-dir_file_intro.py /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/MitoGenomes/MitoZ/Sfa.result > /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/MitoGenomes/MitoZ/Sfa.result/README.txt
 
 can not find s-rRNA!
+
+tmp directory exists, please remove it firstly!
+
+2022-06-23 09:29:21
+/opt/MitoZ/bin/assemble/mitoAssemble all  -K 71 -o work71 -s work71.soaptrans.lib -p 8
+
