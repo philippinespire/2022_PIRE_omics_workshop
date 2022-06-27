@@ -66,34 +66,27 @@ In order to run the SSL pipeline and follow along with the workshop exercises, y
 
 The workshop goes straight into analyzing genomic data and assumes participants already have a basic understanding of UNIX, the command line, and HPC environments. If you don't have this background, please check out this page with links to a few brief, introductory online modules.
 
+If this is your first time working on Wahab/Turing (ODU's HPC and the computer cluster we will be using for the workshop), or want to check out some cool tips, see the [Working on ODU's HPC Repository](https://github.com/philippinespire/denovo_genome_assembly/tree/main/working_in_Turing-Wahab).
+
 ---
 
 # GUIDE TO SHOTGUN DATA PROCESSING & ANALYSIS
 
-The purpose of this repo is to document the processing and analysis of `Shotgun Sequencing Libraries - SSL data` for probe development which then will be processed according to the [Capture Shotgun Sequencing Libraries- CSSL repo](https://github.com/philippinespire/pire_cssl_data_processing). 
- Both SSL and CSSL pipelines use scripts from the [Pre-Processing PIRE Data](https://github.com/philippinespire/pire_fq_gz_processing) repo at the beginning of files processing. 
+## Here we go!
 
-Each species will get it's own directory within this repo.  Try to avoing putting dirs inside dirs inside dirs. 
+Start the workshop by cloning this repository to your working directory. We recommend setting up a `shotgun_PIRE` directory in your home directory first and then cloning this repository as a subdirectory of that.
+  * Example: `/home/youruserID/shotgun_PIRE/`
 
-The Sgr dir will serve as the example to follow in terms of both directory structure and documentation of progress in `README.md`.
+Clone this repository.
 
-If this is your first time working on wahab/turing or want to check out some tips see the [Working on ODU's HPC repo](https://github.com/philippinespire/denovo_genome_assembly/tree/main/working_in_Turing-Wahab)
-
-Contact Dr. Eric Garcia for questions or if you are having issues running scripts (e1garcia@odu.edu)
-
----
-
-## Here we go! 
-
-Start the workshop by cloning this repo to your working dir. I recommend setting up a `shotgun_PIRE` sub-dir in your home dir if you have not done something similar already
-
-Example: `/home/youruserID/shotgun_PIRE/`
-
-Clone this repo
 ```
-cd ~ 	# this will take you to your home dir
+cd ~ 	#this will take you to your home directory
+
+mkdir shotgun_PIRE
 cd shotgun_PIRE
+
 git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git
+#you will be prompted for your username and password. The username is your GitHub username. The password is a PAT (personal authentification token) associated with your GitHub account.
 ```
 *Now you have the files you need to start working!*
 
