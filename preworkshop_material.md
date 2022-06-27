@@ -2,7 +2,7 @@
 
 The 2022 PIRE Omics Workshop goes straight into analyzing genomic data and assumes participants already have a basic understanding of UNIX, the command line, and HPC environments. You should also have a GitHub account that is set-up with 2-factor authentication.
 
-If you don't have this background, please complete the first UNIX lesson and read the Slurm document. If you do have this background, please check that you are familiar with all the following material.
+**If you don't have this background, please complete the first UNIX lesson and read the Slurm document.** If you do have this background, please check that you are familiar with all the following material.
 
 ---
 
@@ -10,7 +10,7 @@ If you don't have this background, please complete the first UNIX lesson and rea
 
 The following 2 resources overlap in content, but the first gives a genomics perspective. The first resource is required for participants with no UNIX experience.
 
-1. [Intro to the Command Line for Genomics](http://datacarpentry.github.org/shell-genomics/)
+1. [Intro to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)
 2. [The Unix Shell Lesson](http://swcarpentry.github.io/shell-novice/)
 
 ---
