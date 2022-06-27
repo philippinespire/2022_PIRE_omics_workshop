@@ -1,6 +1,6 @@
 # Pre-Processing PIRE Data
 
-List of steps to process raw `fq.gz` files from shotgun sequencing.
+List of steps to process raw `fq.gz` files from shotgun sequencing. Written specifically for the 2022 PIRE Omics Workshop.
 
 ---
 
@@ -42,18 +42,18 @@ Scripts to run
 
 ## **00. Set up directories and data**
 
-Check your raw files: given that we use paired-end sequencing, you should have one pair of files (1 forward and 1 reverse) per library. This means that you should hav the same number of forward (1.fq.gz or f.fq.gz) and reverse squence files (2.fq.gz or r.fq.gz). If you don't have equal numbers for forward and reverse files, check with whoever provided the data to make sure there were no issues while transferring.
+Before we start running any jobs, we first need to make sure we have all the data! This means checking your raw files: given that we use paired-end sequencing, you should have one pair of files (1 forward and 1 reverse) per library. Thus, you should hav the same number of forward (1.fq.gz or f.fq.gz) and reverse squence files (2.fq.gz or r.fq.gz). If you don't have equal numbers for forward and reverse files, check with whoever provided the data to make sure there were no issues while transferring.
 
 Create your `species dir` and subdirs `logs` and `shotgun_raw_fq`. Transfer your raw data into `shotgun_raw_fq` if necessary.
+  * For the workshop, your `species dir` will just be your workshop directory (`2022_PIRE_omics_workshop/your_name`). You will not be transferring any raw data to this directory.
 
 ```
-#Example
-cd pire_ssl_data_processing
-mkdir spratelloides_gracilis
-mkdir spratelloides_gracilis/logs
-mkdir spratelloides_gracilis/shotgun_raw_fq
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name #normally this would be ~/shotgun_PIRE and then you would make your species dir here (mkdir species_name)
 
-cp <source of files> spratelloides_gracilis/shotgun_raw_fq #scp | cp | mv
+mkdir logs #normally this would be species_name/logs
+mkdir shotgun_raw_fq
+
+cp <source of files> ./shotgun_raw_fq #you will NOT do this for the workshop
 ```
 
 Now create a `README` in the `shotgun_raw_fq` dir with the full path to the original copies of the raw files and necessary decoding info to find out from which individual(s) these sequence files came from.
@@ -61,9 +61,8 @@ Now create a `README` in the `shotgun_raw_fq` dir with the full path to the orig
 This information is usually provided by Sharon Magnuson in the species slack channel.
 
 ```
-#Example
-cd spratelloides_gracilis/shotgun_raw_fq
-nano README.md
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/shotgun_raw_fq
+cp ../../salarias_fasciatus/shotgun_raw_fq/README.md #for the workshop you will just copy this from the example salarias_fasicatus directory
 ```
 
 ---
@@ -111,11 +110,11 @@ Execute `Multi_FASTQC_wkshp.sh` while providing, in quotations and in this order
 (1) the FULL path to these files, (2) th FULL path to the directory you want the output files to go, and (3) a suffix that will identify the files to be processed. 
 
 ```sh
-cd YOURSPECIESDIR/shotgun_raw_fq
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/shotgun_raw_fq
 
 #sbatch Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "<file extension>"
-#do not use trailing / in paths. Example:
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz"   
+#do not use trailing / in paths
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC_wkshp.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/shotgun_raw_fq" "fq.gz"   
 ```
 
 If you get a message about not finding "crun" then load the containers in your current session and run `Multi_FASTQC.sh` again
@@ -126,45 +125,60 @@ module load parallel
 module load container_env multiqc
 module load container_env fastqc
 
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "PATHTOYOURSPECIESDIR/shotgun_raw_fq" "fq.gz" 
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC_wkshp.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/shotgun_raw_fq" "fq.gz" 
 ```
 
-*(can take several hours)*
-  * review results with `multiqc` output
+ Review the `multiqc` output (`shotgun_raw_fq/fastqc_report.html`).
+  * How much duplication was there?
+  * What is the GC content for each library?  
+  * What is the % adaptor?
+  * How many reads/library?
 
 ---
 
 ## **2. First trim. Execute [`runFASTP_1st_trim.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_1st_trim.sbatch) (0.5-3 hours run time)**
 
+Normally, you would have copied the raw files to the `shotgun_raw_fq` directory, renamed them, and then used that as the input for the first trim. For the workshop, we are not copying the raw files. Thus your input (indir) will point to the example *Salarias fasciatus* directory instead.
+
 ```bash
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #sbatch runFASTP_1st_trim.sbatch <INDIR/full path to files> <OUTDIR/full path to desired outdir>
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch shotgun_raw_fq fq_fp1
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq fq_fp1
 ```
+
+Review the results with the `fastqc` output (`fq_fp1/1st_fastp_report.html`). You may have to come back to this step later on in the workshop.
+  * Has the amount of duplication changed?
+  * Has the GC content changed?  
+  * What percentage of reads passed the first round of filtering?
+  * How many reads/library now?
 
 ---
 
 ## **3. Remove duplicates. Execute [`runCLUMPIFY_r1r2_array.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) (0.5-3 hours run time)**
 
-The max # of nodes to use at once should **NOT** exceed the number of pairs of r1-r2 files to be processed. (Ex: If you have 3 pairs of r1-r2 files, you should only use 3 nodes at most.) If you have many sets of files, you might also limit the nodes to the current number of idle nodes to avoid waiting on the queue (run `sinfo` to find out # of nodes idle in the main partition)
+Normally, you would run this on the output from the first trim. However, to speed things up for the workshop, you will run this on the fq.gz files created from the first trim in the sample *Salarias fasciatus* directory. You can always come back once your first trim completes to see how it went!
+
+The max # of nodes to use at once should **NOT** exceed the number of pairs of r1-r2 files to be processed. (Ex: If you have 3 pairs of r1-r2 files, you should only use 3 nodes at most.) If you have many sets of files, you might also limit the nodes to the current number of idle nodes to avoid waiting on the queue (run `sinfo` to find out # of nodes idle in the main partition).
 
 ```bash
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #bash runCLUMPIFY_r1r2_array.bash <indir> <outdir> <tempdir> <max # of nodes to use at once>
-#do not use trailing / in paths. Example:
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/YOURUSERNAME 3
+#do not use trailing / in paths
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1 fq_fp1_clmp /scratch/YOURUSERNAME 3
 ```
 
-After completion, run `checkClumpify_EG.R` to see if any files failed
+After completion, run `checkClumpify_EG.R` to see if any files failed. You may have to come back to this step later on in the workshop.
 
 ```bash
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
+salloc #because R is interactive and takes a decent amount of memory, we want to grab an interactive node to run this
 enable_lmod
 module load container_env mapdamage2
 crun R < checkClumpify_EG.R --no-save
+exit #to relinquish the interactive node
 
 #if the previous line returns an error that tidyverse is missing then do the following
 crun R
@@ -180,7 +194,7 @@ install.packages("tidyverse")
 crun R < checkClumpify_EG.R --no-save
 ```
 
-If all files were successful, `checkClumpify_EG.R` will return "Clumpify Successfully worked on all samples". 
+If all files were successful, `checkClumpify_EG.R` will return "Clumpify successfully worked on all samples". 
 
 If some failed, the script will also let you know. Try raising the number of nodes used (ex: "-c 20" to "-c 40") and run clumplify again.
 
@@ -193,35 +207,45 @@ If the array set up doesn't work try running Clumpify on a Turing himem node (se
 
 ## **4. Second trim. Execute `runFASTP_2_ssl.sbatch` (0.5-3 hours run time)**
 
+Normally, you would run this on the output from clumpify. However, to speed things up for the workshop, you will run this on the fq.gz files created from clumpify in the sample *Salarias fasciatus* directory. You can always come back once clumpify completes to see how it went!
+
 For pre-processing for genome assembly, use  [runFASTP_2_ssl.sbatch](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_2_ssl.sbatch).
 
 ```bash
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #sbatch runFASTP_2_ssl.sbatch <indir> <outdir>
-#do not use trailing / in paths. Example:
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch fq_fp1_clmp fq_fp1_clmp_fp2
+#do not use trailing / in paths
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias/fasciatus/fq_fp1_clmp fq_fp1_clmp_fp2
 ```
+
+Review the results with the `fastqc` output (`fq_fp1_clmp_fp2/2nd_fastp_report.html`). You may have to come back to this step later on in the workshop.
+  * Has the amount of duplication changed?
+  * Has the GC content changed?  
+  * What percentage of reads passed the second round of filtering?
+  * How many reads/library now?
 
 ---
 
 ## **5. Decontaminate files. Execute [`runFQSCRN_6.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFQSCRN_6.bash) (several hours run time)**
 
+Normally, you would run this on the output from the second trim. However, to speed things up for the workshop, you will run this on the fq.gz files created from the second trim in the sample *Salarias fasciatus* directory. You can always come back once the second trim completes to see how it went!
+
 Try running one node per fq.gz file if possible. Here, the number of nodes running simultaneously should **NOT** exceed the number of fq.gz files (ex: 3 r1-r2 fq.gz pairs = 6 nodes max).
   * ***NOTE: you are executing the bash not the sbatch script***
 
 ```sh
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #bash runFQSCRN_6.bash <indir> <outdir> <number of nodes running simultaneously>
-#do not use trailing / in paths. Example:
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_clmp_fp2 fq_fp1_clmp_fp2_fqscrn 6
+#do not use trailing / in paths
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2 fq_fp1_clmp_fp2_fqscrn 6
 ```
 
-Confirm that all files were successfully completed.
+Confirm that all files were successfully completed. You may have to come back to this later in the workshop.
 
 ```sh
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #fastqscreen generates 5 files (*tagged.fastq.gz, *tagged_filter.fastq.gz, *screen.txt, *screen.png, *screen.html) for each input fq.gz file
 #check that all 5 files were created for each file: 
@@ -231,7 +255,7 @@ ls fq_fp1_clmp_fp2_fqscrn/*screen.txt | wc -l
 ls fq_fp1_clmp_fp2_fqscrn/*screen.png | wc -l
 ls fq_fp1_clmp_fp2_fqscrn/*screen.html | wc -l
 
-# for each, you should have the same number as the number of input files (number of fq.gz files)
+#for each, you should have the same number as the number of input files (number of fq.gz files)
 
 #You should also check for errors in the *out files:
 #this will return any out files that had a problem
@@ -245,13 +269,18 @@ grep 'error' slurm-fqscrn.JOBID*out
 grep 'No reads in' slurm-fqscrn.JOBID*out
 ```
 
-Run [`runMULTIQC.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runMULTIQC.sbatch) to get multiqc output.
+Run [`runMULTIQC.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runMULTIQC.sbatch) to get the multiqc output.
+
+Review the results with the `fastqc` output (`fq_fp1_clmp_fp2_fqscrn/fastqc_screen_report.html`). You may have to come back to this step later on in the workshop.
+  * What percentage of reads hit to bacteria genomes?
+  * What percentage of reads hit to virus genomes? Prokaryotes?
+  * What percentage of reads hit to the human genome?
 
 ```
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #sbatch runMULTIQC.sbatch <indir> <report name>
-#do not use trailing / in paths. Example:
+#do not use trailing / in paths
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runMULTIQC.sbatch fq_fp1_clmp_fp2_fqscrn fastqc_screen_report
 ```
 
@@ -260,7 +289,7 @@ If you see missing individuals or categories in the multiqc output, there was li
 Run the files that failed again. This seems to work in most cases:
 
 ```sh
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #bash runFQSCRN_6.bash <indir> <outdir> <number of nodes to run simultaneously> <fq file pattern to process>
 #do not use trailing / in paths. Example:
@@ -271,23 +300,30 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_c
 
 ## **6. Execute [`runREPAIR.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runREPAIR.sbatch) (<1 hour run time)**
 
+Normally, you would run this on the output from fastqscreen. However, to speed things up for the workshop, you will run this on the fq.gz files created from fastqscreen in the sample *Salarias fasciatus* directory. You can always come back once fastqscreen completes to see how it went!
+
 ```
-cd YOURSPECISDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #sbatch runREPAIR.sbatch <indir> <outdir> <threads>
-#do not use trailing / in paths. Example:
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runREPAIR.sbatch fq_fp1_clmp_fp2_fqscrn fq_fp1_clmp_fp2_fqscrn_repaired 40
+#do not use trailing / in paths
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runREPAIR.sbatch /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn fq_fp1_clmp_fp2_fqscrn_repaired 40
 ```
 
-Run Fastqc-Multiqc separately.
+Once repair has finished, run Fastqc-Multiqc separately.
 
 ```sh
-cd YOURSPECIESDIR/fq_fp1_clmp_fp2_fqscrn_repaired
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/fq_fp1_clmp_fp2_fqscrn_repaired
 
 #sbatch Multi_FASTQC.sh <indir> <file extension>
-#do not use trailing / in paths. Example:
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "PATHTOYOURSPECIESDIR/fq_fp1_clmp_fp2_fqscrn_repaired" "fq.gz"   
+#do not use trailing / in paths
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/fq_fp1_clmp_fp2_fqscrn_repaired" "fq.gz"   
 ```
+
+Review the results with the `fastqc` output (`fq_fp1_clmp_fp2_repaired/fastqc_report.html`). You may have to come back to this step later on in the workshop.
+  * Has the amount of duplication changed?
+  * Has the GC content changed?  
+  * How many reads/library now?
 
 ---
 
@@ -296,11 +332,11 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "PATHTO
 Execute [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh).
 
 ```sh
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #sbatch read_calculator_ssl.sh <Path to species home dir> 
-#do not use trailing / in paths. Example:
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis"
+#do not use trailing / in paths
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name"
 ```
 
 `read_calculator_ssl.sh` counts the number of reads before and after each step of pre-process the ssl data and creates the dir `preprocess_read_change` with the following 2 tables:
@@ -308,13 +344,15 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh 
 2. `readsRemaining_table.tsv` which reports the step-specific percentage of reads that remain and the final cumulative percentage of reads that remain.
 
 Inspect these tables and revisit any steps where too much data was lost.
+  * Which step lost the most reads?
+  * Which step lost the least?
 
 ## **8. Clean Up
 
 Make sure all the `.out` files have been moved into the `logs` directory
 
 ```sh
-cd YOURSPECIESDIR
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 mv *out logs/
 ```
