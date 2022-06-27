@@ -65,7 +65,7 @@ In order to run the SSL pipeline and follow along with the workshop exercises, y
 6. Install [RStudio](https://www.rstudio.com/products/rstudio/download/)
     * Once R and RStudio are installed, install the following packages (with all dependencies): tidyverse & adegenet.
 
-The workshop goes straight into analyzing genomic data and assumes participants already have a basic understanding of UNIX, the command line, and HPC environments. If you don't have this background, please check out this page with links to a few brief, introductory online modules.
+The workshop goes straight into analyzing genomic data and assumes participants already have a basic understanding of UNIX, the command line, and HPC environments. If you don't have this background, please check out this [page](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/preworkshop_material.md) with links to a few brief, introductory online modules.
 
 If this is your first time working on Wahab/Turing (ODU's HPC and the computer cluster we will be using for the workshop), or want to check out some cool tips, see the [Working on ODU's HPC Repository](https://github.com/philippinespire/denovo_genome_assembly/tree/main/working_in_Turing-Wahab).
 
