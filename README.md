@@ -47,6 +47,7 @@ In order to run the SSL pipeline and follow along with the workshop exercises, y
 
 1. Create a free [GitHub account](https://github.com/). 
     * Once you have your account, set up [two-factor authentification](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa).
+    * You will also need a personal access token (PAT) to use GitHub on the HPC cluster. To set this up, follow [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). **MAKE SURE TO SAVE THIS TOKEN SOMEWHERE ON YOUR COMPUTER SO YOU CAN COPY-AND-PASTE!**
 2. **WINDOWS ONLY:** Install a Linux Distribution on Windows using the Windows Subsystem for Linux. Follow these steps:
     * Update Windows to the newest version (Windows 10 version 2004 and higher are required, you do not need Windows 11). To update, type "Check for Updates" in the taskbar search bar.
     * Open "Windows PowerShell". You can search for it in the same location where you typed "Check for Updates". Open Windows PowerShell by right-clicking and then left-clicking "Run as Administrator".
@@ -72,7 +73,9 @@ If this is your first time working on Wahab/Turing (ODU's HPC and the computer c
 
 # GUIDE TO SHOTGUN DATA PROCESSING & ANALYSIS
 
-## Here we go!
+Here we go!
+
+## Some Basic Set-up
 
 Start the workshop by cloning this repository to your working directory. We recommend setting up a `shotgun_PIRE` directory in your home directory first and then cloning this repository as a subdirectory of that.
   * Example: `/home/youruserID/shotgun_PIRE/`
@@ -86,152 +89,96 @@ mkdir shotgun_PIRE
 cd shotgun_PIRE
 
 git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git
-#you will be prompted for your username and password. The username is your GitHub username. The password is a PAT (personal authentification token) associated with your GitHub account.
+#you will be prompted for your username and password. The username is your GitHub username. The password is a PAT (personal access token) associated with your GitHub account.
 ```
-*Now you have the files you need to start working!*
 
-Organization is importanat, for the workshop each person will create and work on their own directory. 
+***Now you have the files you need to start working!***
 
-**Please Note:** do not use spaces or special characters (such as *#$%^&*~"][)(+'\|=) in the names of files or directory. Stick to letters, numbers, dashes (-), and underscores (_) 
+*Organization is important* - for the workshop, each person will create and work in their own sub-directory in this repository. 
 
 Make your own directory:
+
 ```
-cd 2022_PIRE_omics_workshop
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop
+
 mkdir <your_name_with_no_spaces>
 ```
 
-copy any files?
+**Please Note:** do not use spaces or special characters (*#$%^&~"[])(+'\|=*) in the names of files or directories. Stick to letters, numbers, dashes (-), and underscores (_).
 
+Next, you are going to copy the `README.md` file from the  `2022_PIRE_omics_workshop/salarias_fasciatus` directory to your own directory. The `README.md` serves as a log where you record the code you ran for each step, as well as any important notes (errors you ran into, data quality assessment, etc.). You will modify this README to match your code and results as you run each step of the pipeline.
+  * During the workshop, all participants will be running data from the same species (*Salarias faciatus*) through the SSL pipeline. Thus, everyone's output should look the same at each step! The `salarias_fasciatus` directory serves as a template for you to check your results against. You will also be reading data in from this directory at various steps throughout the workshop, to speed up the process.
+
+```
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name #this should be the full path to the directory you just created
+
+cp ../salarias_fasciatus/README.md .
+```
 
 ---
 
-## Maintaining Git Repo
+## Maintaining Your Git Repository
 
-You must pull down the latest version of the repo everytime you sit down to work and push the changes you made everytime you walk away from the terminal.  The following order of operations when you sync the repo will minimize problems.
+As you start processing your data and making changes, you will need to continuously update your progress to GitHub (so that others can see your work)! To do this, you will always (1) **PULL** down the latest version of the repo everytime you begin work and (2) **PUSH** any changes you make everytime you walk away from the computer. **ALWAYS PULLING BEFORE YOU PUSH** will help keep your GitHub repository updated and minimize problems with merge conflicts, etc.
 
-From your species directory, execute these commands manually or run the `runGit.sh` script (see bellow) 
+**NOTE:** Every time you push (and sometimes when you pull), you will be prompted for your username and password. The username is your GitHub username. The password is a PAT (personal access token) associated with your GitHub account.
+
+To push and pull, from your workshop directory (`2022_PIRE_omics_workshop/your_name`), execute these commands manually or run the `runGit.bash` script (see below):
+
 ```
+#to make sure your version of the repository matches what is on GitHub (ALWAYS do before running anything OR pushing)
 git pull
-git add --all
-git commit -m "$1"
-git push -u origin main
+
+#to add any of your own changes
+git add ./*
+git commit -m "" #in "" write a short message describing what you did
+git push -u
+
+chmod -R 770 * #gives everyone access to your files
 ```
 
-This code has been compiled into the script `runGIT.bash` thus you can just run this script BEFORE and AFTER you do anything in your species repo.
+This code has also been compiled into the script `[runGIT.bash](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/runGIT.bash)`. Thus, you can just run this script BEFORE and AFTER you do anything in your workshop directory. Copy this to your workshop dir if you would like to run it:
 
-You will need to provide the message of your commit in the command line. Example:
+```
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
+
+cp ../runGIT.bash .
+```
+
+When running `runGIT.bash`, you will need to provide the message of your commit in the command line. Example:
+
 ```sh
 bash ../runGIT.bash "initiated my directory"
 ```
-You will need to enter your git credentials multiple times each time you run this script
 
-If you should be met with a conflict screen, you are in the archane `vim` editor.  You can look up instructions on how to interface with it. I typically do the following:
+Other things to know:
 
-* hit escape key twice
-* type the following
-  `:quit!`
+1. If you should ever meet a merge conflict screen, you are in the archane `vim` editor.  You can look up instructions on how to interface with it, but the following should typically work:
+
+  * hit escape key twice
+  * type `:quit!`
  
-If you had to delete files for whatever reason, 
-these deletions occurred in your local directory but these files will remain in the git memory if they had already enter the system.
+2. If you ever have to delete files for whatever reason, these deletions will occur in your local directory (on the HPC) but will remain in the git memory if they had previously been pushed. If you are in this situation, run these git commands manually, AFTER running `runGIT.bash` as described above (run from the directory where you deleted the files):
 
-If you are in this situation, run these git commands manually, AFTER running the runGIT.bash as describe above.
-
-`add -u` will stage your deleled files, then you can commit and push
-
-Run this from the directory where you deleted files:
 ```sh
-git add -u .
+git add -u . #this will stage your deleted files
 git commit -m "update deletions"
 git push -u origin main
 ```
 
-**gitignore**
+3. **gitignore**: There is a `.gitignore` file that lists files and directories to be ignored by git. It includes large files that git cannot handle (fq.gz, bam, etc.) 
+ and other repositories that might be cloned/created in this repository during the pipeline. For example, the BUSCO directory contains several large files that will cause problems for git, so `busco_*/` occurs in  `.gitignore` so that it is not ever pushed to GitHub. Because large data files will never be pushed to GitHub, they will reside in an individual's local directory or somewhere else on the HPC.
 
-There is a `.gitignore` file that lists files and directories to be ignored by git.  It includes large files that git cannot handle (fq.gz, bam, etc) 
- and other repos that might be downloaded into this repo.
-For example, the BUSCO outdir contains several large files that will cause problems for git so `busco_*/` occurs in  `.gitignore` so that it is not uploaded to github in this repo.
-
-Because large data files will not be saved to github, they will reside in an individual's copy of the repo or somewhere on the HPC.
-
-___
+---
 
 ## Data Processing Roadmap
 
-### A. PRE-PRECESSING SEQUENCES
+### A. PRE-PROCESSING SEQUENCES
+
+Complete the pre-processing of your files following the [pire_fq_gz_processing](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/preprocessing_README.md) insructions, then return here.
+  * This includes running FASTQC, FASTP1, CLUMPLIFY, FASTP2, FASTQSCREEN, and re-pair scripts.
 
 ---
-
-#### 1. Set up directories and data
-
-Check your raw files: given that we use paired-end sequencing, you should have one pair of files (1 forward and 1 reverse) per library. This  means that you should have the same number of foward (1.fq.gz or f.fq.gz) and reverse sequence files (2.fq.gz or r.fq.gz).
- If you don't have equal numbers for foward and reverse files, check with whoever provided the data to make sure there was no issues while transferring.
-
-You will likely get 2 or 3 libraries (4 or 6 files total). Sgr example:
-```sh
-ls -l /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis/fq
-
--rwxrwx--- 1 e1garcia carpenter         248 Jul 27 12:37 README
--rwxrwx--- 1 e1garcia carpenter 15652747635 Jul 22 17:19 SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_1.fq.gz
--rwxrwx--- 1 e1garcia carpenter 16902243089 Jul 22 17:27 SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_2.fq.gz
--rwxrwx--- 1 e1garcia carpenter 13765701672 Jul 22 17:32 SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_1.fq.gz
--rwxrwx--- 1 e1garcia carpenter 14786676970 Jul 22 17:39 SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_2.fq.gz
--rwxrwx--- 1 e1garcia carpenter 16465437932 Jul 22 17:46 SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_1.fq.gz
--rwxrwx--- 1 e1garcia carpenter 17698149145 Jul 22 17:54 SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_2.fq.gz
-```
-
-Make a copy of your raw files in the longterm carpenter RC dir **ONLY** if one doesn't exits already (if you copied your data from the RC, a long-term copy already exists)
-```sh
-cd /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/
-mkdir <species_name>
-mkdir <species_name>/fq
-cp <source of files> /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/<species_name>/fq
-```
-*The RC drive is only available from the login node (you won't find it after getting a working node, i.e. `salloc`)*
-
-Create your `species dir` and and subdirs `logs` and `fq`. Transfer your raw data into `fq`  (your data will most likely be avaliable in the RC)
-*(can take several hours)*
-
-```sh
-cd pire_ssl_data_processing
-mkdir spratelloides_gracilis 
-mkdir spratelloides_gracilis/logs
-mkdir spratelloides_gracilis/fq
-cp <source of files> spratelloides_gracilis/fq  # scp | cp | mv
-```
-
-Now create a `README` in the `fq` dir with the full path to the original copies of the raw files and necessary decoding info to find out from which individual(s) these sequence files came from.
-
-
-This information is usually provied by Sharon Magnuson in species [slack](https://app.slack.com/client/TMJJ06SH0/CMPKY5C81/thread/CQ9GAAYGY-1627263374.002300) channel
-
-```sh
-cd spratelloides_gracilis/fq
-nano README.md
-```
-
-Example:
-```sh
-RC to e1garcia
-scp <source of files> /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis/fq
-
-All 3 library sets are from the same individual: Sgr-CMvi_007_Ex1
-```
-
-*I like to update my git repo regularly, especially before and after lengthly steps. This keeps a nice record of the commits and prevents loss of data/effor. Feel free to repeat this at any step*
-
-```sh
-bash ../../runGIT.bash "README of raw data"
-```
-
-***You are ready to start processing files***
-
----
-
-#### 2. Initial processing
-
-Complete the pre-processing of your files following the [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq_gz_processing) repo, then return here
-* This includes running FASTQC, FASTP1, CLUMPLIFY, FASTP2, FASTQ SCREEN, and file repair scripts from the pre-processing repo
-___
 
 ### B. GENOME ASSEMBLY
 
