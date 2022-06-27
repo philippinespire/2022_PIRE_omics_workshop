@@ -137,7 +137,7 @@ git push -u
 chmod -R 770 * #gives everyone access to your files
 ```
 
-This code has also been compiled into the script `[runGIT.bash](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/runGIT.bash)`. Thus, you can just run this script BEFORE and AFTER you do anything in your workshop directory. Copy this to your workshop dir if you would like to run it:
+This code has also been compiled into the script [`runGIT.bash`](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/runGIT.bash). Thus, you can just run this script BEFORE and AFTER you do anything in your workshop directory. Copy this to your workshop dir if you would like to run it:
 
 ```
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
@@ -155,8 +155,8 @@ Other things to know:
 
 1. If you should ever meet a merge conflict screen, you are in the archane `vim` editor.  You can look up instructions on how to interface with it, but the following should typically work:
 
-  * hit escape key twice
-  * type `:quit!`
+    * hit escape key twice
+    * type `:quit!`
  
 2. If you ever have to delete files for whatever reason, these deletions will occur in your local directory (on the HPC) but will remain in the git memory if they had previously been pushed. If you are in this situation, run these git commands manually, AFTER running `runGIT.bash` as described above (run from the directory where you deleted the files):
 
@@ -173,20 +173,20 @@ git push -u origin main
 
 ## Data Processing Roadmap
 
-### A. PRE-PROCESSING SEQUENCES
+## A. PRE-PROCESSING SEQUENCES
 
 Complete the pre-processing of your files following the [pire_fq_gz_processing](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/preprocessing_README.md) insructions, then return here.
   * This includes running FASTQC, FASTP1, CLUMPLIFY, FASTP2, FASTQSCREEN, and re-pair scripts.
 
 ---
 
-### B. GENOME ASSEMBLY
+## B. GENOME ASSEMBLY
 
 ---
 
-#### 1. **Genome Properties**
+## 1. **Genome Properties**
 
-##### 1a. Fetch the genome properties for your species
+### 1a. Fetch the genome properties for your species
 * From the literature or other sources
 	* [genomesize.com](https://www.genomesize.com/)
 	* [ncbi genome](https://www.ncbi.nlm.nih.gov/genome/)
@@ -195,7 +195,7 @@ Complete the pre-processing of your files following the [pire_fq_gz_processing](
 * Estimate properties with `jellyfish` and `genomescope`
 	* More details [here](https://github.com/philippinespire/denovo_genome_assembly/blob/main/jellyfish/JellyfishGenomescope_procedure.md)
 
-##### 1b. **Execute [runJellyfish.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runJellyfish.sbatch) using decontaminated files (couple of hours)**
+### 1b. **Execute [runJellyfish.sbatch](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runJellyfish.sbatch) using decontaminated files (couple of hours)**
 
 ```sh
 cd YOURSPECIESDIR
@@ -210,7 +210,7 @@ squeue -u <your_user_ID>
 
 Jellyfish will create a histogram file (.histo) with kmer frequencies. 
 
-##### 1c. **Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) (few minutes)**
+### 1c. **Download this file into your local computer and upload it in [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genomescope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) (few minutes)**
 * To download, sftp into wahab in a new terminal window and download the histogram file.
 ```sh
 sftp your_user_ID@wahab.hpc.odu.edu
@@ -224,7 +224,7 @@ get fq_fp1_clmp_fp2_fqscrn_repaired/<histofile.histo>
 * Leave all other parameters with default settings for both versions. 
 * Submit (takes only few minutes)
  
-##### 1d. **Complete the following table in your Species README. You can copy and paste this table straight into your README (no need to enclose it with quotes, i.e. a code block) and just substitute values.**
+### 1d. **Complete the following table in your Species README. You can copy and paste this table straight into your README (no need to enclose it with quotes, i.e. a code block) and just substitute values.**
 ```sh
 Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions
 
@@ -239,7 +239,7 @@ version    |stat    |min    |max
 ```
 * Provide a link to both reports in your README. See other species READMEs for examples. 
 
-##### 1e. **Inspect your table and reports for red flags and choose a genome scope version.**
+### 1e. **Inspect your table and reports for red flags and choose a genome scope version.**
 * In your table, check the heterozygosity (values around 1% or less are common) and check for good model fit (>90%) in the max values (sometimes the min value might have a low fit for version 2 but this is ok)
 * In your reports, check for a tight relationship between the "observed", "full model" and "unique sequences" lines in the first graph.
 
@@ -258,7 +258,7 @@ For example:
 
 ---
 
-#### 2. Assemble the Genomes with SPAdes
+## 2. Assemble the Genomes with SPAdes
 
 Congrats! You are now ready to assemble the genome of your species!
 
@@ -329,7 +329,7 @@ MSIM715          up   infinite      4   idle coreV3-23-[001-003],coreV4-24-v100-
 ```
 
 
-##### **2b. Get the genome size of your species, or Jellyfish estimate, in bp from the previous step**
+### **2b. Get the genome size of your species, or Jellyfish estimate, in bp from the previous step**
  
 
 We produced 3 libraries (from the same individual) for each spp with ssl data. Sfa example:
@@ -368,7 +368,7 @@ Then, check the number of libraries you have and run a job combining all librari
 
 ---
 
-#### 3. Review the output of SPAdes and Info on Assembly Quality from Quast Output.
+## 3. Review the output of SPAdes and Info on Assembly Quality from Quast Output.
 
 `runSPADEShimem_R1R2_noisolate.sbatch` names the output directories with the suffix A for the first, B for the second, and C for the third if any. Thus, in this case:
 Assembly  |  Library
@@ -400,7 +400,7 @@ cat quast-reports/quast-report_scaffolds_Sgr_spades_contam_R1R2_21-99_isolate-of
 
 ---
 
-#### 4. Run BUSCO (multiple hours)
+## 4. Run BUSCO (multiple hours)
 
 Those are basic assembly statistics but we still need to run BUSCO to know how many expected (i.e. highly conserved) genes were recovered by the assembly. 
 
@@ -422,8 +422,7 @@ Repeat the comand using contigs and scaffolds for each SPAde assembly.
 
 
 
-
-#### 5. Fill in this table with your QUAST and BUSCO values in your species README. 
+## 5. Fill in this table with your QUAST and BUSCO values in your species README. 
 
 Few notes:
 
@@ -449,7 +448,7 @@ Sgr  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   
 
 ---
 
-#### 6. **Determine the best assembly**
+## 6. **Determine the best assembly**
 
 We assess quality across multiple metrics since we don't use a golden rule/metric for determing the best assembly. 
 Often, it is clear that single libray is relatively better than the others as it would have better results across metrics. Yet, sometimes this is not soo clear as different assemblies might be better in different metrics. Use the following table to help you decide:
@@ -469,7 +468,7 @@ If you are still undecided on which is the best assembly, post the best candidat
 
 ---
 
-#### 7. Assemble contaminated data for best library 
+## 7. Assemble contaminated data for best library 
 
 ```bash
 cd YOURSPECIESDIR
@@ -483,7 +482,7 @@ Check out the QUAST contings and scaffolds values of your contaminated assembly 
 
 ---
 
-#### 9. Update the main assembly stats table with your species
+## 9. Update the main assembly stats table with your species
 
 Add a new record for your species/assembly to the [best_ssl_assembly_per_sp.tsv](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/best_ssl_assembly_per_sp.tsv) file
 
@@ -493,7 +492,7 @@ Once done, push your changes to GitHub and confirm the that tsv format is correc
 
 --- 
 
-#### **10. Evaluate then either go back to step B2 or move onto next step**
+## **10. Evaluate then either go back to step B2 or move onto next step**
 
 Assuming you have completed step 9, you now know what library(ies) produced the best assembly. Compare your BUSCO values with that other species (for example, you can check the ["best assembly table"](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/best_ssl_assembly_per_sp.tsv).
 If BUSCO values are too low, it might be worth trying the `covcutoff auto` (by changing the datatype variable from "decontam" to "decontam_covAUTO")
@@ -510,7 +509,7 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShim
 
 ---
 
-#### Clean up
+## Clean up
 
 Move your out files into the `logs` dir
 ```sh
@@ -520,7 +519,7 @@ mv *out logs
 
 ---
 
-### C. PROBE DESIGN
+## C. PROBE DESIGN
 
 In this section you will identify contigs and regions within contigs to be used as candidate regions to develop the probes from.
 
@@ -533,7 +532,7 @@ Among other output, you will create the following 4 files:
 This instructions have been modified from Rene's [de novo assembly probe repo](https://github.com/philippinespire/denovo_genome_assembly/tree/main/WGprobe_creation) 
 to best fit this repo
 
-#### 10 Identifying regions for probe development 
+## 10 Identifying regions for probe development 
 
 From your species directory, make a new dir for the probe design
 ```sh
@@ -609,7 +608,7 @@ Move out files into your species logs dir
 mv *out ../logs
 ```
 
-#### 11 Closest relatives with available genomes
+## 11 Closest relatives with available genomes
 
 The last thing to do is to create a text file with links to available genomes from the 5 most closely-related species.
 
