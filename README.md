@@ -1,26 +1,19 @@
-# Wellcome to the 2022 PIRE Omic's Workshop!
-
-Message
+# **Welcome to the 2022 PIRE Omics Workshop!**
 
 ![](https://github.com/Getterrobog/DipterygonotusBalteatus/blob/main/PPP_logo.png)
 
-README for workshop 
+This is the README for the 2022 PIRE Omics Workshop. It contains a link to the daily schedule, information on the workshop participants and personnel, links and installation directions for necessary software/programs, and a guide to preparing, processing, and analyzing shotgun data. During this workshop, we will be following the [PIRE SSL](https://github.com/philippinespire/pire_ssl_data_processing) and [PIRE Pre-Processing](https://github.com/philippinespire/pire_fq_gz_processing) pipelines, although both have been modified slightly for the purposes of the workshop.
 
-[Schedule](https://docs.google.com/spreadsheets/d/17KVHAxO8ihgFinT20YejtroK7-l133fBxTAzXAmE8CM/edit#gid=1010648430)
+---
 
-* Make sure eveyone has access to the HPC
+## Schedule
 
-**Git**
+Here is a link to the daily [schedule](https://docs.google.com/spreadsheets/d/17KVHAxO8ihgFinT20YejtroK7-l133fBxTAzXAmE8CM/edit#gid=1010648430).
 
-Maybe drop files everyday, so they get used to git pull all the time
+---
 
-We will be following the [PIRE SSL pipeline](https://github.com/philippinespire/pire_ssl_data_processing)
+## List of Personnel
 
-[Pre-Processing pipeline](https://github.com/philippinespire/pire_fq_gz_processing)
-
-
-
-List of Personnel
 |Position |Name | Institution | Contact |
 | --- | --- | --- | --- |
 | Professor | Kent Carpenter | ODU | cbird@odu.edu |
@@ -29,8 +22,7 @@ List of Personnel
 | Postdoc | Brendan Reid | Rutgers | br450@sebs.rutgers.edu |
 | PhD Student | Rene Clark | Rutgers | rdc129@scarletmail.rutgers.edu |
 
-
-List of participants
+## List of Participants
 
 |Position |Name | Institution | Contact |
 | --- | --- | --- | --- |
@@ -43,17 +35,20 @@ List of participants
 | RA | Maybelle A. Fortaleza | UP Mindanao | mafortaleza@up.edu.ph |
 | RA | Joemarie L. Lanutan | UP Mindanao | jjlanutan@up.edu.ph |
 | Professor | Cleto L. Nanola Jr. | UP Mindanao | clnanola@up.edu.ph |
-| Ms. Student | Omar Mahadalle | Siliman University | omaramahadalle@su.edu.ph | 
+| Ms Student | Omar Mahadalle | Siliman University | omaramahadalle@su.edu.ph | 
 | Ms Student | Abner Bucol | Siliman University | abnerbucol2013@gmail.com
-| Ms Student |Chandy | ODU Jablonski | cjabl001@odu.edu |
-
-
-
-
-
-# SHOTGUN DATA PROCESSING & ANALYSIS
+| Ms Student | Chandy Jablonski | ODU | cjabl001@odu.edu |
 
 ---
+
+## Required Software for the Workshop
+
+1. Create a free [GitHub account](https://github.com/) 
+  * Once you have your account, set up [two-factor authentification](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa)
+2. 
+ 
+
+# GUIDE TO SHOTGUN DATA PROCESSING & ANALYSIS
 
 The purpose of this repo is to document the processing and analysis of `Shotgun Sequencing Libraries - SSL data` for probe development which then will be processed according to the [Capture Shotgun Sequencing Libraries- CSSL repo](https://github.com/philippinespire/pire_cssl_data_processing). 
  Both SSL and CSSL pipelines use scripts from the [Pre-Processing PIRE Data](https://github.com/philippinespire/pire_fq_gz_processing) repo at the beginning of files processing. 
