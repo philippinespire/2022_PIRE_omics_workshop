@@ -349,7 +349,7 @@ Inspect these tables and revisit any steps where too much data was lost.
 
 ## **8. Clean Up
 
-Make sure all the `.out` files have been moved into the `logs` directory
+Make sure all the `.out` files have been moved into the `logs` directory.
 
 ```sh
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
