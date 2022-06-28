@@ -67,7 +67,7 @@ cp ../../salarias_fasciatus/shotgun_raw_fq/README.md #for the workshop you will 
 
 ---
 
-## 0. **Rename the raw fq.gz files (<1 minute run time)**
+## **0. Rename the raw fq.gz files (<1 minute run time)**
 
 Make sure you check and edit the decode file as necessary so that the following naming format is followed:
 
