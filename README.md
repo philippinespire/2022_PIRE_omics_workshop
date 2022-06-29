@@ -541,7 +541,7 @@ Example:
 ```bash
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "decontam" "635000000" "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "decontam" "635000000" "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
 ---
@@ -560,7 +560,7 @@ mv *out logs
 
 ## C. PROBE DESIGN
 
-In this sectio,n you will identify contigs and regions within contigs to be used as candidate regions to develop the probes for capture sequencing.
+In this section, you will identify contigs and regions within contigs to be used as candidate regions to develop the probes for capture sequencing.
 
 You will create the following 4 files (among others):
 1. `*.fasta.masked`: The masked fasta file 
