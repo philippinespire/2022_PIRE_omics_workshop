@@ -159,7 +159,7 @@ Review the results with the `fastqc` output (`fq_fp1/1st_fastp_report.html`). Yo
 
 ## **3. Remove duplicates. Execute [`runCLUMPIFY_r1r2_array.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) (0.5-3 hours run time)**
 
-Normally, you would run this on the output from the first trim. However, to speed things up for the workshop, you will run this on the fq.gz files created from the first trim in the sample *Salarias fasciatus* directory. You can always come back once your first trim completes to see how it went!
+Normally, you would run this on the output from the first trim. However, to speed things up for the workshop, you will run this on the fq.gz files created from the first trim in the sample *Salarias fasciatus* directory.
 
 The max # of nodes to use at once should **NOT** exceed the number of pairs of r1-r2 files to be processed. (Ex: If you have 3 pairs of r1-r2 files, you should only use 3 nodes at most.) If you have many sets of files, you might also limit the nodes to the current number of idle nodes to avoid waiting on the queue (run `sinfo` to find out # of nodes idle in the main partition).
 
@@ -209,7 +209,7 @@ If the array set up doesn't work try running Clumpify on a Turing himem node (se
 
 ## **4. Second trim. Execute `runFASTP_2_ssl.sbatch` (0.5-3 hours run time)**
 
-Normally, you would run this on the output from clumpify. However, to speed things up for the workshop, you will run this on the fq.gz files created from clumpify in the sample *Salarias fasciatus* directory. You can always come back once clumpify completes to see how it went!
+Normally, you would run this on the output from clumpify. However, to speed things up for the workshop, you will run this on the fq.gz files created from clumpify in the sample *Salarias fasciatus* directory.
 
 For pre-processing for genome assembly, use  [runFASTP_2_ssl.sbatch](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_2_ssl.sbatch).
 
@@ -231,7 +231,7 @@ Review the results with the `fastqc` output (`fq_fp1_clmp_fp2/2nd_fastp_report.h
 
 ## **5. Decontaminate files. Execute [`runFQSCRN_6.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFQSCRN_6.bash) (several hours run time)**
 
-Normally, you would run this on the output from the second trim. However, to speed things up for the workshop, you will run this on the fq.gz files created from the second trim in the sample *Salarias fasciatus* directory. You can always come back once the second trim completes to see how it went!
+Normally, you would run this on the output from the second trim. However, to speed things up for the workshop, you will run this on the fq.gz files created from the second trim in the sample *Salarias fasciatus* directory. Y
 
 Try running one node per fq.gz file if possible. Here, the number of nodes running simultaneously should **NOT** exceed the number of fq.gz files (ex: 3 r1-r2 fq.gz pairs = 6 nodes max).
   * ***NOTE: you are executing the bash not the sbatch script***
@@ -271,7 +271,7 @@ grep 'error' slurm-fqscrn.JOBID*out
 grep 'No reads in' slurm-fqscrn.JOBID*out
 ```
 
-Run [`runMULTIQC.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runMULTIQC.sbatch) to get the multiqc output.
+Once fastqscreen has **finished** running AND you have made sure there are no issues, run [`runMULTIQC.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runMULTIQC.sbatch) to get the multiqc output.
 
 Review the results with the `fastqc` output (`fq_fp1_clmp_fp2_fqscrn/fastqc_screen_report.html`). You may have to come back to this step later on in the workshop.
   * What percentage of reads hit to bacteria genomes?
@@ -302,7 +302,7 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_c
 
 ## **6. Execute [`runREPAIR.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runREPAIR.sbatch) (<1 hour run time)**
 
-Normally, you would run this on the output from fastqscreen. However, to speed things up for the workshop, you will run this on the fq.gz files created from fastqscreen in the sample *Salarias fasciatus* directory. You can always come back once fastqscreen completes to see how it went!
+Normally, you would run this on the output from fastqscreen. However, to speed things up for the workshop, you will run this on the fq.gz files created from fastqscreen in the sample *Salarias fasciatus* directory.
 
 ```
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
@@ -312,7 +312,7 @@ cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runREPAIR.sbatch /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn fq_fp1_clmp_fp2_fqscrn_repaired 40
 ```
 
-Once repair has finished, run Fastqc-Multiqc separately.
+Once repair has **finished**, run Fastqc-Multiqc separately.
 
 ```sh
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/fq_fp1_clmp_fp2_fqscrn_repaired
@@ -331,7 +331,7 @@ Review the results with the `fastqc` output (`fq_fp1_clmp_fp2_repaired/fastqc_re
 
 ## **7. Calculate the percent of reads lost in each step**
 
-Execute [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh).
+Execute [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh). **ALL jobs must be finished in order for this to work!!**
 
 ```sh
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
