@@ -69,6 +69,8 @@ cp ../../salarias_fasciatus/shotgun_raw_fq/README.md #for the workshop you will 
 
 ## **0. Rename the raw fq.gz files (<1 minute run time)**
 
+We need to rename the raw files from the sequencer to match our project naming convention. In the previous step, when you copied the raw `fq.gz` files over, you also copied the "decode" file. This file tells us which species, population, extraction, etc. each library came from. We normally use this decode file to then rename the raw files. For the workshop, we will demonstrate this step as a group. You do NOT need to do this individually.
+
 Make sure you check and edit the decode file as necessary so that the following naming format is followed:
 
 `PopSampleID_LibraryID` where,
