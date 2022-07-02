@@ -12,7 +12,7 @@ Here is a link to the daily [schedule](https://docs.google.com/spreadsheets/d/17
 
 ---
 
-## List of Personnel
+## List of Instructors
 
 |Position |Name | Institution | Contact |
 | --- | --- | --- | --- |
@@ -21,23 +21,30 @@ Here is a link to the daily [schedule](https://docs.google.com/spreadsheets/d/17
 | Postdoc | Eric Garcia | ODU | e1garcia@odu.edu |
 | Postdoc | Brendan Reid | Rutgers | br450@sebs.rutgers.edu |
 | PhD Student | Rene Clark | Rutgers | rdc129@scarletmail.rutgers.edu |
+| PhD Student | Kyra Fitz | Rutgers | ksf63@dls.rutgers.edu |
+| PhD Student | John Whalen | ODU | jwhal002@odu.edu |
+| PhD Student | Jemelyn Baldisimo | ODU | jbald004@odu.edu |
+| M.Sc Student | George Bonsall | ODU | gbons002@odu.edu |
+| M.Sc Student | Roy Roberts | TAMUCC | rroberts3@islander.tamucc.edu |
+| REU/Post-Bac | Jordan Rodriguez | TAMUCC | jrodriguez216@islander.tamucc.edu |
 
 ## List of Participants
 
 |Position |Name | Institution | Contact |
 | --- | --- | --- | --- |
-| REU |Abigail Ethridge | ODU | aethr001@odu.edu |
-| REU |Eryka Molino | ASU | emolino1230@gmail.com |
-| REU |Rebecca Ruiz | TAMUCC | rruiz25@islander.tamucc.edu |
-| REU |Allison Fink | Rutgers | agf63@scarletmail.rutgers.edu |
-| REU |Marial Malabag | Rutgers | mjm751@scarletmail.rutgers.edu |
+| REU/Post-Bac |Abigail Ethridge | ODU | aethr001@odu.edu |
+| REU/Post-Bac |Eryka Molino | ASU | emolino1230@gmail.com |
+| REU/Post-Bac |Rebecca Ruiz | TAMUCC | rruiz25@islander.tamucc.edu |
+| REU/Post-Bac |Allison Fink | Rutgers | agf63@scarletmail.rutgers.edu |
+| REU/Post-Bac |Marial Malabag | Rutgers | mjm751@scarletmail.rutgers.edu |
 | RA | Kevin L. Labrador | UP Mindanao | kllabrador@up.edu.ph |
 | RA | Maybelle A. Fortaleza | UP Mindanao | mafortaleza@up.edu.ph |
 | RA | Joemarie L. Lanutan | UP Mindanao | jjlanutan@up.edu.ph |
 | Professor | Cleto L. Nanola Jr. | UP Mindanao | clnanola@up.edu.ph |
-| Ms Student | Omar Mahadalle | Siliman University | omaramahadalle@su.edu.ph | 
-| Ms Student | Abner Bucol | Siliman University | abnerbucol2013@gmail.com
-| Ms Student | Chandy Jablonski | ODU | cjabl001@odu.edu |
+| M.Sc. Student | Omar Mahadalle | Siliman University | omaramahadalle@su.edu.ph | 
+| M.Sc. Student | Abner Bucol | Siliman University | abnerbucol2013@gmail.com
+| M.Sc. Student | Chandelle Jablonski | ODU | cjabl001@odu.edu |
+| M.Sc. Student | Nichole Leach | ODU | npete006@odu.edu |
 
 ---
 
