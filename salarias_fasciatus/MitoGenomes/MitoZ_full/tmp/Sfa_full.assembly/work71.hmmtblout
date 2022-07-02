@@ -1,0 +1,12 @@
+# target name        accession  query name           accession  hmmfrom hmm to alifrom  ali to envfrom  env to  sq len strand   E-value  score  bias  description of target
+#------------------- ---------- -------------------- ---------- ------- ------- ------- ------- ------- ------- ------- ------ --------- ------ ----- ---------------------
+#
+# Program:         nhmmer
+# Version:         3.1b2 (February 2015)
+# Pipeline mode:   SEARCH
+# Query file:      /opt/MitoZ/bin/profiles/CDS_HMM/Chordata_CDS.hmm
+# Target file:     /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/MitoGenomes/MitoZ_full/tmp/Sfa_full.assembly/work71.scafSeq
+# Option settings: nhmmer -o work71.hmmout --tblout work71.hmmtblout --cpu 8 /opt/MitoZ/bin/profiles/CDS_HMM/Chordata_CDS.hmm /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/MitoGenomes/MitoZ_full/tmp/Sfa_full.assembly/work71.scafSeq 
+# Current dir:     /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/MitoGenomes/MitoZ_full/tmp/Sfa_full.assembly
+# Date:            Wed Jun 29 19:26:18 2022
+# [ok]
