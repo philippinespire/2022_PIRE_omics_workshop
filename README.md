@@ -233,10 +233,12 @@ To download, `sftp` into Wahab in a new Terminal window and download the histogr
 ```sh
 sftp your_user_ID@wahab.hpc.odu.edu
 
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
+#cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired
 
 lpwd  #this is your local working directory
 get fq_fp1_clmp_fp2_fqscrn_repaired/<histofile.histo>
+get Sfa_all_reads.histo
 ```
 
 Then:

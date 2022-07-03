@@ -281,7 +281,7 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sfa" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-The Jellyfish kmer-frequency [histogram file](<insert file here>) 
+The Jellyfish kmer-frequency [histogram file](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa_all_reads.histo) 
 was uploaded into [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [GenomeScope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the [v1.report](<insert file>) and [v2.report](insert file>). 
 
 Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions:
@@ -390,9 +390,9 @@ Sfa  |allLibs  |decontam       |scaffolds       |off       |2   | ? | ? |  ?  | 
 
 ## Step 5. Identify Best Assembly
 
-Scaffold assembly B of library 1H created the best assembly. 
+What is the best assembley? Note here. Include the assembly and the corresponding library.
 
-Assemblies B and allLibs were very similar, and different metrics were slightly higher in one or the other but at end, I went for assembly B based on its higher BUSCO score.
+Note additional remarks if necessary
 
 ## Step 6. Assemble Contaminated Data From the Best Library
 
