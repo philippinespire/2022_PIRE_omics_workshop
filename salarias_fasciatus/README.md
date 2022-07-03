@@ -16,7 +16,7 @@ Used decode file from Sharon Magnuson.
 salloc
 bash
 
-cd /home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq
 
 #run renameFQGZ.bash first to make sure new names make sense
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_ProbeDevelopmentLibraries_SequenceNameDecode.tsv
