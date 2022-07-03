@@ -375,7 +375,17 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh 
 
 ## Step 4. Fill in QUAST and BUSCO Values
 
-### Summary of QUAST (using GenomeScope v.2 635000000 estimate) and BUSCO Results
+You are not going to have the BUSCO output till few hours but you can copy the out files from the workshop:
+```sh
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
+pwd
+
+cp -R /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/busco-results .
+```
+
+Now you can complete the table below
+
+### Summary of QUAST (using GenomeScope v.2 <enter genome length> estimate) and BUSCO Results
 
 Species    |Assembly    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
 ------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------

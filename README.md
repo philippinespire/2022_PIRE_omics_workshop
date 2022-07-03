@@ -237,7 +237,7 @@ sftp your_user_ID@wahab.hpc.odu.edu
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired
 
 lpwd  #this is your local working directory
-get fq_fp1_clmp_fp2_fqscrn_repaired/<histofile.histo>
+#get fq_fp1_clmp_fp2_fqscrn_repaired/<histofile.histo>
 get Sfa_all_reads.histo
 ```
 
@@ -451,7 +451,7 @@ cd ~/shotgun_PIRE/2022_PIRE_Omics_workshop/your_name
 
 #runBUSCO.sh <species dir> <SPAdes dir> <contigs | scaffolds>
 #do not use trailing / in paths. Example using contigs:
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name" "SPAdes_decontam_R1R2_noIsolate" "contigs"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name" "SPAdes_allLibs_decontam_R1R2_noIsolate" "contigs"
 ```
 
 Repeat the command using the contigs and scaffolds files for each SPAdes assembly.
@@ -463,6 +463,20 @@ Repeat the command using the contigs and scaffolds files for each SPAdes assembl
 ## **5. Record QUAST and BUSCO Values**
 
 Fill in this table with your QUAST and BUSCO values in your species README.
+
+You didn't run SPAdes or BUSCO so you don't have QUAST/BUSCO output in your dir yet. Copy the output for allLibs from the Sfa workshop dir:
+```
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
+pwd
+
+#QUAST
+cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report/transposed_report.tsv ./SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report/transposed_report.tsv
+cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/SPAdes_allLibs_decontam_R1R2_noIsolate/quast_scaffolds_report/transposed_report.tsv ./SPAdes_allLibs_decontam_R1R2_noIsolate/quast_scaffolds_report/transposed_report.tsv 
+
+
+#BUSCO
+cp -R /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/busco-results .
+```
 
 A few notes:
 
@@ -547,14 +561,14 @@ cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "2" "decontam_covAUTO" "635000000" "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-Finally, run one more assembly using the decontaminated data from the same library (or all together) that produced the best assembly (with or without the covcutoff flag).
+Finally, run one more assembly using the contaminated data from the same library (or all together) that produced the best assembly (with or without the covcutoff flag).
 
 Example:
 
 ```bash
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "decontam" "635000000" "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "your user ID" "Sfa" "3" "contam" "635000000" "~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
 ---
