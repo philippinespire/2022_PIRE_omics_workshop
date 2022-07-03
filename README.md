@@ -18,7 +18,7 @@ Here is a link to the daily [schedule](https://docs.google.com/spreadsheets/d/17
 | --- | --- | --- | --- |
 | Professor | Kent Carpenter | ODU | cbird@odu.edu |
 | Professor | Chris Bird | TAMUCC | kcarpent@odu.edu |
-| Postdoc | Eric Garcia | ODU | e1garcia@odu.edu |
+| Postdoc | [Eric Garcia](https://ericgarciaphd.wordpress.com) | ODU | e1garcia@odu.edu |
 | Postdoc | Brendan Reid | Rutgers | br450@sebs.rutgers.edu |
 | PhD Student | Rene Clark | Rutgers | rdc129@scarletmail.rutgers.edu |
 | PhD Student | Kyra Fitz | Rutgers | ksf63@dls.rutgers.edu |
