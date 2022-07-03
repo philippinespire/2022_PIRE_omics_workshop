@@ -103,6 +103,8 @@ git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git
 #you will be prompted for your username and password. The username is your GitHub username. The password is a PAT (personal access token) associated with your GitHub account.
 ```
 
+**If you do NOT have a PAT yet, follow these [instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). MAKE SURE TO SAVE THIS TOKEN SOMEWHERE ON YOUR COMPUTER SO YOU CAN COPY-AND-PASTE!**
+
 ***Now you have the files you need to start working!***
 
 *Organization is important* - for the workshop, each person will create and work in their own sub-directory in this repository. 
@@ -117,13 +119,13 @@ mkdir <your_name_with_no_spaces>
 
 **Please Note:** do not use spaces or special characters (*#$%^&~"[])(+'\|=*) in the names of files or directories. Stick to letters, numbers, dashes (-), and underscores (_).
 
-Next, you are going to copy the `README.md` file from the  `2022_PIRE_omics_workshop/salarias_fasciatus` directory to your own directory. The `README.md` serves as a log where you record the code you ran for each step, as well as any important notes (errors you ran into, data quality assessment, etc.). You will modify this README to match your code and results as you run each step of the pipeline.
-  * During the workshop, all participants will be running data from the same species (*Salarias faciatus*) through the SSL pipeline. Thus, everyone's output should look the same at each step! The `salarias_fasciatus` directory serves as a template for you to check your results against. You will also be reading data in from this directory at various steps throughout the workshop, to speed up the process.
+Next, you are going to copy the `student_README.md` file from the  `2022_PIRE_omics_workshop` directory to your own directory. The `README.md` serves as a log where you record the code you ran for each step, as well as any important notes (errors you ran into, data quality assessment, etc.). You will modify this README to match your code and results as you run each step of the pipeline.
+  * During the workshop, all participants will be running data from the same species (*Salarias faciatus*) through the SSL pipeline. Thus, everyone's output should look the same at each step! The `salarias_fasciatus` directory, and the `README.md` document within, serves as a template for you to check your results against. You will also be reading data in from this directory at various steps throughout the workshop, to speed up the process.
 
 ```
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name #this should be the full path to the directory you just created
 
-cp ../salarias_fasciatus/README.md .
+cp ../student_README.md .
 ```
 
 ---
@@ -144,8 +146,6 @@ git pull
 git add ./*
 git commit -m "" #in "" write a short message describing what you did
 git push -u
-
-chmod -R 770 * #gives everyone access to your files
 ```
 
 This code has also been compiled into the script [`runGIT.bash`](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/runGIT.bash). Thus, you can just run this script BEFORE and AFTER you do anything in your workshop directory. Copy this to your workshop dir if you would like to run it:
