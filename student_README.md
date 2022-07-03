@@ -10,13 +10,13 @@ Following the [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq
 
 ## Step 0. Rename the raw fq.gz files
 
-Used decode file from Sharon Magnuson.
+Used decode file from Sharon Magnuson. **We will do this together in the workshop as a demonstration.**
 
 ```
 salloc
 bash
 
-cd /home/e1garcia/shotgun_PIRE/REUs/2022_REU/workshop/salarias_fasciatus/shotgun_raw_fq
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #run renameFQGZ.bash first to make sure new names make sense
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_ProbeDevelopmentLibraries_SequenceNameDecode.tsv
@@ -44,16 +44,16 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
-  * % duplication - low
-    * 20-26%
-  * gc content - reasonable
-    * 45-47%
-  * quality - good
-    * sequence quality and per sequence qual both good
-  * % adapter - good and low
-    * ~4%
-  * number of reads - good
-    * ~216M
+  * % duplication - 
+    * 
+  * gc content - 
+    * 
+  * quality - 
+    * 
+  * % adapter - 
+    * 
+  * number of reads - 
+    * 
 
 ---
 
@@ -71,17 +71,17 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatc
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1/1st_fastp_report.html) written out to `fq_fp1` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
-  * % duplication - low 
-    * 17-23%
-  * gc content - reasonable
-    * ~45%
-      * more variable at pos 1-70 than in 70-150 
-  * passing filter - good
-    * ~95-96%
-  * % adapter - not too bad 
-    * 6-8.5%
-  * number of reads - good
-    * ~324-504M (per pair of r1-r2 files)
+  * % duplication -  
+    * 
+  * gc content - 
+    * 
+      * 
+  * passing filter - 
+    * 
+  * % adapter -  
+    * 
+  * number of reads - 
+    * 
 
 ---
 
@@ -134,16 +134,16 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch f
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2/2nd_fastp_report.html) written out to `fq_fp1_clmp_fp2` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
-  * % duplication - good
-    * 3-6%
-  * gc content - reasonable
-    * 45% 
-  * passing filter - good
-    * 87-89%s 
-  * % adapter - virtually none
-    * 0.1-0.2%
+  * % duplication - 
+    * 
+  * gc content - 
+    * 
+  * passing filter - 
+    * 
+  * % adapter - 
+    * 
   * number of reads
-    * 241-358M (per pair of r1-r2 files)
+    * 
 
 ---
 
@@ -170,8 +170,6 @@ ls fq_fp1_clmp_fp2_fqscrn/*screen.txt | wc -l
 ls fq_fp1_clmp_fp2_fqscrn/*screen.png | wc -l
 ls fq_fp1_clmp_fp2_fqscrn/*screen.html | wc -l
 
-#all returned 6 (good)
-
 #checked for errors in all out files at once
 grep 'error' slurm-fqscrn.*out
 grep 'No reads in' slurm-fqscrn.*out
@@ -192,8 +190,8 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runMULTIQC.sbatch fq_fp
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/fastqc_screen_report.html) written out to `fq_fp1_clmp_fp2_fqscrn` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:
-  * one hit, one genome, no ID ~96% - fine
-  * no one hit, one genome to any potential contaminators (bacteria, virus, human, etc) - good
+  * 
+  * 
 
 Cleaned-up logs again.
 
@@ -231,12 +229,12 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/fastqc_report.html) written out to `fq_fp1_clmp_fp2_fqscrn_repaired` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
-  * % duplication - fine
-    * 8-11%
-  * gc content - reasonable
-    * 44% 
+  * % duplication - 
+    * 
+  * gc content - 
+    * 
   * number of reads
-    * 112-165.8M
+    * 
 
 ---
 
@@ -255,12 +253,12 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh 
 Generated the [percent_read_loss](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/preprocess_read_change/readLoss_table.tsv) and [percent_reads_remaining](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/preprocess_read_change/readsRemaining_table.tsv) tables.
 
 Reads lost:
-  * fastp1 dropped 3-6% of the reads
-  * 14-20% of reads were duplicates and were dropped by clumpify
-  * fastp2 dropped 11-13% of the reads after deduplication
+  * fastp1 dropped XX% of the reads
+  * XX% of reads were duplicates and were dropped by clumpify
+  * fastp2 dropped XX% of the reads after deduplication
 
 Reads remaining:
-  * Total reads remaining: 63-66% (>100M reads - fine)
+  * Total reads remaining: XX% 
 
 ---
 
