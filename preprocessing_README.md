@@ -69,7 +69,9 @@ cp ../../salarias_fasciatus/shotgun_raw_fq/README.md #for the workshop you will 
 
 ## **0. Rename the raw fq.gz files (<1 minute run time)**
 
-We need to rename the raw files from the sequencer to match our project naming convention. In the previous step, when you copied the raw `fq.gz` files over, you also copied the "decode" file (`*Decode.tsv`). This file tells us which species, population, extraction, etc. each library came from. We normally use this decode file to then rename the raw files. For the workshop, we will demonstrate this step as a group. You do NOT need to do this individually.
+We need to rename the raw files from the sequencer to match our project naming convention. In the previous step, when you copied the raw `fq.gz` files over, you also copied the "decode" file (`*Decode.tsv`). This file tells us which species, population, extraction, etc. each library came from. We normally use this decode file to then rename the raw files. 
+
+**FOR THE WORKSHOP, WE WILL DEMONSTRATE THIS STEP AS A GROUP. YOU DO NOT NEED TO DO THIS INDIVIDUALLY.**
 
 Make sure you check and edit the decode file as necessary so that the following naming format is followed:
 
@@ -132,7 +134,7 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC_wkshp.sh "
 
  Review the `multiqc` output (`shotgun_raw_fq/fastqc_report.html`).
   * How much duplication was there?
-  * What is the GC content for each library?  
+  * What is the GC content for each library? Does this look reasonable? (*Hint: typically we see GC content between 44-48%*)  
   * What is the % adaptor?
   * How many reads/library?
 
@@ -205,6 +207,8 @@ INFO: os::commit_memory(0x00007fc08c000000, 204010946560, 0) failed; error='Not 
 
 If the array set up doesn't work try running Clumpify on a Turing himem node (see the [cssl repo](https://github.com/philippinespire/pire_cssl_data_processing/tree/main/scripts) for details).
 
+**STOP HERE FOR MERIENDA.**
+
 ---
 
 ## **4. Second trim. Execute `runFASTP_2_ssl.sbatch` (0.5-3 hours run time)**
@@ -222,10 +226,10 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch /
 ```
 
 Review the results with the `fastqc` output (`fq_fp1_clmp_fp2/2nd_fastp_report.html`). You may have to come back to this step later on in the workshop.
-  * Has the amount of duplication changed?
+  * Has the amount of duplication changed? Why do you think it is so much lower now than before?
   * Has the GC content changed?  
-  * What percentage of reads passed the second round of filtering?
-  * How many reads/library now?
+  * What percentage of reads passed the second round of filtering? Do you think this is a good percentage?
+  * How many reads/library now? Why do you think this changed?
 
 ---
 
@@ -326,6 +330,8 @@ Review the results with the `fastqc` output (`fq_fp1_clmp_fp2_repaired/fastqc_re
   * Has the amount of duplication changed?
   * Has the GC content changed?  
   * How many reads/library now?
+
+**STOP HERE AT THE END OF DAY 1.**
 
 ---
 
