@@ -446,13 +446,13 @@ mv scaffolds.fasta Sgr_scaffolds_B_decontam_R1R2_noIsolate.fasta
 Execute the first script
 ```sh
 #WGprobe_annotation.sb <assembly name> 
-sbatch WGprobe_annotation.sb "Sgr_scaffolds_SgC0072C_contam_R1R2_noIsolate.fasta"
+sbatch WGprobe_annotation.sb "Sgr_scaffolds_B_decontam_R1R2_noIsolate.fasta"
 ```
 
 Execute the second script
 ```sh
 #WGprobe_annotation.sb <assembly base name> 
-sbatch WGprobe_bedcreation.sb "Sgr_scaffolds_SgC0072C_contam_R1R2_noIsolate"
+sbatch WGprobe_bedcreation.sb "Sgr_scaffolds_B_decontam_R1R2_noIsolate.fasta"
 ```
 
 The longest scaffold is 105644
