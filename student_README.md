@@ -285,7 +285,7 @@ Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both ver
 
 **insert table here**
 
-No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
+No red flags. We will use the max value from V2 rounded up to ***insert value here*** bp.
 
 ---
 
