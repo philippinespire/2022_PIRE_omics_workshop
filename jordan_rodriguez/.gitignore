@@ -1,0 +1,61 @@
+# DNA files
+*.gfa
+*.fq
+*.fq.*
+*.fasta
+*.fasta.*
+*.fastq
+*.fastq.*
+*.fa
+*.fa.*
+*.fna
+*.fna.*
+*.bam
+*.bam.*
+*.sam
+*.vcf
+*.vcf.gz
+*.saf*
+*.beagle*
+*.glf
+
+# BIG files
+*.ld
+*.gz
+*.tsv
+*.tsv.*
+*.csv
+*.csv.*
+*.json
+*.json.*
+*.mafs
+*.snpStat
+*.hwe
+*.geno
+*.npy
+*.sites
+*.sites.txt
+
+# Problem Files
+*Rhistory
+
+
+# Directories
+dDocentHPC/
+fltrVCF/
+rad_haplotyper/
+rroberts_thesis/
+SPA*/
+SPAdes*/
+SPAdes_R1R2_noIsolate_decontam/
+busco_c*/
+busco_s*/
+busco_d*/
+*/logs/probes_ann*out
+probes_ann*
+
+# Block these specific large files
+out_PCAngsd_selection_minMaf0.0_e80.selection.npy
+out_PCAngsd_selection_minMaf0.0_e100.selection.npy
+
+# Allow these files to be synced
