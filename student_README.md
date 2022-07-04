@@ -272,7 +272,7 @@ However, we will still estimate the genome size of *Salarias fasciatus* using Je
 Executed `runJellyfish.sbatch` using the decontaminated files.
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
 
 #runJellyfish.sbatch <Species 3-letter ID> <indir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sfa" "fq_fp1_clmp_fp2_fqscrn_repaired"
@@ -296,22 +296,22 @@ Executed [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespi
 ```sh
 #new window
 ssh username@turing.hpc.odu.edu
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <contam | decontam> <genome size in bp> <species dir>
 #do not use trailing / in paths
 
 #1st library
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "1" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "1" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
 
 #2nd library
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "2" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "2" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
 
 #3rd library
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "3" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "3" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
 
 #all libraries combined
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "all_3libs" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "all_3libs" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
  
 JOB IDs:
