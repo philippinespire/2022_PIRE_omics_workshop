@@ -712,21 +712,22 @@ Once your list is ready, create a file in your `probe_design` dirctory.
 
 ```sh
 #example for Spratelloides gracilis
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/probe_design
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your-name/probe_design
 
-nano closest_relative_genomes_Spratelloides_gracilis.txt
+nano closest_relative_genomes_salarias_fasciatus.txt
 
-1.- Clupea harengus
-https://www.ncbi.nlm.nih.gov/genome/15477
-2.- Sardina pilchardus
-https://www.ncbi.nlm.nih.gov/genome/8239
-3.- Tenualosa ilisha
-https://www.ncbi.nlm.nih.gov/genome/12362
-4.- Coilia nasus
-https://www.ncbi.nlm.nih.gov/genome/2646
-5.- Denticeps clupeoides
-https://www.ncbi.nlm.nih.gov/genome/7889
-```
+Closest genomes:
+1. Salarias fascistus - https://www.ncbi.nlm.nih.gov/genome/7248
+2. Parablennius parvicornis - https://www.ncbi.nlm.nih.gov/genome/69445
+3. Petroscirtes breviceps - https://www.ncbi.nlm.nih.gov/genome/7247
+4. Ecsenius bicolor - https://www.ncbi.nlm.nih.gov/genome/41373
+5. Gouania willdenowi - https://www.ncbi.nlm.nih.gov/genome/76090
+
+Used Betancour et al. 2017 (All Blenniiformes)
+
+---
+
+**NOTE:** Sfa has a genome available in GenBank.
 
 ---
 
@@ -775,97 +776,6 @@ Eric will then share these with Arbor BioSciences.
 #### **Finito!!!**
 
 #### **Congrats! You have finished the SSL processing pipeline. Go ahead, give yourself a pat on the back!**
-
----
-
-## **13. Cleaning Up**
-
-The SSL pipeline creates multiple copies of your data in the form of intermediate files. Assuming that you have finished the pipeline (have checked your files and send probe info to Arbor Bio), it is now time to do some cleaning-up.
-
-Document the size of your directories and files before cleaning-up and save this information to a file named:
-
-`<your species 3-letter ID>_ssl_beforeDeleting_IntermFiles` 
-
-From your species directory:
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-du -h | sort -rh > <yourspecies>_ssl_beforeDeleting_IntermFiles
-#Sgr example Sgr_ssl_beforeDeleting_IntermFiles
-```
-
-### **13a. Make a copy of important files** 
-
-**You do not need to do this for the workshop. Only members of the Carpenter group (on Wahab) can read/write to the RC.**
-
-Before deleting files, make a copy of any important files in the RC (only available when on the log-in node):
-
-1. raw sequence files (this should had been done already but double check)
-2. "contaminated" files (`fq_fp1_clmp_fp2`)
-3. "decontaminated" files (`fq_fp1_clmp_fp2_fqscrn_repaired`)
-4. best assembly (just the `contigs.fasta` and `scaffolds.fasta` for contam and decontam best assemblies)
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-#check for a copy of raw files
-ls /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your_species/shotgun_raw_fq
-
-#make copy of contaminated and decontaminated files
-cp -R fq_fp1_clmp_fp2 /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/
-cp -R fq_fp1_clmp_fp2_fqscrn_repaired /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/               
-
-#make a copy of fasta files for best assembly (Sgr example)
-mkdir /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/SPAdes_SgC0072C_contam_R1R2_noIsolate
-mkdir /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/SPAdes_SgC0072C_decontam_R1R2_noIsolate
-cp SPAdes_SgC0072C_contam_R1R2_noIsolate/[cs]*.fasta /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/<your species>/SPAdes_SgC0072C_contam_R1R2_noIsolate
-cp SPAdes_SgC0072C_decontam_R1R2_noIsolate/[cs]*.fasta /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/<your species>/SPAdes_SgC0072C_decontam_R1R2_noIsolate
-```
-
-### **13b. Delete unneeded files**
-
-Delete the raw sequence files and other sequence files (`fq.gz` | `fastq.gz`) from the intermediate steps (Fastp1, Clumpify, and Fastqscreen; steps 0, 2, and 5). Keep the files from `fq_fp1_clmp_fp2` and `fq_fp1_clmp_fp2_fqscrn_repaired`. 
-
-It is a good idea to keep track of the files you are deleting. An easy way to do this is to list the files to be deleted, copy their information and paste it into a log file tracking the files you are deleting.
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-ls -l fq/*fq.gz
-
-#copy what is printed to the commandline and paste into the log file
-
-nano deleted_files_log
-#paste (example)
-/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis/fq/
--rwxr-x--- 1 e1garcia carpenter  15G Aug  2 12:12 SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_1.fq.gz
--rwxr-x--- 1 e1garcia carpenter  16G Aug  2 12:30 SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_2.fq.gz
--rwxr-x--- 1 e1garcia carpenter  13G Aug  2 12:45 SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_1.fq.gz
--rwxr-x--- 1 e1garcia carpenter  14G Aug  2 13:01 SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_2.fq.gz
--rwxr-x--- 1 e1garcia carpenter  16G Aug  2 13:19 SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_1.fq.gz
--rwxr-x--- 1 e1garcia carpenter  17G Aug  2 13:36 SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_2.fq.gz
-```
-
-Append the information from the rest of files to be deleted into the same file.
-
-Finally, document the new size of your directories.
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-du -h | sort -rh > <yourspecies>_ssl_afterDeleting_IntermFiles
-```
-
-For *Spratelloides gracisilis* for example, about 1Tb of data was deleted! You will likely delete less than that but still a substantial amount.
-
-Move the cleaning files into the `logs` directory
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-mv Sfa_ssl* logs
-mv deleted_files_log logs
-```
 
 ---
 
