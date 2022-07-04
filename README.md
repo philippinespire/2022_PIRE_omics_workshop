@@ -413,7 +413,7 @@ Then, run a job combining all libraries together by choosing the appropiate "all
 
 ---
 
-## **3. Review SPAdes and QUAST Output**
+## **Review SPAdes and QUAST Output**
 
 `runSPADEShimem_R1R2_noisolate.sbatch` names the output directories with the suffix A for the first library, B for the second, and C for the third (if there is one). Thus, for Sfa:
 
@@ -447,7 +447,7 @@ cat quast-reports/quast-report_contigs_Sfa_spades_Sfa-CBas-A_decontam_R1R2_21-99
 
 ---
 
-## **4. Run BUSCO (multiple hours)**
+## **3. Run BUSCO (multiple hours)**
 
 QUAST gives us many of the basic assembly statistics, however we still need to run BUSCO to know how many expected (i.e. highly conserved) genes were recovered by the assembly. This gives us another sense of how "complete" the genomes we just assembled are.
 
@@ -467,7 +467,7 @@ Repeat the command using the contigs and scaffolds files for each SPAdes assembl
 
 ---
 
-## **5. Record QUAST and BUSCO Values**
+## **4. Record QUAST and BUSCO Values**
 
 Fill in this table with your QUAST and BUSCO values in your species README.
 
@@ -508,7 +508,7 @@ Sfa  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   
 
 ---
 
-## **6. Determine the Best Assembly - LECTURE**
+## **5. Determine the Best Assembly - LECTURE**
 
 We assess quality across multiple metrics since we don't use a golden rule/metric for determining the best assembly. Often, it is clear that one of the libraries is better than the others, as it has better results across multiple metrics. However, sometimes this is not quite as clear as we would like, as different assemblies might fare better in some metrics and worse in others. Use the following table to help you decide which assembly is best:
 
@@ -526,7 +526,7 @@ If you are still undecided on which is the best assembly, raise your hand or tal
 
 ---
 
-## **7. Assemble Contaminated Data From the Best Library** 
+## **6. Assemble Contaminated Data From the Best Library** 
 
 ```bash
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
@@ -542,7 +542,7 @@ Compare the QUAST contigs and scaffolds values of your contaminated assembly to 
 
 ---
 
-## **8. Update the Main Assembly Stats Table With Your Species**
+## **7. Update the Main Assembly Stats Table With Your Species**
 
 **You will not do this for the workshop. You should compare your results to this table, however, to see how your species stacks up.**
 
@@ -554,7 +554,7 @@ Once done, push your changes to GitHub and confirm the that tsv format is correc
 
 --- 
 
-## **9. Evaluate Results**
+## **8. Evaluate Results**
 
 Assuming you have completed Step 9, you now know what library(ies) produced the best assembly. Compare your BUSCO values with those of the other species (for example, you can check the ["best assembly table"](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/best_ssl_assembly_per_sp.tsv).
 
@@ -580,7 +580,7 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShim
 
 ---
 
-## **10. Clean Up**
+## **9. Clean Up**
 
 Move your `*out` files into the `logs` directory.
 
