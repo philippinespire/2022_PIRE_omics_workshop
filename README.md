@@ -413,7 +413,7 @@ Then, run a job combining all libraries together by choosing the appropiate "all
 
 ---
 
-## **3. Review SPAdes and QUAST Output**
+## **3. Review SPAdes and QUAST Output - LECTURE**
 
 `runSPADEShimem_R1R2_noisolate.sbatch` names the output directories with the suffix A for the first library, B for the second, and C for the third (if there is one). Thus, for Sfa:
 
