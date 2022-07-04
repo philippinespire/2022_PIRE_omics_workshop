@@ -1,16 +1,40 @@
-# Sfa Shotgun Data Processing Log - SSL data
+# *Salarias fasciatus* Shotgun Data Processing Log - SSL data
 
-Copy and paste this into a new species dir and fill in as steps are accomplished.
+---
+
+Jordan Rodriguez
+ 
+Here is a roadmap of what I did during the 2022 Philippines Omics Workshop -- enjoy the awesomeness ;)
+
+---
+
+To begin, I first created a `shotgun_PIRE` directory and cloned the workshop repo into my home directory on the wahab.hpc.odu.edu server.
+Here is the code I ran:
+```bash
+#done on USER@wahab.hpc.odu.edu server
+mkdir shotgun_PIRE
+cd shotgun_PIRE
+git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git  
+```
+
+Then, I created my personal directory in the `2022_PIRE_omics_workshop` directory and copied the student_README into my personal dir
+Here is the code I ran:
+```bash 
+
+
+
+
+---
+
+## **A. Pre-Processing Raw Data**
 
 Following the [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq_gz_processing) and [pire_ssl_data_processing](https://github.com/philippinespire/pire_ssl_data_processing) roadmaps.
 
 ---
 
-## **A. Pre-Processing Section**
+### Step 0. Rename the raw fq.gz files
 
-## Step 0. Rename the raw fq.gz files
-
-Used decode file from Sharon Magnuson. **We will do this together in the workshop as a demonstration.**
+Workshop organizers completed this step for the students. 
 
 ```
 salloc
