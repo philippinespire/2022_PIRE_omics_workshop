@@ -62,7 +62,7 @@ This was the code I used:
 ```bash 
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
 # Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "file extension"
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "./shotgun_raw_fq/" "fq.gz"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC_wkshp.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "./shotgun_raw_fq/" "fq.gz"
 ```
 
 
