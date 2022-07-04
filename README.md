@@ -377,11 +377,11 @@ Sfa example:
 ```bash
 ls /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq/*gz
 
-Sfa-CBas_028-Ex1-1G_L4_1.fq.gz #library 1
+Sfa-CBas_028-Ex1-1G_L4_1.fq.gz #library A
 Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
-Sfa-CBas_028-Ex1-1H_L4_1.fq.gz #library 2
+Sfa-CBas_028-Ex1-1H_L4_1.fq.gz #library B
 Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
-Sfa-CBas_028-Ex1-2A_L4_1.fq.gz #library 3
+Sfa-CBas_028-Ex1-2A_L4_1.fq.gz #library C
 Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
 ``` 
 
