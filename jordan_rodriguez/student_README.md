@@ -12,6 +12,7 @@ To begin, I first created a `shotgun_PIRE` directory and cloned the workshop rep
 Here is the code I ran:
 ```bash
 #done on USER@wahab.hpc.odu.edu server
+cd ~
 mkdir shotgun_PIRE
 cd shotgun_PIRE
 git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git  
@@ -20,10 +21,11 @@ git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git
 Then, I created my personal directory in the `2022_PIRE_omics_workshop` directory and copied the student_README into my personal dir
 Here is the code I ran:
 ```bash 
-
-
-
-
+#~/shotgun_PIRE/2022_PIRE_omics_workshop
+mkdir jordan_rodriguez
+cd jordan_rodriguez/
+cp ../student_README.md .
+```
 ---
 
 ## **A. Pre-Processing Raw Data**
@@ -34,12 +36,9 @@ Following the [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq
 
 ### Step 0. Rename the raw fq.gz files
 
-Workshop organizers completed this step for the students. 
-
-```
-salloc
-bash
-
+Workshop organizers completed this step for the students, so I left the code provided below alone. 
+This was the code they ran:
+```bash
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #run renameFQGZ.bash first to make sure new names make sense
@@ -52,7 +51,12 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_Probe
 
 ---
 
-## Step 1. Check quality of data with fastqc
+
+
+
+
+CURRENTLY UPDATING BELOW:
+### Step 1. Check quality of data with fastqc
 
 Ran [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh).
 * **NOTE:** for the 2022 PIRE Omics workshop, run [`Multi_FASTQC_wkshp.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC_wkshp.sh) instead. Specify out directory to write the output to.
