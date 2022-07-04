@@ -1,1 +1,216 @@
 Already up to date.
+[main 115465f] updating
+ Committer: e1garcia <e1garcia@e3-w6420b-01.ib.cluster>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 230 files changed, 201172 insertions(+), 186800 deletions(-)
+ create mode 100755 logs
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/multiqc_data/multiqc.log
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/multiqc_data/multiqc_fastqc.txt
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/multiqc_data/multiqc_general_stats.txt
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/multiqc_data/multiqc_sources.txt
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/multiqc_report.html
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-750997.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-750998.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-750999.out
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{Sfa_denovoSSL_100k_psmcbootplot-716809.out => Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751000.out} (100%)
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751001.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751002.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751003.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751004.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751005.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751006.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751007.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751008.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751009.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751010.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751011.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751012.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751014.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751015.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751016.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751017.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751018.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751019.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751020.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751021.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751022.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751023.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751024.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751025.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751026.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751027.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751028.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751029.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751030.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751031.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751032.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751033.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751034.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751035.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751036.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751037.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751038.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751039.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751040.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751041.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751042.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751043.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751044.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751045.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751046.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751047.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751048.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751049.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751050.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751051.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751052.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751053.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751054.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751055.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751056.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751057.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751058.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751059.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751060.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751061.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751062.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751063.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751064.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751065.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751066.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751067.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751068.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751069.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751070.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751071.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751072.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751073.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751074.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751075.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751076.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751077.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751078.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751079.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751080.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751081.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751082.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751083.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751084.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751085.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751086.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751087.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751088.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751090.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751091.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751092.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751093.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751094.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751095.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751096.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751097.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcboot-751098.out
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{ => Sfa_denovoSSL_100k_PSMC/joblog}/Sfa_denovoSSL_100k_psmcbootplot-716774.out (100%)
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{ => Sfa_denovoSSL_100k_PSMC/joblog}/Sfa_denovoSSL_100k_psmcbootplot-716795.out (100%)
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{ => Sfa_denovoSSL_100k_PSMC/joblog}/Sfa_denovoSSL_100k_psmcbootplot-716796.out (100%)
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{ => Sfa_denovoSSL_100k_PSMC/joblog}/Sfa_denovoSSL_100k_psmcbootplot-716799.out (100%)
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{ => Sfa_denovoSSL_100k_PSMC/joblog}/Sfa_denovoSSL_100k_psmcbootplot-716800.out (100%)
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{ => Sfa_denovoSSL_100k_PSMC/joblog}/Sfa_denovoSSL_100k_psmcbootplot-716801.out (100%)
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/Sfa_denovoSSL_100k_PSMC/joblog/Sfa_denovoSSL_100k_psmcbootplot-716809.out
+ rename salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k/{ => Sfa_denovoSSL_100k_PSMC/joblog}/Sfa_denovoSSL_100k_psmcbootplot-716812.out (100%)
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Multi_fastqc-751119.out
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library1_reduced.R1_fastqc.html
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library1_reduced.R2_fastqc.html
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library2_reduced.R1_fastqc.html
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library2_reduced.R2_fastqc.html
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library3_reduced.R1_fastqc.html
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/Sfa_library3_reduced.R2_fastqc.html
+ create mode 100755 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/fastqc_report.html
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/fastqc_report_data/multiqc.log
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/fastqc_report_data/multiqc_fastqc.txt
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/fastqc_report_data/multiqc_general_stats.txt
+ create mode 100644 salarias_fasciatus/PSMC/data/mkBAM/test_mapping/fastqc_report_data/multiqc_sources.txt
+ create mode 100755 salarias_fasciatus/newFileNames.txt
+ create mode 100755 salarias_fasciatus/origFileNames.txt
+ create mode 100755 slurm-751204.out
+fatal: could not read Username for 'https://github.com': No such device or address
+chmod: changing permissions of 'README.md': Operation not permitted
+chmod: changing permissions of 'R_workshop': Operation not permitted
+chmod: changing permissions of 'R_workshop/workshop_examples.R': Operation not permitted
+chmod: changing permissions of 'R_workshop/fastqc_data.tsv': Operation not permitted
+chmod: changing permissions of 'R_workshop/R_workshop_part2.pptx': Operation not permitted
+chmod: changing permissions of 'R_workshop/davis_practive.csv': Operation not permitted
+chmod: changing permissions of 'R_workshop/workshop_examples_part2.R': Operation not permitted
+chmod: changing permissions of 'R_workshop/An Introduction to R, R Studio,.pptx': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/PCA_Admixture_README.md': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.log1.out': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.eigenval': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.bim': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.nosex': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.1.P': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.2.P': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.3.Q': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.3.P': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.log5.out': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.5.P': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.log2.out': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.bed': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.log3.out': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.2.Q': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.5.Q': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.1.Q': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/lle.B.ssl.Lle-C-3NR-R1R2ORPH-contam-noisolate-off.Fltr07.14.vcf': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.eigenvec': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.4.Q': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.4.P': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.log4.out': Operation not permitted
+chmod: changing permissions of 'leiognathus_leuciscus/pop_structure/PIRE.Lle.Ham.fam': Operation not permitted
+chmod: changing permissions of 'preworkshop_material.md': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/README.md': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_1_fastqc.zip': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/fastqc_report.html': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/README.md': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_1_fastqc.zip': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/origFileNames.txt': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_2_fastqc.zip': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_2_fastqc.html': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_1.fq.gz': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_2_fastqc.zip': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_2_fastqc.html': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/newFileNames.txt': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_2.fq.gz': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_2.fq.gz': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/fastqc_report_data': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/fastqc_report_data/multiqc_fastqc.txt': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/fastqc_report_data/multiqc_data.json': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/fastqc_report_data/multiqc_sources.txt': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/fastqc_report_data/multiqc.log': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/fastqc_report_data/multiqc_general_stats.txt': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa_ProbeDevelopmentLibraries_SequenceNameDecode.tsv': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_2.fq.gz': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_1.fq.gz': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_1.fq.gz': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_2_fastqc.html': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-2A_L4_1_fastqc.html': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_2_fastqc.zip': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_1_fastqc.html': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_1_fastqc.html': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_1_fastqc.zip': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/origFileNames.txt': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/preprocess_read_change': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/preprocess_read_change/readsRemaining_table.tsv': Operation not permitted
+chmod: changing permissions of 'salarias_fasciatus/preprocess_read_change/readLoss_table.tsv': Operation not permitted
+slurmstepd: error: *** JOB 751204 ON e3-w6420b-01 CANCELLED AT 2022-07-03T22:40:36 ***
