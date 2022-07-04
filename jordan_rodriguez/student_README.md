@@ -3,6 +3,8 @@
 ---
 
 Jordan Rodriguez
+
+---
  
 Here is a roadmap of what I did during the 2022 Philippines Omics Workshop -- enjoy the awesomeness ;)
 
