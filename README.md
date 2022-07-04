@@ -91,7 +91,14 @@ Here we go!
 Start the workshop by cloning this repository to your working directory. We recommend setting up a `shotgun_PIRE` directory in your home directory first and then cloning this repository as a subdirectory of that.
   * Example: `/home/youruserID/shotgun_PIRE/`
 
-Clone this repository.
+First, log-on to Wahab. If you are using the Ubuntu terminal, search for "Terminal" on your computer and enter your password (if you have one). If you are on a Mac, you can just search for "Terminal". Then:
+
+```
+ssh your_user_name@wahab.hpc.odu.edu
+#enter your password
+```
+
+Next, clone this directory:
 
 ```
 cd ~ 	#this will take you to your home directory
