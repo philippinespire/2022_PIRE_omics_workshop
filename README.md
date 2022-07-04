@@ -602,7 +602,6 @@ You will create the following 4 files (among others):
 3. `*_augustus.gff`: The gff file created from gene prediction (identifies putative coding regions)
 4. `*_per10000_all.bed`: The bed file with target regions for probe development (1 set of 2 probes per target region)
 
-These instructions have been modified from Rene's [de novo assembly probe repo](https://github.com/philippinespire/denovo_genome_assembly/tree/main/WGprobe_creation).
 
 ---
 
