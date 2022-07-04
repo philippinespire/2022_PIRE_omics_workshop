@@ -1,21 +1,48 @@
-# Sfa Shotgun Data Processing Log - SSL data
+# *Salarias fasciatus* Shotgun Data Processing Log - SSL data
 
-Copy and paste this into a new species dir and fill in as steps are accomplished.
+---
+
+Jordan Rodriguez
+
+---
+ 
+Here is a roadmap of what I did during the 2022 Philippines Omics Workshop -- enjoy the awesomeness ;)
+
+---
+
+To begin, I first created a `shotgun_PIRE` directory and cloned the workshop repo into my home directory on the wahab.hpc.odu.edu server.
+
+Here is the code I ran:
+```bash
+#done on USER@wahab.hpc.odu.edu server
+cd ~
+mkdir shotgun_PIRE
+cd shotgun_PIRE
+git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git  
+```
+
+Then, I created my personal directory in the `2022_PIRE_omics_workshop` directory and copied the student_README into my personal dir.
+
+Here is the code I ran:
+```bash 
+#~/shotgun_PIRE/2022_PIRE_omics_workshop
+mkdir jordan_rodriguez
+cd jordan_rodriguez/
+cp ../student_README.md .
+```
+---
+
+## **A. Pre-Processing Raw Data**
 
 Following the [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq_gz_processing) and [pire_ssl_data_processing](https://github.com/philippinespire/pire_ssl_data_processing) roadmaps.
 
 ---
 
-## **A. Pre-Processing Section**
+### Step 0. Rename the raw fq.gz files
 
-## Step 0. Rename the raw fq.gz files
-
-Used decode file from Sharon Magnuson. **We will do this together in the workshop as a demonstration.**
-
-```
-salloc
-bash
-
+Workshop organizers completed this step for the students, so I left the code provided below alone. 
+This was the code they ran:
+```bash
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #run renameFQGZ.bash first to make sure new names make sense
@@ -28,19 +55,18 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_Probe
 
 ---
 
-## Step 1. Check quality of data with fastqc
+### Step 1. Check quality of data with fastqc
 
-Ran [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh).
-* **NOTE:** for the 2022 PIRE Omics workshop, run [`Multi_FASTQC_wkshp.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC_wkshp.sh) instead. Specify out directory to write the output to.
-
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq
-
-#Multi_FastQC.sh "<indir>" "file extension"
-#For workshop: Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "file extension"
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "fq.gz"
+For this workshop, I ran the [`Multi_FASTQC_wkshp.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC_wkshp.sh) version of [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh).
+This was the code I used:
+```bash 
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
+# Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "file extension"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC_wkshp.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "./shotgun_raw_fq/" "fq.gz"
 ```
 
+
+CURRENTLY UPDATING BELOW:
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
@@ -61,9 +87,9 @@ Potential issues:
 
 Ran [`runFASTP_1st_trim.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_1st_trim.sbatch).
 
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
-
+This was the code I used:
+```bash
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
 #sbatch runFASTP_1st_trim.sbatch <INDIR/full path to files> <OUTDIR/full path to desired outdir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch shotgun_raw_fq fq_fp1
 ```
@@ -88,10 +114,9 @@ Potential issues:
 
 Ran [`runCLUMPIFY_r1r2_array.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) in a 3 node array on Wahab.
 
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
-
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/r3clark 3
+```bash
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/j1rodrig 3
 ```
 
 Checked the output with [`checkClumpify_EG.R`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/checkClumpify_EG.R).
