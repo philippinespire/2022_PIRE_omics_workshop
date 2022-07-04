@@ -1,0 +1,8 @@
+
+Fcntl.c: loadable library and perl binaries are mismatched (got handshake key 0xcd00080, needed 0xde00080)
+[WARNING]         multiqc : MultiQC Version v1.12 now available!
+[INFO   ]         multiqc : This is MultiQC v1.9
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching   : /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/test_student
+[WARNING]         multiqc : No analysis results found. Cleaning up..
+[INFO   ]         multiqc : MultiQC complete
