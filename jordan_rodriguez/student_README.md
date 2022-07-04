@@ -11,6 +11,7 @@ Here is a roadmap of what I did during the 2022 Philippines Omics Workshop -- en
 ---
 
 To begin, I first created a `shotgun_PIRE` directory and cloned the workshop repo into my home directory on the wahab.hpc.odu.edu server.
+
 Here is the code I ran:
 ```bash
 #done on USER@wahab.hpc.odu.edu server
@@ -20,7 +21,8 @@ cd shotgun_PIRE
 git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git  
 ```
 
-Then, I created my personal directory in the `2022_PIRE_omics_workshop` directory and copied the student_README into my personal dir
+Then, I created my personal directory in the `2022_PIRE_omics_workshop` directory and copied the student_README into my personal dir.
+
 Here is the code I ran:
 ```bash 
 #~/shotgun_PIRE/2022_PIRE_omics_workshop
@@ -85,9 +87,9 @@ Potential issues:
 
 Ran [`runFASTP_1st_trim.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_1st_trim.sbatch).
 
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
-
+This was the code I used:
+```bash
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
 #sbatch runFASTP_1st_trim.sbatch <INDIR/full path to files> <OUTDIR/full path to desired outdir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch shotgun_raw_fq fq_fp1
 ```
@@ -112,10 +114,9 @@ Potential issues:
 
 Ran [`runCLUMPIFY_r1r2_array.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) in a 3 node array on Wahab.
 
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
-
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/r3clark 3
+```bash
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/j1rodrig 3
 ```
 
 Checked the output with [`checkClumpify_EG.R`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/checkClumpify_EG.R).
