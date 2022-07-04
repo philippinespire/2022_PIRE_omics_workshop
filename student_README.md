@@ -279,11 +279,11 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sf
 ```
 
 The Jellyfish kmer-frequency [histogram file](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa_all_reads.histo) 
-was uploaded into [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [GenomeScope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the [v1.report](<insert file>) and [v2.report](insert file>). 
+was uploaded into [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [GenomeScope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the [v1.report](**insert file**) and [v2.report](**insert file**). 
 
 Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions:
 
-<insert table here>
+**insert table here**
 
 No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
 
