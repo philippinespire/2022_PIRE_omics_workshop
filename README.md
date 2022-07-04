@@ -413,7 +413,7 @@ Then, run a job combining all libraries together by choosing the appropiate "all
 
 ---
 
-## **3. Review SPAdes and QUAST Output - LECTURE**
+## **3. Review SPAdes and QUAST Output**
 
 `runSPADEShimem_R1R2_noisolate.sbatch` names the output directories with the suffix A for the first library, B for the second, and C for the third (if there is one). Thus, for Sfa:
 
@@ -508,7 +508,7 @@ Sfa  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   
 
 ---
 
-## **6. Determine the Best Assembly**
+## **6. Determine the Best Assembly - LECTURE**
 
 We assess quality across multiple metrics since we don't use a golden rule/metric for determining the best assembly. Often, it is clear that one of the libraries is better than the others, as it has better results across multiple metrics. However, sometimes this is not quite as clear as we would like, as different assemblies might fare better in some metrics and worse in others. Use the following table to help you decide which assembly is best:
 
