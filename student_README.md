@@ -403,7 +403,7 @@ Note additional remarks if necessary
 
 ## Step 6. Assemble Contaminated Data From the Best Library
 
-``sh
+```sh
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir>
@@ -411,12 +411,12 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "2" "contam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-## Skipping Steps 7-9 for the workshop BUT please do clean-up:
+## Skipping Steps 7-8 for the workshop BUT please do clean-up  (Step 9):
 
 Move your out files into the `logs` directory
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
 
 mv *out logs
 ```
@@ -428,7 +428,7 @@ mv *out logs
 From the species directory: made probe directory, renamed assembly, and copied scripts.
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
 
 mkdir probe_design
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_annotation.sb probe_design
@@ -440,7 +440,7 @@ ls -d busco_*
 # Example,the busco dir for the best assembly for Sgr is `busco_scaffolds_results-SPAdes_SgC0072C_contam_R1R2_noIsolate`
 # I then provide the species 3-letter code, scaffolds, and copy and paste the parameters from the busco dir after "SPAdes_" 
 cd probe_design
-mv scaffolds.fasta Sgr_scaffolds_SgC0072C_contam_R1R2_noIsolate.fasta
+mv scaffolds.fasta Sgr_scaffolds_B_contam_R1R2_noIsolate.fasta
 ```
 
 Execute the first script
