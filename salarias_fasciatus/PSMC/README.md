@@ -262,7 +262,7 @@ Check some of the output files and IGV - do we have heterozygous sites?
 
 ## Step 5. Converting files to PSMC format.
 
-Now that we have consensus sequences we need to convert these to a format PSMC understands. Again we can use an array script, `psmcfa.sbatch`, to do this over all of our sequence files.
+Now that we have consensus sequences we need to convert these to a format PSMC understands. PSMC is really only interested in whether we have any heterozygotes within chunks of 100 base pairs, not the complete sequence data, so its input files are simplifications of the consensus FASTA file. Again we can use an array script, `psmcfa.sbatch`, to do this over all of our sequence files.
 
 Check again to make sure that all of the file paths are correct, then run the script. This script needs to be run from the directory containing all of your consensus sequences
 
