@@ -391,11 +391,11 @@ Now you can complete the table below
 
 ### Summary of QUAST (using GenomeScope v.2 <enter genome length> estimate) and BUSCO Results
 
-Species    |Assembly    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total length    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
+Species    |Assembly    |Data Type    |SCAFIG    |Covcutoff    |Genome Scope v.    |No. of Contigs    |Largest Contig    |Total Length    |% Genome Size Completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO Single Copy
 ------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------
 Sfa  |A  |decontam       |contgs       |off       |2       |  67123  | 76658  | 485971358  | 77 % | 8294  |  17506  |  0  | 53.9 %
 Sfa  |A  |decontam       |scaffolds       |off       |2    |  52432  |  129917  |   540390606  |  85 % | 14081  | 10678  | 687.92  | 68.5 %
-Sfa  |B  |decontam       |contgs       |off       |2       |  66179  |  89863  |   503699552  |  79 % |  8954  |  16792  |  0  | 56.8 %
+Sfa  |B  |decontam       |contgs       |off      |2       |  66179  |  89863  |   503699552  |  79 % |  8954  |  16792  |  0  | 56.8 %
 Sfa  |B  |decontam       |scaffolds       |off       |2    |  52101  |  155803  |   548869041  |  86 % |  14587  |  10542  |  580.13  | 70.8 %
 Sfa  |C  |decontam       |contgs       |off       |2       |  65353  |  92853  |  489986080  | 77 % | 8743  | 16693  |  0  |  55.9 %
 Sfa  |C  |decontam       |scaffolds       |off       |2    |  51239  |  176566  |   539924893  | 86 % |  14784  |  10318  | 641.53 | 69.5 %
