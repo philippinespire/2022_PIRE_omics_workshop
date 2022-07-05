@@ -6,7 +6,7 @@ We are now going to look at the population structure of our *Leiognathus leucisc
 
 ## Principal Component Analysis (PCA)
 
-Principal component analysis, or PCA, considers all the variation at all the loci among all the individuals (which is a lot of information!) and simplifies it down to a much smaller number of variables (two is often particularly convenient). Individuals close to each other in a PCA are similar genetically, while those far apart are quite divergent. PCA is used in many branches of science and statistics other than population genetics.
+Principal component analysis, or PCA, considers all the variation at all the loci among all the individuals (which is a lot of information!) and simplifies it down to a much smaller number of variables (two is often particularly convenient). It then gives us coordinates (or "eigenvectors") that we can use to plot our individuals on a graph and see how they cluster together in space. Individuals that cluster close to each other in a PCA are similar genetically, while those far apart are quite divergent. PCA is used in many branches of science and statistics other than population genetics.
 
 While there are many different programs that can run a PCA using genetic data, today we will be using a program called **plink**. It is a multi-functional population genetics program that can run a wide range of basic analyses.
 
@@ -17,6 +17,8 @@ Before we can run plink, we need to install it using Conda, which is an open-sou
 First, we need to create a Conda environment that will contain our population genetics/structure programs.
 
 ```bash
+salloc #this will put you on an interactive node
+
 module load container_env/0.1
 module load conda/3
 module load anaconda
@@ -31,9 +33,11 @@ conda deactivate #this exits the conda environment
 Next, we will install plink within the Conda environment you just created.
 
 ```bash
-conda activate popgen -- if you didn't do this previously or accidentally exited out
+conda activate popgen
 
 conda install -c bioconda plink
+
+conda deactivate
 ```
 
 ## Running plink (and PCA)
@@ -53,9 +57,6 @@ Now, we can run our PCA. The code to do this is below:
 ```bash
 cd ~/shotgun_pire/2022_pire_omics_workshop/your_name/pop_structure
 
-salloc #this will put you on an interactive node
-
-module load anaconda
 conda activate popgen
 
 plink --vcf /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/
@@ -98,9 +99,15 @@ You can also download them off GitHub as well. Just go to this link....
 
 ---
 
+## ADMIXTURE
+
+Now, we are going to run another program that visualizes population structure in a slightly different way. In the previous exercise, PCA worked by clustering "like" individuals with "like" (or those that had similar genetic information with one another). PCA can form as many groups (or populations) as there appears to be in the dataset. With ADMIXTURE, the program we are about to run, we will actually assign individuals, or really, portions of our individuals' genomes, to a pre-determined number of populations.
+
+For more information on how to run ADMIXTURE, you can read the tutorial [here](https://dalexander.github.io/admixture/admixture-manual.pdf).
+
 ## Installing ADMIXTURE
 
-Necessary to run ADMIXTURE to visualize population structure (best supported # of population clusters).
+
 
 ```
 #assumes popgen conda environment has already been created
