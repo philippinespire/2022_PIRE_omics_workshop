@@ -291,7 +291,9 @@ version    |stat    |min    |max
 2  |Genome Haploid Length   |633,665,608 bp |634,636,698 bp
 1  |Model Fit       |90.9798 %       |92.294 %
 2  |Model Fit       |80.1725 %       |93.4093 %
-No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
+
+
+No red flags. We will use the max value from V2 rounded up to 635,000,000 bp.
 
 ---
 
