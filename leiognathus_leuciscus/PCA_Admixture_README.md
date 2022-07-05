@@ -79,7 +79,7 @@ You may notice that plink wrote a few things to the screen. One line says how ma
 
 The output file that we are especially interested in is the one with the extension `*eigenvec`. This file contains each individual's "loadings" (coordinates) on each of the principal components. It is these loadings that we will use to visualize the data.
 
-We still have a bit more work to do before we can analyze the results of our PCA. What you have just created are the "loadings", or coordinates that help you plot individuals on a graph. Now, we need to do the actual plotting. Normally we do this with an R-script designed specifically to take data created by our CSSL (capture) pipeline and turn it into beautiful figures. However, to save time during the workshop, we won't actually run that R-script today. Instead, we will download and look at some plots already created with the data you are working with.
+We still have a bit more work to do before we can analyze the results of our PCA. What you have just created are the "loadings", or coordinates that help you plot individuals on a graph. Now, we need to do the actual plotting. Normally, we do this with an R-script designed specifically to take data created by our CSSL (capture) pipeline and turn it into beautiful figures. However, to save time during the workshop, we won't actually run that R-script today. Instead, we will download and look at some plots already created with the data you are working with.
 
 We have to download these plots to your local computer before we can open them up and look at them:
 
@@ -103,67 +103,84 @@ You can also download them off GitHub as well. Just go to this link....
 
 Now, we are going to run another program that visualizes population structure in a slightly different way. In the previous exercise, PCA worked by clustering "like" individuals with "like" (or those that had similar genetic information with one another). PCA can form as many groups (or populations) as there appears to be in the dataset. With ADMIXTURE, the program we are about to run, we will actually assign individuals, or really, portions of our individuals' genomes, to a pre-determined number of populations.
 
-For more information on how to run ADMIXTURE, you can read the tutorial [here](https://dalexander.github.io/admixture/admixture-manual.pdf).
+For more information on ADMIXTURE, you can read the tutorial [here](https://dalexander.github.io/admixture/admixture-manual.pdf).
 
 ## Installing ADMIXTURE
 
-
+We are once again going to install ADMIXTURE using Conda:
 
 ```
-#assumes popgen conda environment has already been created
+salloc #if you are no longer on an interactive node
+
 module load anaconda
 conda activate popgen
 
-#install admixture
 conda install -c bioconda admixture
 
 conda deactivate
 ```
 
+## Running ADMIXTURE
 
-PCA
-================
+Now that we have installed ADMIXTURE with Conda, we need to make some input files. We can just modify some of the files made when we ran plink to do PCA.
 
-Code for calculating eigenvalues & eigenvectors with the program PLINK. Instructions for installing PLINK can be found in `/popgen_analyses/README.md`.
+```
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/pop_structure
 
-```bash
-#NOTE: probably best to grab an interactive node for this (don't run on log-in node).
+#using bed and bim files made during PCA
+awk '{$1=0;print $0}' PIRE.Lle.Ham.bim > PIRE.Lle.Ham.bim.tmp
+mv PIRE.Lle.Ham.bim.tmp PIRE.Lle.Ham.bim
+```
 
-module load anaconda
+Now we can run ADMIXTURE!
+
+We will run ADMIXTURE 5 times. Each time we run ADMIXTURE, we need to specify the number of populations, or genetic clusters, we think there are in our dataset. ADMIXTURE will then assign individuals to those respective populations. Because we don't know how many populations there really are, we are going to run ADMIXTURE a few times, specifying a different number of populations each time.
+
+Later on, we will use all the data to determine the "true" number of populations.
+
+***NOTE:** In ADMIXTURE (and many population-clustering softwares) K = the number of populations. For example, K = 2 means we assigned individuals to 2 possible populations.*
+
+Let's run ADMIXTURE:
+
+```
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/pop_structure
+
+salloc #if you are no longer on an interactive node
 
 conda activate popgen
-
-plink --vcf <VCF_FILE> --allow-extra-chr --pca --out <PIRE.SPECIES.LOC>
+admixture PIRE.Lle.Ham.bed 1 --cv > PIRE.Lle.Ham.log1.out
+admixture PIRE.Lle.Ham.bed 2 --cv > PIRE.Lle.Ham.log2.out
+admixture PIRE.Lle.Ham.bed 3 --cv > PIRE.Lle.Ham.log3.out
+admixture PIRE.Lle.Ham.bed 4 --cv > PIRE.Lle.Ham.log4.out
+admixture PIRE.Lle.Ham.bed 5 --cv > PIRE.Lle.Ham.log5.out
 
 conda deactivate
+exit
 ```
 
-Copy `*.eigenvec` & `*.eigenval` files to local computer and read into R for downstream analysis/visualization (`popgen_analyses/pop_structure.R`).
+All done! 
 
-ADMIXTURE
-================
+Argument we used:
+  * **--cv:** tells admixture we want to calculate the cross-validation error (we will use this to pick the best K later on)
 
-Code for running ADMIXTURE to assess population structure. Requires input (bim & bed files) created with PLINK. Instructions for installing PLINK & ADMIXTURE can be found in `/popgen_analyses/README.md`.
+ADMIXTURE creates a lot of output files. The one we are mainly interested in is the one with the extension `*.Q`. This file tells us which population an individual is assigned to (or, what proportion of an individual's genome is assigned to each of the possible populations).
 
-```bash
-#NOTE: probably best to grab an interactive node for this (don't run on log-in node).
+We are also interested in the `*log.out` file as this file contains the cv (cross-validation) error that we will use to determine the true number of populations in our dataset. Ideally, the lower the error the better. Thus, the ADMIXTURE run with the lowest cv will be the best one.
 
-module load anaconda
+As with PCA before, we still have a bit more work to do before we can analyze our results. Mainly, we need to visualize them so that they are easier to interpret. Normally, we do this with an R-script designed specifically to take data created by our CSSL (capture) pipeline and turn it into beautiful figures. However, to save time during the workshop, we won't actually run that R-script today. Instead, we will download and look at some plots already created with the data you are working with.
 
-conda activate popgen
-
-plink --vcf <VCF_FILE> --allow-extra-chr --make-bed --out <PIRE.SPECIES.LOC>
-
-awk '{$1=0;print $0}' PIRE.SPECIES.LOC.bim > PIRE.SPECIES.LOC.bim.tmp
-mv PIRE.SPECIES.LOC.bim.tmp PIRE.SPECIES.LOC.bim
-
-admixture PIRE.SPECIES.LOC.bed 1 --cv > PIRE.SPECIES.LOC.log1.out #run from 1-5
-conda deactivate
-```
-
-Copy `*.Q` files to local computer. Read into R for visualization (`popgen_analyses/pop_structure.R`).
+We have to download these plots to your local computer before we can open them up and look at them:
 
 ```
-#install stuff to run r script
-conda install -c r r-tidyverse
-conda install -c bioconda r-pophelper
+#open a new terminal window
+
+#if using a mac:
+sftp user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/ADMIXTURE*png PATH_TO_YOUR_LOCAL_DIRECTORY
+
+#if using a PC:
+r-sync user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structureADMIXTURE*png PATH_TO_YOUR_LOCAL_DIRECTORY
+```
+
+You can also download them off GitHub as well. Just go to this link....
+
+**Once you have downloaded and opened the FIVE png files, go to this link and answer the questions.**
