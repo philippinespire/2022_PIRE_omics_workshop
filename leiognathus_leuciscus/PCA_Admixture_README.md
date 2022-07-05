@@ -109,7 +109,7 @@ For more information on ADMIXTURE, you can read the tutorial [here](https://dale
 
 We are once again going to install ADMIXTURE using Conda:
 
-```
+```bash
 salloc #if you are no longer on an interactive node
 
 module load anaconda
@@ -124,7 +124,7 @@ conda deactivate
 
 Now that we have installed ADMIXTURE with Conda, we need to make some input files. We can just modify some of the files made when we ran plink to do PCA.
 
-```
+```bash
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/pop_structure
 
 #using bed and bim files made during PCA
@@ -142,7 +142,7 @@ Later on, we will use all the data to determine the "true" number of populations
 
 Let's run ADMIXTURE:
 
-```
+```bash
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/pop_structure
 
 salloc #if you are no longer on an interactive node
