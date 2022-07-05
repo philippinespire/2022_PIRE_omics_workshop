@@ -292,7 +292,8 @@ version    |stat    |min    |max
 1  |Model Fit       |90.9798 %       |92.2947 %
 2  |Model Fit       |80.1725 %       |93.4093 %
 
-No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
+No red flags. We will use the max value from V2 rounded up to 635,000,000 bp.
+
 
 ---
 
