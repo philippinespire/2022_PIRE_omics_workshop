@@ -1,0 +1,89 @@
+
+Read1 before filtering:
+total reads: 170899401
+total bases: 25634910150
+Q20 bases: 24769326309(96.6234%)
+Q30 bases: 23722067146(92.5381%)
+
+Read2 before filtering:
+total reads: 170899401
+total bases: 25634910150
+Q20 bases: 24533141358(95.7021%)
+Q30 bases: 23077772002(90.0248%)
+
+Read1 after filtering:
+total reads: 162225984
+total bases: 23719759216
+Q20 bases: 23180753519(97.7276%)
+Q30 bases: 22294009512(93.9892%)
+
+Read2 aftering filtering:
+total reads: 162225984
+total bases: 23715956822
+Q20 bases: 23052902927(97.2042%)
+Q30 bases: 21900907206(92.3467%)
+
+Filtering result:
+reads passed filter: 324451968
+reads failed due to low quality: 6573026
+reads failed due to too many N: 52632
+reads failed due to too short: 4255622
+reads failed due to low complexity: 6465554
+reads with adapter trimmed: 28576900
+bases trimmed due to adapters: 1267982503
+reads with polyX in 3' end: 6035803
+bases trimmed in polyX tail: 76391035
+
+Duplication rate: 16.4634%
+
+Insert size peak (evaluated by paired-end reads): 0
+
+JSON report: fq_fp1/Sfa-CBas_028-Ex1-1H_L4_fastp.json
+HTML report: fq_fp1/Sfa-CBas_028-Ex1-1H_L4_fastp.html
+
+fastp --in1 /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_1.fq.gz --in2 /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1H_L4_2.fq.gz --out1 fq_fp1/Sfa-CBas_028-Ex1-1H_L4_r1.fq.gz --out2 fq_fp1/Sfa-CBas_028-Ex1-1H_L4_r2.fq.gz --unpaired1 fq_fp1/failed/Sfa-CBas_028-Ex1-1H_L4_unprd.fq.gz --unpaired2 fq_fp1/failed/Sfa-CBas_028-Ex1-1H_L4_unprd.fq.gz --failed_out fq_fp1/failed/Sfa-CBas_028-Ex1-1H_L4_fail.fq.gz -h fq_fp1/Sfa-CBas_028-Ex1-1H_L4_fastp.html -j fq_fp1/Sfa-CBas_028-Ex1-1H_L4_fastp.json --qualified_quality_phred 20 --unqualified_percent_limit 40 --length_required 33 --low_complexity_filter --complexity_threshold 30 --detect_adapter_for_pe --adapter_sequence=AGATCGGAAGAGCACACGTCTGAACTCCAGTCA --adapter_sequence_r2=AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT --cut_tail --cut_tail_window_size 1 --cut_tail_mean_quality 20 --trim_poly_g --poly_g_min_len 10 --trim_poly_x --report_title First Trim 4 De Novo 
+fastp v0.20.1, time used: 3661 seconds
+Read1 before filtering:
+total reads: 208701252
+total bases: 31305187800
+Q20 bases: 30297556902(96.7813%)
+Q30 bases: 29019475999(92.6986%)
+
+Read2 before filtering:
+total reads: 208701252
+total bases: 31305187800
+Q20 bases: 29894730017(95.4945%)
+Q30 bases: 28036950414(89.5601%)
+
+Read1 after filtering:
+total reads: 197422199
+total bases: 29071935841
+Q20 bases: 28416971761(97.7471%)
+Q30 bases: 27328784285(94.004%)
+
+Read2 aftering filtering:
+total reads: 197422199
+total bases: 29066684729
+Q20 bases: 28207731563(97.0449%)
+Q30 bases: 26728431099(91.9556%)
+
+Filtering result:
+reads passed filter: 394844398
+reads failed due to low quality: 8410180
+reads failed due to too many N: 63752
+reads failed due to too short: 5807230
+reads failed due to low complexity: 8276944
+reads with adapter trimmed: 26584631
+bases trimmed due to adapters: 1185223107
+reads with polyX in 3' end: 7218773
+bases trimmed in polyX tail: 91287669
+
+Duplication rate: 20.4615%
+
+Insert size peak (evaluated by paired-end reads): 0
+
+JSON report: fq_fp1/Sfa-CBas_028-Ex1-1G_L4_fastp.json
+HTML report: fq_fp1/Sfa-CBas_028-Ex1-1G_L4_fastp.html
+
+fastp --in1 /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_1.fq.gz --in2 /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq/Sfa-CBas_028-Ex1-1G_L4_2.fq.gz --out1 fq_fp1/Sfa-CBas_028-Ex1-1G_L4_r1.fq.gz --out2 fq_fp1/Sfa-CBas_028-Ex1-1G_L4_r2.fq.gz --unpaired1 fq_fp1/failed/Sfa-CBas_028-Ex1-1G_L4_unprd.fq.gz --unpaired2 fq_fp1/failed/Sfa-CBas_028-Ex1-1G_L4_unprd.fq.gz --failed_out fq_fp1/failed/Sfa-CBas_028-Ex1-1G_L4_fail.fq.gz -h fq_fp1/Sfa-CBas_028-Ex1-1G_L4_fastp.html -j fq_fp1/Sfa-CBas_028-Ex1-1G_L4_fastp.json --qualified_quality_phred 20 --unqualified_percent_limit 40 --length_required 33 --low_complexity_filter --complexity_threshold 30 --detect_adapter_for_pe --adapter_sequence=AGATCGGAAGAGCACACGTCTGAACTCCAGTCA --adapter_sequence_r2=AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT --cut_tail --cut_tail_window_size 1 --cut_tail_mean_quality 20 --trim_poly_g --poly_g_min_len 10 --trim_poly_x --report_title First Trim 4 De Novo 
+fastp v0.20.1, time used: 4408 seconds
