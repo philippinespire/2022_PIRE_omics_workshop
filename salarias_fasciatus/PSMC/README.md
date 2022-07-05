@@ -4,14 +4,27 @@ Genomic data contain a wealth of information regarding the demographic history o
 
 Using the curated read data and the shotgun reference genome we have developed for *Salarias fasciatus*, as well as a published reference genome for the species, we will map reads to the genome, call genotypes and consensus sequences, and run the PSMC program to estimate a demographic trajectory for this species.
 
+## Step 0. Setup
+
+You will be using data and scripts that are located in `/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC` but working in your own workshop directory.
+
+In your personal workshop directory, create a new diectory called `PSMC`.
+
+Scripts that we will be using today can be found in `/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/scripts`. Copy this whole directory to your folder.
+
+Create a folder called `data`.
+
+Now we're ready to start!
+
 ## Step 1. Preparing reference genomes.
 
 The reference genomes we will be using are located in the `data` folder. The file `scaffolds.fasta` is the best shotgun assembly we created, while `GCF_902148845.1_fSalaFa1.1_genomic.fna.gz` is a more complete reference genome that was downloaded from [Genbank](https://www.ncbi.nlm.nih.gov/genome/7248?genome_assembly_id=609472).
 
+Copy these two reference genome sequence files to your `data` folder.
+
 Move to your `data` folder and rename our shotgun genome `Sfa_shotgun_assembly.fa`.
 
 ```
-cd <yourdirectory>/workshop/salarias_fasciatus/PSMC/data
 mv scaffolds.fasta Sfa_shotgun_assembly.fa
 ```
 
@@ -72,13 +85,18 @@ We next need to map our shotgun reads to our reference genomes. This is a key st
 We first need to navigate back to our PSMC directory and clone the dDocent repo.
 
 ```
-cd <yourdirectory>/workshop/salarias_fasciatus/PSMC
+cd <yourdirectory>/PSMC
 git clone https://github.com/cbirdlab/dDocentHPC.git
 ```
 
---> set up dirs with reads already
+Mapping can take a long time, especially when we have a lot of reads (our shotgun libraries for Sfa have >100 million read pairs each!). For the sake of expediency, we have created a smaller test dataset (only 5 million read pairs), which can be found in the folder `/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/test_mapping`. This folder also contains a README.md file - you should use this to keep track of the inputs to this analysis.
 
-Mapping can take a long time, especially when we have a lot of reads (our shotgun libraries for Sfa have >100 million read pairs each!). For the sake of expediency, we have created a smaller test dataset (only 5 million read pairs), which can be found in the folder `data/mkBAM/test_mapping`. This folder also contains a README.md file - you should use this to keep track of the inputs to this analysis.
+Make a folder called `mkBAM/test_mapping` in your PSMC folder. Copy the reduced shotgun library files and the README.md file to this folder.
+
+```
+cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/test_mapping/*.fq.gz <yourdirectory>/PSMC/data/mkBAM/test_mapping
+cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/test_mapping/README.md <yourdirectory>/PSMC/data/mkBAM/test_mapping
+```
 
 Now we need to copy some scripts and configuration files to our folders. Note that we need to use a modified version of the sbatch file that works with the ODU HPCC.
 
@@ -190,7 +208,7 @@ Once you have edited your sbatch file you can run the filtering step using the s
 If we have multiple sorted .bam files from the same individual, we can merge those .bam files into a single .bam file using thecommand  `samtools merge`. To call genotypes we also need to index this merged file first. The sbatch script `mergebams.sbatch` can be used to do both of these things. Copy it to your folder, make sure you are specifying the proper input files to merge, and execute.
 
 ```
-cp <yourdirectory>/salarias_fasciatus/PSMC/scripts/mergebams.sbatch ./
+cp <yourdirectory>/PSMC/scripts/mergebams.sbatch ./
 sbatch mergebams.sbatch
 ```
 
@@ -212,7 +230,7 @@ Update the README.md file with this statistic.
 
 With this level of coverage we would be fairly confident in calling heterozygous sites, but we might have some false negatives.
 
-Now, let's switch over to the full dataset from which the reduced dataset we've been working on was generated. This dataset can be found in `data/mkBAM/shotgun_100k` and has been processed through step 2 already. Calculate average depth of coverage for this dataset.
+Now, let's switch over to the full dataset from which the reduced dataset we've been working on was generated. This dataset can be found in `/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k` and has been processed through step 2 already. Calculate average depth of coverage for this dataset.
 
 We can also examine the mapping visually using a program called IGV (<ins>I</ins>ntegrative <ins>G</ins>enomics <ins>V</ins>iewer). We will take a closer look at our mapping results using this program while we are running some of the next steps.
 
@@ -224,7 +242,7 @@ The script `mpileup.sbatch` uses a pipeline from samtools to bcftools to vcfutil
 
 Examine the script - it is configured to work with our Sfa_denovoSSL_100k bamfile. You may have to edit a few things in the sbatch for it to run properly.
 
-1) Make sure all of the paths are correct, especially the DATAPATH (= the path to the folder containing your bamfile and reference assembly).
+1) Make sure all of the paths are correct, especially the DATAPATH (= the path to the folder containing the bamfile and reference assembly).
 
 2) Check the `-d` and `-D` arguments after `crun vcfutils.pl vcf2fq`. These should reflect the minimum and maximum depth cutoffs you calculated in the previous step.
 
