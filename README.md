@@ -212,7 +212,7 @@ Complete the pre-processing of your files following the [pire_fq_gz_processing](
     * [genomesize.com](https://www.genomesize.com/)
     * [ncbi genome](https://www.ncbi.nlm.nih.gov/genome/)
     * search the literature
-      * Record the size and other potentially important information in your species README if the genome of your species is already available.
+      * ***Record the size and other potentially important information in your species README if the genome of your species is already available***
   * Estimate properties with `jellyfish` and `genomescope`.
     * More details [here](https://github.com/philippinespire/denovo_genome_assembly/blob/main/jellyfish/JellyfishGenomescope_procedure.md).
 
