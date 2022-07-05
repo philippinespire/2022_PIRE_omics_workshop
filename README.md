@@ -442,7 +442,8 @@ For the `SPAdes` output, check that you have:
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 bash
-cat quast-reports/quast-report_contigs_Sfa_spades_Sfa-CBas-A_decontam_R1R2_21-99_isolateoff-covoff.tsv | column -ts $'\t' | less -S
+cat SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report/transposed_report.tsv | column -ts $'\t' | less -S
+cat SPAdes_allLibs_decontam_R1R2_noIsolate/quast_scaffolds_report/transposed_report.tsv | column -ts $'\t' | less -S
 ```
 
 ---
