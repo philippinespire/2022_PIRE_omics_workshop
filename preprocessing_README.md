@@ -222,7 +222,7 @@ cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 #sbatch runFASTP_2_ssl.sbatch <indir> <outdir>
 #do not use trailing / in paths
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias/fasciatus/fq_fp1_clmp fq_fp1_clmp_fp2
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_2_ssl.sbatch /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp fq_fp1_clmp_fp2
 ```
 
 Review the results with the `fastqc` output (`fq_fp1_clmp_fp2/2nd_fastp_report.html`). You may have to come back to this step later on in the workshop.
@@ -373,7 +373,7 @@ Be sure to update your README file so that others know what happened in your dir
 
 ---
 
-#Review Your Output
+# Review Your Output
 
 For Day 2, we will go back and look at the output you created from all the jobs/steps you ran during Day 1. Basically, we are going to open up the MultiQC/FastQC output from each of the pre-processing steps and see what has changed each time. We will assess how levels of duplication changed, how many reads passed each of our filtering steps, and how much contamination we had, among other things.
 
