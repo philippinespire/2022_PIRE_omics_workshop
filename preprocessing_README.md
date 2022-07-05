@@ -337,6 +337,8 @@ Review the results with the `fastqc` output (`fq_fp1_clmp_fp2_repaired/fastqc_re
 
 ## **7. Calculate the percent of reads lost in each step**
 
+**WE WILL NOT DO THIS FOR THE WORKSHOP.**
+ 
 Execute [read_calculator_ssl.sh](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh). **ALL jobs must be finished in order for this to work!!**
 
 ```sh
@@ -357,6 +359,8 @@ Inspect these tables and revisit any steps where too much data was lost.
 
 ## **8. Clean Up
 
+**WE WILL NOT DO THIS FOR THE WORKSHOP.**
+
 Make sure all the `.out` files have been moved into the `logs` directory.
 
 ```sh
@@ -366,3 +370,27 @@ mv *out logs/
 ```
 
 Be sure to update your README file so that others know what happened in your directory. Ideally, somebody should be able to replicate what you did exactly.
+
+---
+
+#Review Your Output
+
+For Day 2, we will go back and look at the output you created from all the jobs/steps you ran during Day 1. Basically, we are going to open up the MultiQC/FastQC output from each of the pre-processing steps and see what has changed each time. We will assess how levels of duplication changed, how many reads passed each of our filtering steps, and how much contamination we had, among other things.
+
+As you are reviewing your output, you will also fill out this [google form](https://forms.gle/NWo9HSr3MdCoj2tW8). We will review these questions at the end of our session today!
+
+If your jobs have finished running, you can either download the MultiQC/FastQC output you created OR use the "pre-cooked" MultiQC/FastQC output on GitHub if your jobs failed.
+
+To transfer files to your own computer (from a Mac):
+
+```
+#open up Terminal
+
+sftp your_user_name@wahab.hpc.odu:PATH_TO_YOUR_FILE  local_path
+```
+
+On a PC, use r-sync.
+
+To use the pre-cooked files, just click on the link in the Google Form, click "View Raw", and then add [https://htmlpreview.github.io/?](https://htmlpreview.github.io/?) to the beginning of the URL to make it look beautiful on your browser.
+
+If you finish early, you can also update your README on GitHub as well! Much of the information we ask for in the google form is the same as you enter on the README.
