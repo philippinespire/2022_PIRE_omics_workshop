@@ -478,6 +478,7 @@ pwd
 
 mkdir SPAdes_allLibs_decontam_R1R2_noIsolate
 mkdir SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report
+mkdir SPAdes_allLibs_decontam_R1R2_noIsolate/quast_scaffolds_report
 
 #QUAST
 cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report/transposed_report.tsv ./SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report/transposed_report.tsv
