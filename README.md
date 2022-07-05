@@ -625,7 +625,7 @@ cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_annotation.sb probe_design
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_bedcreation.sb probe_design
-cp best_assembly_dir/scaffolds.fasta probe_design
+cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/SPAdes_Sfa-CBas-B_decontam_R1R2_noIsolate/scaffolds.fasta probe_design
 ```
 
 Rename the assembly to reflect the species and parameters used. Format to follow:
@@ -641,11 +641,11 @@ cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 ls -d busco_*
 
 #identify the busco dir of the best assembly, copy the treatments (starting with the library)
-#example,the busco dir for the best assembly for Sfa is `busco_scaffolds_results-SPAdes_allLibs_decontam_R1R2_noIsolate`
+#example,the busco dir for the best assembly for Sfa is `busco_contigs_results-SPAdes_Sfa-CBas-B_decontam_R1R2_noIsolate`
 
 #then provide the species 3-letter code, scaffolds, and copy and paste the parameters from the busco dir after "SPAdes_" 
 cd probe_design
-mv scaffolds.fasta Sfa_scaffolds_alLibs_decontam_R1R2_noIsolate.fasta
+mv scaffolds.fasta busco_contigs_results-SPAdes_Sfa-CBas-B_decontam_R1R2_noIsolate.fasta
 ```
 
 Execute the first probe annotation script.
@@ -659,7 +659,7 @@ This script will create:
 cd ~/shotgun_PIRE/202_PIRE_omics_workshop/your_name/probe_design
 
 #WGprobe_annotation.sb <assembly name> 
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_annotation.sb "Sfa_scaffolds_allLibs_contam_R1R2_noIsolate.fasta"
+sbatch WGprobe_annotation.sb "Sgr_scaffolds_B_decontam_R1R2_noIsolate.fasta"
 ```
 
 Execute the second script.
@@ -670,7 +670,7 @@ This will create a `.bed` file that will be sent for probe creation. The bed fil
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/probe_design
 
 #WGprobe_bedcreation.sb <assembly name> 
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/ WGprobe_bedcreation.sb "Sfa_scaffolds_allLibs_contam_R1R2_noIsolate.fasta"
+sbatch WGprobe_bedcreation.sb "Sgr_scaffolds_B_decontam_R1R2_noIsolate.fasta"
 ```
 
 **Check Upper Limit**
