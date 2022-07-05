@@ -683,9 +683,9 @@ Example:
 ```sh
 cat BEDprobes-415039.out
 
-#the longest scaffold is 105644
-#the uppper limit used in loop is 97500
-#a total of 13063 regions have been identified from 10259 scaffolds
+The longest scaffold is 280192
+The upper limit used in loop is 277500
+A total of 37134 regions have been identified from 16894 scaffolds
 ```
 
 Move out files into your `logs` directory
