@@ -212,7 +212,7 @@ Complete the pre-processing of your files following the [pire_fq_gz_processing](
     * [genomesize.com](https://www.genomesize.com/)
     * [ncbi genome](https://www.ncbi.nlm.nih.gov/genome/)
     * search the literature
-      * Record the size and other potentially important information in your species README if the genome of your species is already available.
+      * ***Record the size and other potentially important information in your species README if the genome of your species is already available***
   * Estimate properties with `jellyfish` and `genomescope`.
     * More details [here](https://github.com/philippinespire/denovo_genome_assembly/blob/main/jellyfish/JellyfishGenomescope_procedure.md).
 
@@ -377,11 +377,11 @@ Sfa example:
 ```bash
 ls /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq/*gz
 
-Sfa-CBas_028-Ex1-1G_L4_1.fq.gz #library 1
+Sfa-CBas_028-Ex1-1G_L4_1.fq.gz #library A
 Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
-Sfa-CBas_028-Ex1-1H_L4_1.fq.gz #library 2
+Sfa-CBas_028-Ex1-1H_L4_1.fq.gz #library B
 Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
-Sfa-CBas_028-Ex1-2A_L4_1.fq.gz #library 3
+Sfa-CBas_028-Ex1-2A_L4_1.fq.gz #library C
 Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
 ``` 
 
@@ -413,7 +413,7 @@ Then, run a job combining all libraries together by choosing the appropiate "all
 
 ---
 
-## **3. Review SPAdes and QUAST Output**
+## **Review SPAdes and QUAST Output**
 
 `runSPADEShimem_R1R2_noisolate.sbatch` names the output directories with the suffix A for the first library, B for the second, and C for the third (if there is one). Thus, for Sfa:
 
@@ -447,7 +447,7 @@ cat quast-reports/quast-report_contigs_Sfa_spades_Sfa-CBas-A_decontam_R1R2_21-99
 
 ---
 
-## **4. Run BUSCO (multiple hours)**
+## **3. Run BUSCO (multiple hours)**
 
 QUAST gives us many of the basic assembly statistics, however we still need to run BUSCO to know how many expected (i.e. highly conserved) genes were recovered by the assembly. This gives us another sense of how "complete" the genomes we just assembled are.
 
@@ -467,7 +467,7 @@ Repeat the command using the contigs and scaffolds files for each SPAdes assembl
 
 ---
 
-## **5. Record QUAST and BUSCO Values**
+## **4. Record QUAST and BUSCO Values**
 
 Fill in this table with your QUAST and BUSCO values in your species README.
 
@@ -475,6 +475,9 @@ You didn't run SPAdes or BUSCO so you don't have QUAST/BUSCO output in your dir 
 ```
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 pwd
+
+mkdir SPAdes_allLibs_decontam_R1R2_noIsolate
+mkdir SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report
 
 #QUAST
 cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report/transposed_report.tsv ./SPAdes_allLibs_decontam_R1R2_noIsolate/quast_contigs_report/transposed_report.tsv
@@ -508,7 +511,7 @@ Sfa  |allLibs  |decontam       |scaffolds       |off       |2   |  ?  |  ?  |   
 
 ---
 
-## **6. Determine the Best Assembly**
+## **5. Determine the Best Assembly - LECTURE**
 
 We assess quality across multiple metrics since we don't use a golden rule/metric for determining the best assembly. Often, it is clear that one of the libraries is better than the others, as it has better results across multiple metrics. However, sometimes this is not quite as clear as we would like, as different assemblies might fare better in some metrics and worse in others. Use the following table to help you decide which assembly is best:
 
@@ -526,7 +529,7 @@ If you are still undecided on which is the best assembly, raise your hand or tal
 
 ---
 
-## **7. Assemble Contaminated Data From the Best Library** 
+## **6. Assemble Contaminated Data From the Best Library** 
 
 ```bash
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
@@ -542,7 +545,7 @@ Compare the QUAST contigs and scaffolds values of your contaminated assembly to 
 
 ---
 
-## **8. Update the Main Assembly Stats Table With Your Species**
+## **7. Update the Main Assembly Stats Table With Your Species**
 
 **You will not do this for the workshop. You should compare your results to this table, however, to see how your species stacks up.**
 
@@ -554,7 +557,7 @@ Once done, push your changes to GitHub and confirm the that tsv format is correc
 
 --- 
 
-## **9. Evaluate Results**
+## **8. Evaluate Results**
 
 Assuming you have completed Step 9, you now know what library(ies) produced the best assembly. Compare your BUSCO values with those of the other species (for example, you can check the ["best assembly table"](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/best_ssl_assembly_per_sp.tsv).
 
@@ -580,7 +583,7 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShim
 
 ---
 
-## **10. Clean Up**
+## **9. Clean Up**
 
 Move your `*out` files into the `logs` directory.
 
@@ -602,7 +605,6 @@ You will create the following 4 files (among others):
 3. `*_augustus.gff`: The gff file created from gene prediction (identifies putative coding regions)
 4. `*_per10000_all.bed`: The bed file with target regions for probe development (1 set of 2 probes per target region)
 
-These instructions have been modified from Rene's [de novo assembly probe repo](https://github.com/philippinespire/denovo_genome_assembly/tree/main/WGprobe_creation).
 
 ---
 
@@ -623,7 +625,7 @@ cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_annotation.sb probe_design
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_bedcreation.sb probe_design
-cp best_assembly_dir/scaffolds.fasta probe_design
+cp /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/SPAdes_Sfa-CBas-B_decontam_R1R2_noIsolate/scaffolds.fasta probe_design
 ```
 
 Rename the assembly to reflect the species and parameters used. Format to follow:
@@ -639,11 +641,11 @@ cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
 ls -d busco_*
 
 #identify the busco dir of the best assembly, copy the treatments (starting with the library)
-#example,the busco dir for the best assembly for Sfa is `busco_scaffolds_results-SPAdes_allLibs_decontam_R1R2_noIsolate`
+#example,the busco dir for the best assembly for Sfa is `busco_contigs_results-SPAdes_Sfa-CBas-B_decontam_R1R2_noIsolate`
 
 #then provide the species 3-letter code, scaffolds, and copy and paste the parameters from the busco dir after "SPAdes_" 
 cd probe_design
-mv scaffolds.fasta Sfa_scaffolds_alLibs_decontam_R1R2_noIsolate.fasta
+mv scaffolds.fasta busco_contigs_results-SPAdes_Sfa-CBas-B_decontam_R1R2_noIsolate.fasta
 ```
 
 Execute the first probe annotation script.
@@ -657,7 +659,7 @@ This script will create:
 cd ~/shotgun_PIRE/202_PIRE_omics_workshop/your_name/probe_design
 
 #WGprobe_annotation.sb <assembly name> 
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_annotation.sb "Sfa_scaffolds_allLibs_contam_R1R2_noIsolate.fasta"
+sbatch WGprobe_annotation.sb "Sgr_scaffolds_B_decontam_R1R2_noIsolate.fasta"
 ```
 
 Execute the second script.
@@ -668,7 +670,7 @@ This will create a `.bed` file that will be sent for probe creation. The bed fil
 cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name/probe_design
 
 #WGprobe_bedcreation.sb <assembly name> 
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/ WGprobe_bedcreation.sb "Sfa_scaffolds_allLibs_contam_R1R2_noIsolate.fasta"
+sbatch WGprobe_bedcreation.sb "Sgr_scaffolds_B_decontam_R1R2_noIsolate.fasta"
 ```
 
 **Check Upper Limit**
@@ -681,9 +683,9 @@ Example:
 ```sh
 cat BEDprobes-415039.out
 
-#the longest scaffold is 105644
-#the uppper limit used in loop is 97500
-#a total of 13063 regions have been identified from 10259 scaffolds
+The longest scaffold is 280192
+The upper limit used in loop is 277500
+A total of 37134 regions have been identified from 16894 scaffolds
 ```
 
 Move out files into your `logs` directory
@@ -713,21 +715,22 @@ Once your list is ready, create a file in your `probe_design` dirctory.
 
 ```sh
 #example for Spratelloides gracilis
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/probe_design
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your-name/probe_design
 
-nano closest_relative_genomes_Spratelloides_gracilis.txt
+nano closest_relative_genomes_salarias_fasciatus.txt
 
-1.- Clupea harengus
-https://www.ncbi.nlm.nih.gov/genome/15477
-2.- Sardina pilchardus
-https://www.ncbi.nlm.nih.gov/genome/8239
-3.- Tenualosa ilisha
-https://www.ncbi.nlm.nih.gov/genome/12362
-4.- Coilia nasus
-https://www.ncbi.nlm.nih.gov/genome/2646
-5.- Denticeps clupeoides
-https://www.ncbi.nlm.nih.gov/genome/7889
-```
+Closest genomes:
+1. Salarias fascistus - https://www.ncbi.nlm.nih.gov/genome/7248
+2. Parablennius parvicornis - https://www.ncbi.nlm.nih.gov/genome/69445
+3. Petroscirtes breviceps - https://www.ncbi.nlm.nih.gov/genome/7247
+4. Ecsenius bicolor - https://www.ncbi.nlm.nih.gov/genome/41373
+5. Gouania willdenowi - https://www.ncbi.nlm.nih.gov/genome/76090
+
+Used Betancour et al. 2017 (All Blenniiformes)
+
+---
+
+**NOTE:** Sfa has a genome available in GenBank.
 
 ---
 
@@ -776,97 +779,6 @@ Eric will then share these with Arbor BioSciences.
 #### **Finito!!!**
 
 #### **Congrats! You have finished the SSL processing pipeline. Go ahead, give yourself a pat on the back!**
-
----
-
-## **13. Cleaning Up**
-
-The SSL pipeline creates multiple copies of your data in the form of intermediate files. Assuming that you have finished the pipeline (have checked your files and send probe info to Arbor Bio), it is now time to do some cleaning-up.
-
-Document the size of your directories and files before cleaning-up and save this information to a file named:
-
-`<your species 3-letter ID>_ssl_beforeDeleting_IntermFiles` 
-
-From your species directory:
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-du -h | sort -rh > <yourspecies>_ssl_beforeDeleting_IntermFiles
-#Sgr example Sgr_ssl_beforeDeleting_IntermFiles
-```
-
-### **13a. Make a copy of important files** 
-
-**You do not need to do this for the workshop. Only members of the Carpenter group (on Wahab) can read/write to the RC.**
-
-Before deleting files, make a copy of any important files in the RC (only available when on the log-in node):
-
-1. raw sequence files (this should had been done already but double check)
-2. "contaminated" files (`fq_fp1_clmp_fp2`)
-3. "decontaminated" files (`fq_fp1_clmp_fp2_fqscrn_repaired`)
-4. best assembly (just the `contigs.fasta` and `scaffolds.fasta` for contam and decontam best assemblies)
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-#check for a copy of raw files
-ls /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your_species/shotgun_raw_fq
-
-#make copy of contaminated and decontaminated files
-cp -R fq_fp1_clmp_fp2 /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/
-cp -R fq_fp1_clmp_fp2_fqscrn_repaired /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/               
-
-#make a copy of fasta files for best assembly (Sgr example)
-mkdir /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/SPAdes_SgC0072C_contam_R1R2_noIsolate
-mkdir /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/your species/SPAdes_SgC0072C_decontam_R1R2_noIsolate
-cp SPAdes_SgC0072C_contam_R1R2_noIsolate/[cs]*.fasta /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/<your species>/SPAdes_SgC0072C_contam_R1R2_noIsolate
-cp SPAdes_SgC0072C_decontam_R1R2_noIsolate/[cs]*.fasta /RC/group/rc_carpenterlab_ngs/shotgun_PIRE/pire_ssl_data_processing/<your species>/SPAdes_SgC0072C_decontam_R1R2_noIsolate
-```
-
-### **13b. Delete unneeded files**
-
-Delete the raw sequence files and other sequence files (`fq.gz` | `fastq.gz`) from the intermediate steps (Fastp1, Clumpify, and Fastqscreen; steps 0, 2, and 5). Keep the files from `fq_fp1_clmp_fp2` and `fq_fp1_clmp_fp2_fqscrn_repaired`. 
-
-It is a good idea to keep track of the files you are deleting. An easy way to do this is to list the files to be deleted, copy their information and paste it into a log file tracking the files you are deleting.
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-ls -l fq/*fq.gz
-
-#copy what is printed to the commandline and paste into the log file
-
-nano deleted_files_log
-#paste (example)
-/home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/spratelloides_gracilis/fq/
--rwxr-x--- 1 e1garcia carpenter  15G Aug  2 12:12 SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_1.fq.gz
--rwxr-x--- 1 e1garcia carpenter  16G Aug  2 12:30 SgC0072B_CKDL210013395-1a-5UDI294-AK7096_HF33GDSX2_L4_2.fq.gz
--rwxr-x--- 1 e1garcia carpenter  13G Aug  2 12:45 SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_1.fq.gz
--rwxr-x--- 1 e1garcia carpenter  14G Aug  2 13:01 SgC0072C_CKDL210013395-1a-AK9146-7UDI286_HF33GDSX2_L4_2.fq.gz
--rwxr-x--- 1 e1garcia carpenter  16G Aug  2 13:19 SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_1.fq.gz
--rwxr-x--- 1 e1garcia carpenter  17G Aug  2 13:36 SgC0072D_CKDL210013395-1a-AK5577-AK7533_HF33GDSX2_L4_2.fq.gz
-```
-
-Append the information from the rest of files to be deleted into the same file.
-
-Finally, document the new size of your directories.
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-du -h | sort -rh > <yourspecies>_ssl_afterDeleting_IntermFiles
-```
-
-For *Spratelloides gracisilis* for example, about 1Tb of data was deleted! You will likely delete less than that but still a substantial amount.
-
-Move the cleaning files into the `logs` directory
-
-```sh
-cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-
-mv Sfa_ssl* logs
-mv deleted_files_log logs
-```
 
 ---
 
