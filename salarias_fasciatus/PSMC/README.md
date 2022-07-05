@@ -238,11 +238,15 @@ We can also examine the mapping visually using a program called IGV (<ins>I</ins
 
 This step uses scripts modified from [Harvard FAS Informatics tutorial](https://informatics.fas.harvard.edu/psmc-journal-club-walkthrough.html), [Applying PSMC to Neandertal data](http://willyrv.github.io/tutorials/bioinformatics/AltaiNea-psmc.html), & the [PSMC documentation](https://github.com/lh3/psmc) to call a "consensus sequence" from our .bam file. We use SLURM's array mode to parallelize the consensus calling, meaning that for each of the scaffolds in our reference genome we create a new processthat calls the sequence for that scaffold.
 
-The script `mpileup.sbatch` uses a pipeline from samtools to bcftools to vcfutils.pl to create a consensus sequence.
+Make a folder in your existing mkBAM folder to do the PSMC analysis. Call this folder `shotgun_100k`.
+
+Make a folder called `joblog` inside this folder. This will hold your output logs.
+
+The script `mpileup.sbatch` uses a pipeline from samtools to bcftools to vcfutils.pl to create a consensus sequence. Copy this script to the `shotgun_100k` folder.
 
 Examine the script - it is configured to work with our Sfa_denovoSSL_100k bamfile. You may have to edit a few things in the sbatch for it to run properly.
 
-1) Make sure all of the paths are correct, especially the DATAPATH (= the path to the folder containing the bamfile and reference assembly).
+1) Make sure all of the paths are correct, especially the DATAPATH (= the path to the folder containing the bamfile and reference assembly) and YOURPATH (path to your PSMC folder).
 
 2) Check the `-d` and `-D` arguments after `crun vcfutils.pl vcf2fq`. These should reflect the minimum and maximum depth cutoffs you calculated in the previous step.
 
