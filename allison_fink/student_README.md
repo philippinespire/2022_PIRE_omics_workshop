@@ -286,13 +286,13 @@ Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both ver
 <b>GenomeScope version 1.0</b>
 k = 21
 
-property                      min               max               
-Heterozygosity                1.0538%           1.08547%          
-Genome Haploid Length         577,739,654 bp    579,839,747 bp    
-Genome Repeat Length          49,701,515 bp     49,882,181 bp     
-Genome Unique Length          528,038,139 bp    529,957,566 bp    
-Model Fit                     90.9798%          92.2947%          
-Read Error Rate               0.238395%         0.238395%  
+property                    |min               |max               
+Heterozygosity              |1.0538%           |1.08547%          
+Genome Haploid Length       |577,739,654 bp    |579,839,747 bp    
+Genome Repeat Length        |49,701,515 bp     |49,882,181 bp     
+Genome Unique Length        |528,038,139 bp    |529,957,566 bp    
+Model Fit                   |90.9798%          |92.2947%          
+Read Error Rate             |0.238395%         |0.238395%  
 ______________________________________________________________
 <b>GenomeScope version 2.0</b>
 input file = user_uploads/0Xnzbefuo2FXUiNTXtxg
@@ -300,14 +300,14 @@ output directory = user_data/0Xnzbefuo2FXUiNTXtxg
 p = 2
 k = 21
 
-property                      min               max               
-Homozygous (aa)               98.8973%          98.9193%          
-Heterozygous (ab)             1.08073%          1.10271%          
-Genome Haploid Length         633,665,608 bp    634,636,698 bp    
-Genome Repeat Length          115,006,453 bp    115,182,700 bp    
-Genome Unique Length          518,659,155 bp    519,453,998 bp    
-Model Fit                     80.1725%          93.4093%          
-Read Error Rate               0.224442%         0.224442%     
+property                      |min               |max               
+Homozygous (aa)               |98.8973%          |98.9193%          
+Heterozygous (ab)             |1.08073%          |1.10271%          
+Genome Haploid Length         |633,665,608 bp    |634,636,698 bp    
+Genome Repeat Length          |115,006,453 bp    |115,182,700 bp    
+Genome Unique Length          |518,659,155 bp    |519,453,998 bp    
+Model Fit                     |80.1725%          |93.4093%          
+Read Error Rate               |0.224442%         |0.224442%     
 
 No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
 
