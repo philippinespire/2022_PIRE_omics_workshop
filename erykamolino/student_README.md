@@ -404,9 +404,7 @@ Sfa  |allLibs  |decontam       |scaffolds       |off       |2   |  51674 | 14249
 
 ## Step 5. Identify Best Assembly
 
-What is the best assembly? Note here. Include the assembly and the corresponding library.
-
-Note additional remarks if necessary
+What is the best assembly? Library B Scaffolds. All library scaffolds would also work too. 
 
 ## Step 6. Assemble Contaminated Data From the Best Library
 
