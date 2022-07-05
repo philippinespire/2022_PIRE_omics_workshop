@@ -16,7 +16,7 @@ Before we can run plink, we need to install it using Conda, which is an open-sou
 
 First, we need to create a Conda environment that will contain our population genetics/structure programs.
 
-```
+```bash
 module load container_env/0.1
 module load conda/3
 module load anaconda
@@ -30,7 +30,7 @@ conda deactivate #this exits the conda environment
 
 Next, we will install plink within the Conda environment you just created.
 
-```
+```bash
 conda activate popgen -- if you didn't do this previously or accidentally exited out
 
 conda install -c bioconda plink
@@ -42,7 +42,7 @@ Now that we have installed plink with Conda, we can use it to run a PCA and look
 
 Before we run anything, we need to first set up the directory that we will write our output to.
 
-```
+```bash
 cd ~/shotgun_pire/2022_pire_omics_workshop/your_name
 
 mkdir pop_structure
@@ -58,7 +58,10 @@ salloc #this will put you on an interactive node
 module load anaconda
 conda activate popgen
 
-plink --vcf <VCF_FILE> --allow-extra-chr --pca --out <PIRE.SPECIES.LOC>
+plink --vcf /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/
+lle.B.ssl.Lle-C-3NR-R1R2ORPH-contam-noisolate-off.Fltr07.14.vcf --allow-extra-chr --make-bed --out PIRE.Lle.Ham
+
+plink --pca --allow-extra-chr --bfile PIRE.Lle.Ham --out PIRE.Lle.Ham
 
 conda deactivate
 ```
