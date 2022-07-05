@@ -269,7 +269,7 @@ Reads remaining:
 
 ## Step 1. Genome Properties
 
-*Salarias fasciatus* has a genome available at both the genomesize.com (C-value= "___" pg) and NCBI Genome databases. 
+*Salarias fasciatus* has a genome available at both the genomesize.com (C-value = "0.83" pg) and NCBI Genome databases. 
  
 However, we will still estimate the genome size of *Salarias fasciatus* using Jellyfish to remain consistent with all the other species.
 
