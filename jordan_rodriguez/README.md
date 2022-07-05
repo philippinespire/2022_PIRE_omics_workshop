@@ -1,21 +1,48 @@
-# Sfa Shotgun Data Processing Log - SSL data
+# *Salarias fasciatus* Shotgun Data Processing Log - SSL data
 
-Copy and paste this into a new species dir and fill in as steps are accomplished.
+---
+
+Jordan Rodriguez
+
+---
+ 
+Here is a roadmap of what I did during the 2022 Philippines Omics Workshop -- enjoy the awesomeness ;)
+
+---
+
+To begin, I first created a `shotgun_PIRE` directory and cloned the workshop repo into my home directory on the wahab.hpc.odu.edu server.
+
+Here is the code I ran:
+```bash
+#done on USER@wahab.hpc.odu.edu server
+cd ~
+mkdir shotgun_PIRE
+cd shotgun_PIRE
+git clone https://github.com/philippinespire/2022_PIRE_omics_workshop.git  
+```
+
+Then, I created my personal directory in the `2022_PIRE_omics_workshop` directory and copied the student_README into my personal dir.
+
+Here is the code I ran:
+```bash 
+#~/shotgun_PIRE/2022_PIRE_omics_workshop
+mkdir jordan_rodriguez
+cd jordan_rodriguez/
+cp ../student_README.md .
+```
+---
+
+## **A. Pre-Processing Raw Data**
 
 Following the [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq_gz_processing) and [pire_ssl_data_processing](https://github.com/philippinespire/pire_ssl_data_processing) roadmaps.
 
 ---
 
-## **A. Pre-Processing Section**
+### Step 0. Rename the raw fq.gz files
 
-## Step 0. Rename the raw fq.gz files
-
-Used decode file from Sharon Magnuson. **We will do this together in the workshop as a demonstration.**
-
-```
-salloc
-bash
-
+Workshop organizers completed this step for the students, so I left the code provided below alone. 
+This was the code they ran:
+```bash
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #run renameFQGZ.bash first to make sure new names make sense
@@ -28,19 +55,18 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_Probe
 
 ---
 
-## Step 1. Check quality of data with fastqc
+### Step 1. Check quality of data with fastqc
 
-Ran [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh).
-* **NOTE:** for the 2022 PIRE Omics workshop, run [`Multi_FASTQC_wkshp.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC_wkshp.sh) instead. Specify out directory to write the output to.
-
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq
-
-#Multi_FastQC.sh "<indir>" "file extension"
-#For workshop: Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "file extension"
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "fq.gz"
+For this workshop, I ran the [`Multi_FASTQC_wkshp.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC_wkshp.sh) version of [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh).
+This was the code I used:
+```bash 
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
+# Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "file extension"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC_wkshp.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "./shotgun_raw_fq/" "fq.gz"
 ```
 
+
+CURRENTLY UPDATING BELOW:
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
 
 Potential issues:  
@@ -61,9 +87,9 @@ Potential issues:
 
 Ran [`runFASTP_1st_trim.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_1st_trim.sbatch).
 
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
-
+This was the code I used:
+```bash
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
 #sbatch runFASTP_1st_trim.sbatch <INDIR/full path to files> <OUTDIR/full path to desired outdir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch shotgun_raw_fq fq_fp1
 ```
@@ -88,10 +114,9 @@ Potential issues:
 
 Ran [`runCLUMPIFY_r1r2_array.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) in a 3 node array on Wahab.
 
-```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
-
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/r3clark 3
+```bash
+cd ~/shotgun_PIRE/2022_PIRE_omics_workshop/jordan_rodriguez
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/j1rodrig 3
 ```
 
 Checked the output with [`checkClumpify_EG.R`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/checkClumpify_EG.R).
@@ -272,20 +297,20 @@ However, we will still estimate the genome size of *Salarias fasciatus* using Je
 Executed `runJellyfish.sbatch` using the decontaminated files.
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #runJellyfish.sbatch <Species 3-letter ID> <indir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sfa" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
 The Jellyfish kmer-frequency [histogram file](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa_all_reads.histo) 
-was uploaded into [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [GenomeScope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the [v1.report](**insert file**) and [v2.report](**insert file**). 
+was uploaded into [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [GenomeScope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the [v1.report](<insert file>) and [v2.report](insert file>). 
 
 Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions:
 
-**insert table here**
+<insert table here>
 
-No red flags. We will use the max value from V2 rounded up to ***insert value here*** bp.
+No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
 
 ---
 
@@ -296,22 +321,22 @@ Executed [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespi
 ```sh
 #new window
 ssh username@turing.hpc.odu.edu
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <contam | decontam> <genome size in bp> <species dir>
 #do not use trailing / in paths
 
 #1st library
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "1" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "1" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 
 #2nd library
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "2" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "2" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 
 #3rd library
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "3" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "3" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 
 #all libraries combined
-sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "all_3libs" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname" "fq_fp1_clmp_fp2_fqscrn_repaired"
+sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "all_3libs" "decontam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
  
 JOB IDs:
@@ -403,7 +428,7 @@ Note additional remarks if necessary
 
 ## Step 6. Assemble Contaminated Data From the Best Library
 
-```sh
+``sh
 cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir>
@@ -411,12 +436,12 @@ cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "2" "contam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
 ```
 
-## Skipping Steps 7-8 for the workshop BUT please do clean-up  (Step 9):
+## Skipping Steps 7-9 for the workshop BUT please do clean-up:
 
 Move your out files into the `logs` directory
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 mv *out logs
 ```
@@ -428,7 +453,7 @@ mv *out logs
 From the species directory: made probe directory, renamed assembly, and copied scripts.
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
+cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
 
 mkdir probe_design
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_annotation.sb probe_design
@@ -440,7 +465,7 @@ ls -d busco_*
 # Example,the busco dir for the best assembly for Sgr is `busco_scaffolds_results-SPAdes_SgC0072C_contam_R1R2_noIsolate`
 # I then provide the species 3-letter code, scaffolds, and copy and paste the parameters from the busco dir after "SPAdes_" 
 cd probe_design
-mv scaffolds.fasta Sgr_scaffolds_B_contam_R1R2_noIsolate.fasta
+mv scaffolds.fasta Sgr_scaffolds_SgC0072C_contam_R1R2_noIsolate.fasta
 ```
 
 Execute the first script
@@ -470,16 +495,18 @@ mv *out ../logs
 ## Step 12. Fetching genomes for closest relatives
 
 ```sh
-nano closest_relative_genomes_salarias_fasciatus.txt
+nano closest_relative_genomes_Spratelloides_gracilis.txt
 
-Closest genomes:
-1. Salarias fascistus - https://www.ncbi.nlm.nih.gov/genome/7248
-2. Parablennius parvicornis - https://www.ncbi.nlm.nih.gov/genome/69445
-3. Petroscirtes breviceps - https://www.ncbi.nlm.nih.gov/genome/7247
-4. Ecsenius bicolor - https://www.ncbi.nlm.nih.gov/genome/41373
-5. Gouania willdenowi - https://www.ncbi.nlm.nih.gov/genome/76090
-
-Used Betancour et al. 2017 (All Blenniiformes)
+1.- Clupea harengus
+https://www.ncbi.nlm.nih.gov/genome/15477
+2.- Sardina pilchardus
+https://www.ncbi.nlm.nih.gov/genome/8239
+3.- Tenualosa ilisha
+https://www.ncbi.nlm.nih.gov/genome/12362
+4.- Coilia nasus
+https://www.ncbi.nlm.nih.gov/genome/2646
+5.- Denticeps clupeoides
+https://www.ncbi.nlm.nih.gov/genome/7889
 ```
 
-**NOTE:** Sfa has a genome available in GenBank.
+following Betancur et al. 2017 and Lavoué_etal_2007 (see the Spratelloides delicatulus slack channel for papers) 
