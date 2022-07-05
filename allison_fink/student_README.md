@@ -416,8 +416,8 @@ Sfa  |B  |decontam       |contgs       |off       |2       |  66179  |  89863  |
 Sfa  |B  |decontam       |scaffolds       |off       |2    |  52101  |  155803  |   548869041  |  86 % |  14587  |  10542  |  580.13  | 70.8 %
 Sfa  |C  |decontam       |contgs       |off       |2       |  65353  |  92853  |  489986080  | 77 % | 8743  | 16693  |  0  |  55.9 %
 Sfa  |C  |decontam       |scaffolds       |off       |2    |  51239  |  176566  |   539924893  | 86 % |  14784  |  10318  | 641.53 | 69.5 %
-Sfa  |allLibs  |decontam       |contigs       |off       |2    |  ? | ? |  ?  |  ? % |  ?  | ?  |  ?  | ? %
-Sfa  |allLibs  |decontam       |scaffolds       |off       |2   | ? | ? |  ?  |  ? % | ?  |  ?  | ? | ? %
+Sfa  |allLibs  |decontam       |contigs       |off       |2    |  ? | ? |  ?  |  ? % |  ?  | ?  |  ?  | 54.1 %
+Sfa  |allLibs  |decontam       |scaffolds       |off       |2   | ? | ? |  ?  |  ? % | ?  |  ?  | ? | 69.0 %
 
 ## Step 5. Identify Best Assembly
 
