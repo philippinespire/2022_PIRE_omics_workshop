@@ -10,7 +10,6 @@ Principal component analysis, or PCA, considers all the variation at all the loc
 
 While there are many different programs that can run a PCA using genetic data, today we will be using a program called **plink**. It is a multi-functional population genetics program that can run a wide range of basic analyses.
 
-
 Before we can run plink, we need to install it using Conda, which is an open-source package/environment management system. Basically, Conda streamlines and simplifies the process of installing, updating, and running programs and packages. We will use it to install our population structure programs for this workshop, but you can use it to install and manage a variety of other things as well (including R, Python, and many bioinformatics programs). If you want more information on Conda, look [here](https://docs.conda.io/en/latest/).
 
 ## Installing plink
@@ -35,30 +34,64 @@ Next, we will install plink within the Conda environment you just created.
 conda activate popgen -- if you didn't do this previously or accidentally exited out
 
 conda install -c bioconda plink
----
+```
 
+## Running plink (and PCA)
 
+Now that we have installed plink with Conda, we can use it to run a PCA and look at some population structure!
 
-
-## Installing PLINK
-
-Necessary to run PCA (with PLINK). Also useful for easily filtering VCFs and creating bed/bim files.
+Before we run anything, we need to first set up the directory that we will write our output to.
 
 ```
-#to create conda environment that will contain popgen programs --> only need to do this ONCE
-module load container_env/0.1
-module load conda/3
+cd ~/shotgun_pire/2022_pire_omics_workshop/your_name
+
+mkdir pop_structure
+```
+
+Now, we can run our PCA. The code to do this is below:
+
+```bash
+cd ~/shotgun_pire/2022_pire_omics_workshop/your_name/pop_structure
+
+salloc #this will put you on an interactive node
+
 module load anaconda
-
-conda create -n popgen
 conda activate popgen
-conda config --add channels conda-forge
 
-#install plink
-conda install -c bioconda plink
+plink --vcf <VCF_FILE> --allow-extra-chr --pca --out <PIRE.SPECIES.LOC>
 
 conda deactivate
 ```
+
+That was it! It probably didn't even take that long.
+
+Arguments we used:
+  * **--vcf:** the VCF file we read in data from
+  * **--allow-extra-chr:** allows chromosomes that aren't human (1-23)
+  * **--pca:** tells plink that we want to run a PCA
+  * **--out:** the prefix plink should give any out files it makes
+
+You may notice that plink wrote a few things to the screen. One line says how many variants (SNPs) and samples passed filters and QC. This tells you the amount of data that went into the PCA.
+
+The output file that we are especially interested in is the one with the extension `*eigenvec`. This file contains each individual's "loadings" (coordinates) on each of the principal components. It is these loadings that we will use to visualize the data.
+
+We still have a bit more work to do before we can analyze the results of our PCA. What you have just created are the "loadings", or coordinates that help you plot individuals on a graph. Now, we need to do the actual plotting. Normally we do this with an R-script designed specifically to take data created by our CSSL (capture) pipeline and turn it into beautiful figures. However, to save time during the workshop, we won't actually run that R-script today. Instead, we will download and look at some plots already created with the data you are working with.
+
+We have to download these plots to your local computer before we can open them up and look at them:
+
+```
+#open a new terminal window
+
+#if using a mac:
+sftp user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/PC*png PATH_TO_YOUR_LOCAL_DIRECTORY
+
+#if using a PC:
+r-sync user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/PC*png PATH_TO_YOUR_LOCAL_DIRECTORY
+```
+
+You can also download them off GitHub as well. Just go to this link....
+
+**Once you have downloaded and opened the THREE png files, go to this link and answer the questions.**
 
 ---
 
