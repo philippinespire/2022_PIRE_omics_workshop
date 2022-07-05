@@ -309,7 +309,7 @@ Genome Unique Length          |518,659,155 bp    |519,453,998 bp
 Model Fit                     |80.1725%          |93.4093%          
 Read Error Rate               |0.224442%         |0.224442%     
 
-No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
+No red flags. We will use the max value from V2 rounded up to 635,000 bp.
 
 ---
 
