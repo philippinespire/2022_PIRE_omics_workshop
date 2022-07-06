@@ -244,7 +244,7 @@ Make a folder called `Sfa_denovoSSL_100k_PSMC` inside `shotgun_100k`.
 
 Make a folder called `joblog` inside `Sfa_denovoSSL_100k_PSMC`. This will hold your output logs.
 
-The script `mpileup.sbatch` uses a pipeline from samtools to bcftools to vcfutils.pl to create a consensus sequence. Copy this script to the `shotgun_100k` folder.
+The script `Sfa_denovoSSL_100k_mpileup.sbatch` uses a pipeline from samtools to bcftools to vcfutils.pl to create a consensus sequence. Copy this script to the `shotgun_100k` folder.
 
 Examine the script - it is configured to work with our Sfa_denovoSSL_100k bamfile. You may have to edit a few things in the sbatch for it to run properly.
 
