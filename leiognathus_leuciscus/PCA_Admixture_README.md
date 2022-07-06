@@ -59,8 +59,7 @@ cd ~/shotgun_pire/2022_pire_omics_workshop/your_name/pop_structure
 
 conda activate popgen
 
-plink --vcf /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/
-lle.B.ssl.Lle-C-3NR-R1R2ORPH-contam-noisolate-off.Fltr07.14.vcf --allow-extra-chr --make-bed --out PIRE.Lle.Ham
+plink --vcf /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/lle.B.ssl.Lle-C-3NR-R1R2ORPH-contam-noisolate-off.Fltr07.14.vcf --allow-extra-chr --make-bed --out PIRE.Lle.Ham
 
 plink --pca --allow-extra-chr --bfile PIRE.Lle.Ham --out PIRE.Lle.Ham
 
