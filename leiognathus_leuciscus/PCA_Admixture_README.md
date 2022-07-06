@@ -38,7 +38,6 @@ conda activate popgen
 conda install -c bioconda plink
 
 conda deactivate
-exit #relinquish the interactive node
 ```
 
 ## Running plink (and PCA)
@@ -118,7 +117,6 @@ conda activate popgen
 conda install -c bioconda admixture
 
 conda deactivate
-exit
 ```
 
 ## Running ADMIXTURE
