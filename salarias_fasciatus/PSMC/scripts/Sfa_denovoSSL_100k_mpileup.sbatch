@@ -20,10 +20,10 @@ export SINGULARITY_BIND=/home/e1garcia
 
 CHR="${SLURM_ARRAY_TASK_ID}"
 DATAPATH="/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/PSMC/data/mkBAM/shotgun_100k"
-YOURPATH="/home/<yourfolder>/PSMC/shotgun_100k"
-mkdir -p $DATAPATH/Sfa_denovoSSL_100k_PSMC/
-mkdir -p $DATAPATH/Sfa_denovoSSL_100k_PSMC/joblog
+YOURPATH="/home/breid/2022_PIRE_omics_workshop/Brendan/PSMC/data/mkBAM/shotgun_100k"
+mkdir -p $YOURPATH/Sfa_denovoSSL_100k_PSMC/
+mkdir -p $YOURPATH/Sfa_denovoSSL_100k_PSMC/joblog
 
-crun samtools mpileup -C50 -r $CHR -uf $DATAPATH/reference.denovoSSL.Sfa100k.fasta $DATAPATH/Sfa_denovoSSL_100k.bam | crun bcftools call -c - | crun vcfutils.pl vcf2fq -d <low> -D <high> > $YOURPATH/Sfa_denovoSSL_100k_PSMC/Sfa_denovoSSL_100k.$CHR.fq
+crun samtools mpileup -C50 -r $CHR -uf $DATAPATH/reference.denovoSSL.Sfa100k.fasta $DATAPATH/Sfa_denovoSSL_100k.bam | crun bcftools call -c - | crun vcfutils.pl vcf2fq -d 46 -D 276 > $YOURPATH/Sfa_denovoSSL_100k_PSMC/Sfa_denovoSSL_100k.$CHR.fq
 
 mv *mpileup*out $YOURPATH/Sfa_denovoSSL_100k_PSMC/joblog
