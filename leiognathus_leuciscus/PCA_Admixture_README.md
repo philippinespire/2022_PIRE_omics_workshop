@@ -38,6 +38,7 @@ conda activate popgen
 conda install -c bioconda plink
 
 conda deactivate
+exit #relinquish the interactive node
 ```
 
 ## Running plink (and PCA)
@@ -109,7 +110,7 @@ For more information on ADMIXTURE, you can read the tutorial [here](https://dale
 We are once again going to install ADMIXTURE using Conda:
 
 ```bash
-salloc #if you are no longer on an interactive node
+salloc
 
 module load anaconda
 conda activate popgen
@@ -117,6 +118,7 @@ conda activate popgen
 conda install -c bioconda admixture
 
 conda deactivate
+exit
 ```
 
 ## Running ADMIXTURE
