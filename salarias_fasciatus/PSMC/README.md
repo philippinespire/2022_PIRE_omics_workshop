@@ -240,7 +240,9 @@ This step uses scripts modified from [Harvard FAS Informatics tutorial](https://
 
 Make a folder in your existing mkBAM folder to do the PSMC analysis. Call this folder `shotgun_100k`.
 
-Make a folder called `joblog` inside this folder. This will hold your output logs.
+Make a folder called `Sfa_denovoSSL_100k_PSMC` inside `shotgun_100k`.
+
+Make a folder called `joblog` inside `Sfa_denovoSSL_100k_PSMC`. This will hold your output logs.
 
 The script `mpileup.sbatch` uses a pipeline from samtools to bcftools to vcfutils.pl to create a consensus sequence. Copy this script to the `shotgun_100k` folder.
 
