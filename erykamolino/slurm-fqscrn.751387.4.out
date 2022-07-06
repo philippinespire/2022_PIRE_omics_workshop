@@ -1,0 +1,15 @@
+
+INDIR=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2
+OUTDIR=fq_fp1_clmp_fp2_fqscrn
+CONFFILE=/home/e1garcia/shotgun_PIRE/fastq_screen/indexed_databases/runFQSCRN_6_nofish.conf
+PATTERN=*.fq.gz
+PARALLELISM=
+THREADS=40
+SUBSET=0
+FILTER=000000000000
+INFILES:
+/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r1.fq.gz
+
+Mon Jul 4 04:43:50 EDT 2022 RUNNING FASTQ_SCREEN TO FILTER FQ FILES AND GENERATE REPORTS, NO SUBSETTING
+Using fastq_screen v0.14.0
+Couldn't find fastq_screen.conf at '/home/e1garcia/shotgun_PIRE/fastq_screen/indexed_databases/runFQSCRN_6_nofish.conf'

@@ -1,8 +1,135 @@
 
-Fcntl.c: loadable library and perl binaries are mismatched (got handshake key 0xcd00080, needed 0xde00080)
-[WARNING]         multiqc : MultiQC Version v1.12 now available!
-[INFO   ]         multiqc : This is MultiQC v1.9
-[INFO   ]         multiqc : Template    : default
-[INFO   ]         multiqc : Searching   : /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/test_student
-[WARNING]         multiqc : No analysis results found. Cleaning up..
-[INFO   ]         multiqc : MultiQC complete
+Analysis complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Started analysis of Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 5% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 10% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 15% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 20% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 25% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 30% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 35% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 40% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 45% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 50% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 55% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 60% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 65% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 70% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 75% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 80% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 85% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 90% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Approx 95% complete for Sfa-CBas_028-Ex1-1H_L4_1.fq.gz
+Analysis complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Started analysis of Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 5% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 10% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 15% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 20% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 25% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 30% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 35% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 40% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 45% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 50% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 55% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 60% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 65% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 70% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 75% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 80% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 85% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 90% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Approx 95% complete for Sfa-CBas_028-Ex1-1H_L4_2.fq.gz
+Analysis complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Started analysis of Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 5% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 10% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 15% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 20% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 25% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 30% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 35% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 40% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 45% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 50% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 55% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 60% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 65% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 70% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 75% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 80% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 85% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 90% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Approx 95% complete for Sfa-CBas_028-Ex1-1G_L4_2.fq.gz
+Analysis complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Started analysis of Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 5% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 10% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 15% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 20% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 25% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 30% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 35% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 40% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 45% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 50% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 55% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 60% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 65% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 70% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 75% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 80% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 85% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 90% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Approx 95% complete for Sfa-CBas_028-Ex1-1G_L4_1.fq.gz
+Analysis complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Started analysis of Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 5% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 10% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 15% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 20% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 25% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 30% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 35% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 40% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 45% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 50% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 55% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 60% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 65% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 70% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 75% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 80% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 85% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 90% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Approx 95% complete for Sfa-CBas_028-Ex1-2A_L4_1.fq.gz
+Analysis complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Started analysis of Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 5% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 10% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 15% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 20% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 25% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 30% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 35% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 40% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 45% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 50% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 55% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 60% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 65% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 70% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 75% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 80% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 85% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 90% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Approx 95% complete for Sfa-CBas_028-Ex1-2A_L4_2.fq.gz
+Usage: multiqc [OPTIONS] <analysis directory>
+
+Error: Invalid value for '<analysis directory>': Path '~/shotgun_PIRE/2022_PIRE_omics_workshop/allison_fink/shotgun_raw_fq' does not exist.
+
+This is MultiQC v1.9
+
+For more help, run 'multiqc --help' or visit http://multiqc.info
+

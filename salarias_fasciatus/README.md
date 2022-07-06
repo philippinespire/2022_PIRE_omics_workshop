@@ -470,18 +470,17 @@ mv *out ../logs
 ## Step 12. Fetching genomes for closest relatives
 
 ```sh
-nano closest_relative_genomes_Spratelloides_gracilis.txt
+nano closest_relative_genomes_salarias_fasciatus.txt
 
-1.- Clupea harengus
-https://www.ncbi.nlm.nih.gov/genome/15477
-2.- Sardina pilchardus
-https://www.ncbi.nlm.nih.gov/genome/8239
-3.- Tenualosa ilisha
-https://www.ncbi.nlm.nih.gov/genome/12362
-4.- Coilia nasus
-https://www.ncbi.nlm.nih.gov/genome/2646
-5.- Denticeps clupeoides
-https://www.ncbi.nlm.nih.gov/genome/7889
-```
+Closest genomes:
+1. Salarias fascistus - https://www.ncbi.nlm.nih.gov/genome/7248
+2. Parablennius parvicornis - https://www.ncbi.nlm.nih.gov/genome/69445
+3. Petroscirtes breviceps - https://www.ncbi.nlm.nih.gov/genome/7247
+4. Ecsenius bicolor - https://www.ncbi.nlm.nih.gov/genome/41373
+5. Gouania willdenowi - https://www.ncbi.nlm.nih.gov/genome/76090
 
-following Betancur et al. 2017 and Lavoué_etal_2007 (see the Spratelloides delicatulus slack channel for papers) 
+Used Betancour et al. 2017 (All Blenniiformes)
+
+---
+
+**NOTE:** Sfa has a genome available in GenBank. 

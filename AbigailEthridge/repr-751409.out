@@ -1,0 +1,43 @@
+
+java -ea -Xmx160854m -cp /opt/conda/opt/bbmap-38.90-3/current/ jgi.SplitPairsAndSingles rp in1=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r1.tagged_filter.fastq.gz in2=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r2.tagged_filter.fastq.gz out1=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R1.fq.gz out2=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R2.fq.gz outs=fq_fp1_clmp_fp2_fqscrn_repaired/orphans/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.orph.fq repair
+Executing jgi.SplitPairsAndSingles [rp, in1=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r1.tagged_filter.fastq.gz, in2=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_r2.tagged_filter.fastq.gz, out1=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R1.fq.gz, out2=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.R2.fq.gz, outs=fq_fp1_clmp_fp2_fqscrn_repaired/orphans/Sfa-CBas_028-Ex1-1H_L4_clmp.fp2_repr.orph.fq, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+
+Input:                  	231642444 reads 		34712928167 bases.
+Result:                 	231642444 reads (100.00%) 	34712928167 bases (100.00%)
+Pairs:                  	224053078 reads (96.72%) 	33575580306 bases (96.72%)
+Singletons:             	7589366 reads (3.28%) 	1137347861 bases (3.28%)
+
+Time:                         	775.815 seconds.
+Reads Processed:        231m 	298.58k reads/sec
+Bases Processed:      34712m 	44.74m bases/sec
+java -ea -Xmx160854m -cp /opt/conda/opt/bbmap-38.90-3/current/ jgi.SplitPairsAndSingles rp in1=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r1.tagged_filter.fastq.gz in2=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r2.tagged_filter.fastq.gz out1=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_repr.R1.fq.gz out2=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_repr.R2.fq.gz outs=fq_fp1_clmp_fp2_fqscrn_repaired/orphans/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_repr.orph.fq repair
+Executing jgi.SplitPairsAndSingles [rp, in1=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r1.tagged_filter.fastq.gz, in2=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_r2.tagged_filter.fastq.gz, out1=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_repr.R1.fq.gz, out2=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_repr.R2.fq.gz, outs=fq_fp1_clmp_fp2_fqscrn_repaired/orphans/Sfa-CBas_028-Ex1-1G_L4_clmp.fp2_repr.orph.fq, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+
+Input:                  	276401862 reads 		41424233332 bases.
+Result:                 	276401862 reads (100.00%) 	41424233332 bases (100.00%)
+Pairs:                  	266975678 reads (96.59%) 	40011560799 bases (96.59%)
+Singletons:             	9426184 reads (3.41%) 	1412672533 bases (3.41%)
+
+Time:                         	869.809 seconds.
+Reads Processed:        276m 	317.77k reads/sec
+Bases Processed:      41424m 	47.62m bases/sec
+java -ea -Xmx160854m -cp /opt/conda/opt/bbmap-38.90-3/current/ jgi.SplitPairsAndSingles rp in1=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r1.tagged_filter.fastq.gz in2=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r2.tagged_filter.fastq.gz out1=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_repr.R1.fq.gz out2=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_repr.R2.fq.gz outs=fq_fp1_clmp_fp2_fqscrn_repaired/orphans/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_repr.orph.fq repair
+Executing jgi.SplitPairsAndSingles [rp, in1=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r1.tagged_filter.fastq.gz, in2=/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_r2.tagged_filter.fastq.gz, out1=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_repr.R1.fq.gz, out2=fq_fp1_clmp_fp2_fqscrn_repaired/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_repr.R2.fq.gz, outs=fq_fp1_clmp_fp2_fqscrn_repaired/orphans/Sfa-CBas_028-Ex1-2A_L4_clmp.fp2_repr.orph.fq, repair]
+
+Set INTERLEAVED to false
+Started output stream.
+
+Input:                  	343104255 reads 		51419433791 bases.
+Result:                 	343104255 reads (100.00%) 	51419433791 bases (100.00%)
+Pairs:                  	331507986 reads (96.62%) 	49681557655 bases (96.62%)
+Singletons:             	11596269 reads (3.38%) 	1737876136 bases (3.38%)
+
+Time:                         	1058.952 seconds.
+Reads Processed:        343m 	324.00k reads/sec
+Bases Processed:      51419m 	48.56m bases/sec

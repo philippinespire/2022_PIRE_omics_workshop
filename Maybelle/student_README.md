@@ -265,7 +265,7 @@ Reads remaining:
 
 ## Step 1. Genome Properties
 
-*Salarias fasciatus* has a genome available at both the genomesize.com (C-value= "___" pg) and NCBI Genome databases. 
+*Salarias fasciatus* has a genome available at both the genomesize.com (C-value= "0.83" pg) and NCBI Genome databases. 
  
 However, we will still estimate the genome size of *Salarias fasciatus* using Jellyfish to remain consistent with all the other species.
 
@@ -283,9 +283,17 @@ was uploaded into [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [Genom
 
 Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions:
 
-<insert table here>
+version    |stat    |min    |max
+------  |------ |------ |------
+1  |Heterozygosity  |1.0538%       |1.08547%
+2  |Heterozygosity  |1.08073%       |1.10271%
+1  |Genome Haploid Length   |577,739,654 bp |579,839,747 bp 
+2  |Genome Haploid Length   |633,665,608 bp |634,636,698 bp
+1  |Model Fit       |90.9798 %       |92.2947 %
+2  |Model Fit       |80.1725 %       |93.4093 %
 
-No red flags. We will use the max value from V2 rounded up to <insert value here> bp.
+No red flags. We will use the max value from V2 rounded up to 635,000,000 bp.
+
 
 ---
 
@@ -392,8 +400,8 @@ Sfa  |B  |decontam       |contgs       |off       |2       |  66179  |  89863  |
 Sfa  |B  |decontam       |scaffolds       |off       |2    |  52101  |  155803  |   548869041  |  86 % |  14587  |  10542  |  580.13  | 70.8 %
 Sfa  |C  |decontam       |contgs       |off       |2       |  65353  |  92853  |  489986080  | 77 % | 8743  | 16693  |  0  |  55.9 %
 Sfa  |C  |decontam       |scaffolds       |off       |2    |  51239  |  176566  |   539924893  | 86 % |  14784  |  10318  | 641.53 | 69.5 %
-Sfa  |allLibs  |decontam       |contigs       |off       |2    |  ? | ? |  ?  |  ? % |  ?  | ?  |  ?  | ? %
-Sfa  |allLibs  |decontam       |scaffolds       |off       |2   | ? | ? |  ?  |  ? % | ?  |  ?  | ? | ? %
+Sfa  |allLibs  |decontam       |contigs       |off       |2    |  67941 | 81176 |  494984098  |  77.95 % |  8354  | 17737 | 0.00 | 54.1 %
+Sfa  |allLibs  |decontam       |scaffolds       |off       |2   | 51674 | 142490 |  553408247  |  87.15 % | 15053  |  10228  | 733.46 | 69.0 %
 
 ## Step 5. Identify Best Assembly
 

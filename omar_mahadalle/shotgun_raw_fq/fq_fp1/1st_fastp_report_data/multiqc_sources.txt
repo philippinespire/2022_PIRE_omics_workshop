@@ -1,0 +1,4 @@
+Module	Section	Sample Name	Source
+fastp	all_sections	Sfa-CBas_028-Ex1-1H_L4_fastp	/home/omahadal/shotgun_PIRE/2022_PIRE_omics_workshop/omar_mahadalle/shotgun_raw_fq/fq_fp1/Sfa-CBas_028-Ex1-1H_L4_fastp.json
+fastp	all_sections	Sfa-CBas_028-Ex1-2A_L4_fastp	/home/omahadal/shotgun_PIRE/2022_PIRE_omics_workshop/omar_mahadalle/shotgun_raw_fq/fq_fp1/Sfa-CBas_028-Ex1-2A_L4_fastp.json
+fastp	all_sections	Sfa-CBas_028-Ex1-1G_L4_fastp	/home/omahadal/shotgun_PIRE/2022_PIRE_omics_workshop/omar_mahadalle/shotgun_raw_fq/fq_fp1/Sfa-CBas_028-Ex1-1G_L4_fastp.json
