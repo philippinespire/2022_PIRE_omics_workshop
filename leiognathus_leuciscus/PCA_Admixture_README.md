@@ -186,4 +186,4 @@ r-sync user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiog
 
 You can also view them on GitHub as well. Just go to this [link](https://github.com/philippinespire/2022_PIRE_omics_workshop/tree/main/leiognathus_leuciscus/pop_structure) and open up any of the `ADMIXTURE*png` files (`ADMIXTURE_K2.png`, `ADMIXTURE_K3.png`, `ADMIXTURE_K4.png` & `ADMIXTURE_K5.png`). You will also need to open up the CV file as well (`CV_admixture_plot.png`).
 
-**Once you have downloaded and opened the FIVE png files, go to this [link](https://forms.gle/RAMgAycNP7mkMdAK8) and answer the questions.**
+**Once you have downloaded/opened the FIVE png files, go to this [link](https://forms.gle/RAMgAycNP7mkMdAK8) and answer the questions.**
