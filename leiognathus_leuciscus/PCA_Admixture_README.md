@@ -93,9 +93,9 @@ sftp user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiogna
 r-sync user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/PC*png PATH_TO_YOUR_LOCAL_DIRECTORY
 ```
 
-You can also download them off GitHub as well. Just go to this link....
+You can also view them on GitHub as well. Just go to this [link](https://github.com/philippinespire/2022_PIRE_omics_workshop/tree/main/leiognathus_leuciscus/pop_structure) and open up any of the `PC*png` files (`PC1PC2.png`, `PC1PC2.png` & `PC2PC3.png`).
 
-**Once you have downloaded and opened the THREE png files, go to this link and answer the questions.**
+**Once you have downloaded/opened the THREE png files, go to this [link](https://forms.gle/f6aycWGBNLCBEJ3P8) and answer the questions.**
 
 ---
 
@@ -177,11 +177,13 @@ We have to download these plots to your local computer before we can open them u
 
 #if using a mac:
 sftp user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/ADMIXTURE*png PATH_TO_YOUR_LOCAL_DIRECTORY
+sftp user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/CV*png PATH_TO_YOUR_LOCAL_DIRECTORY
 
 #if using a PC:
-r-sync user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structureADMIXTURE*png PATH_TO_YOUR_LOCAL_DIRECTORY
+r-sync user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/ADMIXTURE*png PATH_TO_YOUR_LOCAL_DIRECTORY
+r-sync user_name@wahab.hpc.odu.edu:~/shotgun_PIRE/2022_PIRE_omics_workshop/leiognathus_leuciscus/pop_structure/CV*png PATH_TO_YOUR_LOCAL_DIRECTORY
 ```
 
-You can also download them off GitHub as well. Just go to this link....
+You can also view them on GitHub as well. Just go to this [link](https://github.com/philippinespire/2022_PIRE_omics_workshop/tree/main/leiognathus_leuciscus/pop_structure) and open up any of the `ADMIXTURE*png` files (`ADMIXTURE_K2.png`, `ADMIXTURE_K3.png`, `ADMIXTURE_K4.png` & `ADMIXTURE_K5.png`). You will also need to open up the CV file as well (`CV_admixture_plot.png`).
 
-**Once you have downloaded and opened the FIVE png files, go to this link and answer the questions.**
+**Once you have downloaded and opened the FIVE png files, go to this [link](https://forms.gle/RAMgAycNP7mkMdAK8) and answer the questions.**
