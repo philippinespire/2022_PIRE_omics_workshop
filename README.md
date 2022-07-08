@@ -12,6 +12,10 @@ Here is a link to the daily [schedule](https://docs.google.com/spreadsheets/d/17
 
 ---
 
+[Workshop Survey](https://forms.gle/rjnJT14pp42osoQM9)
+
+----
+
 ## List of Instructors
 
 |Position |Name | Institution | Contact |
