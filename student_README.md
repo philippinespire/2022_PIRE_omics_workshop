@@ -1,4 +1,4 @@
-# Sfa Shotgun Data Processing Log - SSL data
+#Shotgun Data Processing Log - SSL data
 
 Copy and paste this into a new species dir and fill in as steps are accomplished.
 
@@ -10,19 +10,19 @@ Following the [pire_fq_gz_processing](https://github.com/philippinespire/pire_fq
 
 ## Step 0. Rename the raw fq.gz files
 
-Used decode file from Sharon Magnuson. **We will do this together in the workshop as a demonstration.**
+Used decode file from Sharon Magnuson.
 
 ```
 salloc
 bash
 
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUS/your_dir/species_dir
 
 #run renameFQGZ.bash first to make sure new names make sense
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_ProbeDevelopmentLibraries_SequenceNameDecode.tsv
 
 #run renameFQGZ.bash again to actually rename files
-#need to say "yes" 2X
+#need to say "yes" 2x
 bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_ProbeDevelopmentLibraries_SequenceNameDecode.tsv rename
 ```
 
@@ -30,15 +30,13 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/renameFQGZ.bash Sfa_Probe
 
 ## Step 1. Check quality of data with fastqc
 
-Ran [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh).
-* **NOTE:** for the 2022 PIRE Omics workshop, run [`Multi_FASTQC_wkshp.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC_wkshp.sh) instead. Specify out directory to write the output to.
+Ran [`Multi_FASTQC.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/Multi_FASTQC.sh). Specify out directory to write the output to.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir/shotgun_raw_fq
 
 #Multi_FastQC.sh "<indir>" "file extension"
-#For workshop: Multi_FASTQC_wkshp.sh "<indir>" "<outdir>" "file extension"
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/shotgun_raw_fq" "fq.gz"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir/shotgun_raw_fq" "fq.gz"
 ```
 
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/shotgun_raw_fq/fastqc_report.html) written out to `shotgun_raw_fq` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
@@ -62,7 +60,7 @@ Potential issues:
 Ran [`runFASTP_1st_trim.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_1st_trim.sbatch).
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #sbatch runFASTP_1st_trim.sbatch <INDIR/full path to files> <OUTDIR/full path to desired outdir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFASTP_1st_trim.sbatch shotgun_raw_fq fq_fp1
@@ -89,15 +87,15 @@ Potential issues:
 Ran [`runCLUMPIFY_r1r2_array.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runCLUMPIFY_r1r2_array.bash) in a 3 node array on Wahab.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
-bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/r3clark 3
+bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runCLUMPIFY_r1r2_array.bash fq_fp1 fq_fp1_clmp /scratch/your_wahab_user_name 3
 ```
 
 Checked the output with [`checkClumpify_EG.R`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/checkClumpify_EG.R).
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 salloc
 enable_lmod
@@ -111,7 +109,7 @@ Clumpify worked succesfully!
 Moved all `*out` files to the `logs` directory.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 mv *out logs
 ```
@@ -123,7 +121,7 @@ mv *out logs
 Ran [`runFASTP_2_ssl.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFASTP_2_ssl.sbatch).
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runFASTP_2_ssl.sbatch <indir> <outdir> 
 #do not use trailing / in paths
@@ -151,7 +149,7 @@ Potential issues:
 Ran [`runFQSCRN_6.bash`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runFQSCRN_6.bash).
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runFQSCRN_6.bash <indir> <outdir> <number of nodes to run simultaneously>
 #do not use trailing / in paths
@@ -161,7 +159,7 @@ bash /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runFQSCRN_6.bash fq_fp1_c
 Checked output for errors.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 ls fq_fp1_clmp_fp2_fqscrn/*tagged.fastq.gz | wc -l
 ls fq_fp1_clmp_fp2_fqscrn/*tagged_filter.fastq.gz | wc -l 
@@ -179,7 +177,7 @@ grep 'No reads in' slurm-fqscrn.*out
 Have to run Multiqc separately.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runMULTIQC.sbatch <indir> <report name>
 #do not use trailing / in paths
@@ -190,12 +188,12 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runMULTIQC.sbatch fq_fp
 
 Potential issues:
   * one hit, one genome, no ID ~XX% - 
-  * no one hit, one genome to any potential contaminators (bacteria, virus, human, etc)  ~XX% - good 
+  * no one hit, one genome to any potential contaminators (bacteria, virus, human, etc)  ~XX%
 
 Cleaned-up logs again.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 mv *out logs/
 ```
@@ -207,7 +205,7 @@ mv *out logs/
 Ran [`runREPAIR.sbatch`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/runREPAIR.sbatch).
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runREPAIR.sbatch <indir> <outdir> <threads>
 #do not use trailing / in paths
@@ -219,10 +217,10 @@ This went smoothly.
 Have to run Fastqc-Multiqc separately.
 
 ```
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #Multi_FastQC.sh "<indir>" "file_extension"
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired" "fq.gz" 
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/Multi_FASTQC.sh "/home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir/fq_fp1_clmp_fp2_fqscrn_repaired" "fq.gz" 
 ```
 
 [Report](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/fastqc_report.html) written out to `fq_fp1_clmp_fp2_fqscrn_repaired` directory. *To visualize, click "view raw" and then add "[https://htmlpreview.github.io/?](https://htmlpreview.github.io/?)" to the beginning of the URL.*
@@ -242,11 +240,11 @@ Potential issues:
 Ran [`read_calculator_ssl.sh`](https://github.com/philippinespire/pire_fq_gz_processing/blob/main/read_calculator_ssl.sh).
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #sbatch read_calculator_ssl.sh <species home dir> 
 #do not use trailing / in paths
-sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus"
+sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/read_calculator_ssl.sh "/home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir"
 ```
 
 Generated the [percent_read_loss](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/preprocess_read_change/readLoss_table.tsv) and [percent_reads_remaining](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/preprocess_read_change/readsRemaining_table.tsv) tables.
@@ -265,14 +263,14 @@ Reads remaining:
 
 ## Step 1. Genome Properties
 
-*Salarias fasciatus* has a genome available at both the genomesize.com (C-value= "0.83" pg) and NCBI Genome databases. 
+*Species name* does (or does not) have a genome available at either genomesize.com or NCBI Genome databases. 
  
-However, we will still estimate the genome size of *Salarias fasciatus* using Jellyfish to remain consistent with all the other species.
+We will still estimate the genome size of *Species name* using Jellyfish to remain consistent with all the other species.
 
 Executed `runJellyfish.sbatch` using the decontaminated files.
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runJellyfish.sbatch <Species 3-letter ID> <indir>
 sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sfa" "fq_fp1_clmp_fp2_fqscrn_repaired"
@@ -281,11 +279,17 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_fq_gz_processing/runJellyfish.sbatch "Sf
 The Jellyfish kmer-frequency [histogram file](https://github.com/philippinespire/2022_PIRE_omics_workshop/blob/main/salarias_fasciatus/fq_fp1_clmp_fp2_fqscrn_repaired/Sfa_all_reads.histo) 
 was uploaded into [GenomeScope v1.0](http://qb.cshl.edu/genomescope/) and [GenomeScope v2.0](http://qb.cshl.edu/genomescope/genomescope2.0/) to generate the [v1.report](**insert file**) and [v2.report](**insert file**). 
 
-Genome stats for Sfa from Jellyfish/GenomeScope v1.0 and v2.0, k=21 for both versions:
+Genome stats for Sfa from Jellyfish/GenomeScope v1.0 & v2.0
+stat    |min    |max    
+------  |------ |------
+Heterozygosity v1.0|XX%       |XX%       
+Heterozygosity v2.0|XX%       |XX%       
+Genome Haploid Length v1.0|XX bp    |XX bp 
+Genome Haploid Length v2.0|XX bp    |XX bp 
+Model Fit   v1.0|XX%       |XX%       |XX%
+Model Fit   v2.0|XX%       |XX%       |XX%
 
-**insert table here**
-
-No red flags. We will use the max value from V2 rounded up to ***insert value here*** bp.
+*Mention any red flags here, otherwise state "No red flags".* We will use the max value from V2 rounded up to ***insert value here*** bp.
 
 ---
 
@@ -296,7 +300,7 @@ Executed [runSPADEShimem_R1R2_noisolate.sbatch](https://github.com/philippinespi
 ```sh
 #new window
 ssh username@turing.hpc.odu.edu
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <contam | decontam> <genome size in bp> <species dir>
 #do not use trailing / in paths
@@ -340,7 +344,7 @@ This SPAdes scripts automatically runs `QUAST` but have to run `BUSCO` separatel
 Executed [runBUCSO.sh](https://github.com/philippinespire/pire_ssl_data_processing/blob/main/scripts/runBUSCO.sh) on both the `contigs` and `scaffolds` files.
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runBUSCO.sh <species dir> <SPAdes dir> <contigs | scaffolds>
 #do not use trailing / in paths
@@ -372,28 +376,18 @@ sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runBUSCO.sh 
 
 ## Step 4. Fill in QUAST and BUSCO Values
 
-You are not going to have the BUSCO output till few hours but you can copy the out files from the workshop:
-```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/your_name
-pwd
-
-cp -R /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/busco-results .
-```
-
-Now you can complete the table below
-
 ### Summary of QUAST (using GenomeScope v.2 <enter genome length> estimate) and BUSCO Results
 
 Species    |Assembly    |DataType    |SCAFIG    |covcutoff    |genome scope v.    |No. of contigs    |Largest contig    |Total lenght    |% Genome size completeness    |N50    |L50    |Ns per 100 kbp    |BUSCO single copy
 ------  |------  |------ |------ |------ |------  |------ |------ |------ |------ |------  |------ |------ |------
-Sfa  |A  |decontam       |contgs       |off       |2       |  67123  | 76658  | 485971358  | 77 % | 8294  |  17506  |  0  | 53.9 %
-Sfa  |A  |decontam       |scaffolds       |off       |2    |  52432  |  129917  |   540390606  |  85 % | 14081  | 10678  | 687.92  | 68.5 %
-Sfa  |B  |decontam       |contgs       |off       |2       |  66179  |  89863  |   503699552  |  79 % |  8954  |  16792  |  0  | 56.8 %
-Sfa  |B  |decontam       |scaffolds       |off       |2    |  52101  |  155803  |   548869041  |  86 % |  14587  |  10542  |  580.13  | 70.8 %
-Sfa  |C  |decontam       |contgs       |off       |2       |  65353  |  92853  |  489986080  | 77 % | 8743  | 16693  |  0  |  55.9 %
-Sfa  |C  |decontam       |scaffolds       |off       |2    |  51239  |  176566  |   539924893  | 86 % |  14784  |  10318  | 641.53 | 69.5 %
-Sfa  |allLibs  |decontam       |contigs       |off       |2    |  ? | ? |  ?  |  ? % |  ?  | ?  |  ?  | ? %
-Sfa  |allLibs  |decontam       |scaffolds       |off       |2   | ? | ? |  ?  |  ? % | ?  |  ?  | ? | ? %
+Sfa  |A  |decontam       |contgs       |off       |X       |  XX  | XX  | XX  | XX% | XX  |  XX  |  0  | XX%
+Sfa  |A  |decontam       |scaffolds       |off       |X    |  XX  |  XX  |   XX  |  XX% | XX  | XX  | XX  | XX%
+Sfa  |B  |decontam       |contgs       |off       |X       |  XX |  XX  |   XX  |  XX% |  XX  |  XX  |  0  | XX%
+Sfa  |B  |decontam       |scaffolds       |off       |X    |  XX  |  XX  |   XX  |  XX% |  XX  |  XX  |  XX  | XX%
+Sfa  |C  |decontam       |contgs       |off       |X       |  XX  |  XX  |  XX  | XX% | XX  | XX  |  0  |  XX%
+Sfa  |C  |decontam       |scaffolds       |off       |X    |  XX  |  XX  |   XX  | XX% |  XX  |  XX  | XX | XX%
+Sfa  |allLibs  |decontam       |contigs       |off       |X    |  XX | XX |  XX  |  XX% |  XX  | XX  | xx  | XX%
+Sfa  |allLibs  |decontam       |scaffolds       |off       |X   | XX | XX |  XX  |  XX% | XX  |  XX  | XX | XX%
 
 ## Step 5. Identify Best Assembly
 
@@ -404,21 +398,11 @@ Note additional remarks if necessary
 ## Step 6. Assemble Contaminated Data From the Best Library
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 #runSPADEShimem_R1R2_noisolate.sbatch <your user ID> <3-letter species ID> <library: all_2libs | all_3libs | 1 | 2 | 3> <contam | decontam> <genome size in bp> <species dir>
 #do not use trailing / in paths
 sbatch /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/runSPADEShimem_R1R2_noisolate.sbatch "e1garcia" "Sfa" "2" "contam" "635000000" "/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus" "fq_fp1_clmp_fp2_fqscrn_repaired"
-```
-
-## Skipping Steps 7-8 for the workshop BUT please do clean-up  (Step 9):
-
-Move your out files into the `logs` directory
-
-```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
-
-mv *out logs
 ```
 
 --- 
@@ -428,17 +412,19 @@ mv *out logs
 From the species directory: made probe directory, renamed assembly, and copied scripts.
 
 ```sh
-cd /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/yourname
+cd /home/e1garcia/shotgun_PIRE/REUs/your_dir/species_dir
 
 mkdir probe_design
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_annotation.sb probe_design
 cp /home/e1garcia/shotgun_PIRE/pire_ssl_data_processing/scripts/WGprobe_bedcreation.sb probe_design
-cp SPAdes_SgC0072C_contam_R1R2_noIsolate/scaffolds.fasta probe_design
+cp SPAdes_SgC0072C_contam_R1R2_noIsolate/scaffolds.fasta probe_design #copy best assembly
+ 
 # list the busco dirs
 ls -d busco_*
 # identify the busco dir of best assembly, copy the treatments (starting with the library)
 # Example,the busco dir for the best assembly for Sgr is `busco_scaffolds_results-SPAdes_SgC0072C_contam_R1R2_noIsolate`
-# I then provide the species 3-letter code, scaffolds, and copy and paste the parameters from the busco dir after "SPAdes_" 
+
+ # I then provide the species 3-letter code, scaffolds, and copy and paste the parameters from the busco dir after "SPAdes_" 
 cd probe_design
 mv scaffolds.fasta Sgr_scaffolds_B_contam_R1R2_noIsolate.fasta
 ```
@@ -455,11 +441,11 @@ Execute the second script
 sbatch WGprobe_bedcreation.sb "Sgr_scaffolds_SgC0072C_contam_R1R2_noIsolate"
 ```
 
-The longest scaffold is 105644
+The longest scaffold is XX
 
-The upper limit used in loop is 97500
+The upper limit used in loop is XX
 
-A total of 13063 regions have been identified from 10259 scaffolds
+A total of XX regions have been identified from XX scaffolds
 
 
 Moved out files to logs
@@ -470,7 +456,7 @@ mv *out ../logs
 ## Step 12. Fetching genomes for closest relatives
 
 ```sh
-nano closest_relative_genomes_salarias_fasciatus.txt
+nano closest_relative_genomes_your_species.txt
 
 Closest genomes:
 1. Salarias fascistus - https://www.ncbi.nlm.nih.gov/genome/7248
@@ -481,5 +467,3 @@ Closest genomes:
 
 Used Betancour et al. 2017 (All Blenniiformes)
 ```
-
-**NOTE:** Sfa has a genome available in GenBank.
