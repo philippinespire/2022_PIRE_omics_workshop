@@ -49,3 +49,4 @@ Caused by: java.io.FileNotFoundException: /scratch/YOURUSERNAME/Sfa-CBas_028-Ex1
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:158)
 	at fileIO.ReadWrite.getRawOutputStream(ReadWrite.java:435)
 	... 13 more
+slurmstepd: error: *** JOB 751381 ON d6-w6420b-15 CANCELLED AT 2022-07-05T04:04:43 DUE TO TIME LIMIT ***
