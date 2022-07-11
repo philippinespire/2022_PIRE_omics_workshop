@@ -1,0 +1,15 @@
+# BUSCO version is: 5.0.0 
+# The lineage dataset is: actinopterygii_odb10 (Creation date: 2021-02-19, number of species: 26, number of BUSCOs: 3640)
+# Summarized benchmarking in BUSCO notation for file /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/salarias_fasciatus/SPAdes_Sfa-CBas-A_decontam_R1R2_noIsolate/scaffolds.fasta
+# BUSCO was run in mode: genome
+# Gene predictor used: metaeuk
+
+	***** Results: *****
+
+	C:69.3%[S:68.5%,D:0.8%],F:11.4%,M:19.3%,n:3640	   
+	2523	Complete BUSCOs (C)			   
+	2494	Complete and single-copy BUSCOs (S)	   
+	29	Complete and duplicated BUSCOs (D)	   
+	415	Fragmented BUSCOs (F)			   
+	702	Missing BUSCOs (M)			   
+	3640	Total BUSCO groups searched		   
