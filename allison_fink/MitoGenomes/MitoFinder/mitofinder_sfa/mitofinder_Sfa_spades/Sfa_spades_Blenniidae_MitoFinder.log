@@ -1,0 +1,7 @@
+Command line: /opt/mitofinder/mitofinder -j Sfa_spades_Blenniidae -a scaffolds.fa -r Blenniidae.gb -o 2
+
+Start time : 2022-07-07 00:41:05
+
+Job name = Sfa_spades_Blenniidae
+
+ERROR: /home/afink007/shotgun_PIRE/2022_PIRE_omics_workshop/allison_fink/MitoGenomes/MitoFinder/mitofinder_sfa/mitofinder_Sfa_spades/scaffolds.fadoes not exist
