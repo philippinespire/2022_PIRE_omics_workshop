@@ -12,6 +12,12 @@ Here is a link to the daily [schedule](https://docs.google.com/spreadsheets/d/17
 
 ---
 
+## Lectures
+
+Here is the link to the workshop [lectures](https://drive.google.com/drive/folders/1PlsWqVSq7GwQ4k9QiCTh4WUx5dLVpW2l?usp=sharing)
+
+---
+
 [Workshop Survey](https://forms.gle/rjnJT14pp42osoQM9)
 
 ----
