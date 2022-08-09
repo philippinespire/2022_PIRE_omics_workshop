@@ -806,4 +806,4 @@ Follow the  workshop's [R repository](https://github.com/philippinespire/2022_PI
 
 ---
 
-***Congratulations! You have completed the 2022 PIRE Omics' Workshop. Good luck in you projects and happy coding!***
+***Congratulations! You have completed the 2022 PIRE Omics' Workshop. Good luck in your projects and happy coding!***
