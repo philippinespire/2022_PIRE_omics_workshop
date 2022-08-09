@@ -18,6 +18,12 @@ Here is the link to the workshop [lectures](https://drive.google.com/drive/folde
 
 ---
 
+##  Pictures
+
+Here is the link to the workshop [pictures](https://drive.google.com/drive/folders/1_yF8EBbb5CHd6gEuZG4w6AJ4USOpBco5)
+
+---
+
 [Workshop Survey](https://forms.gle/rjnJT14pp42osoQM9) (closed)
 
 ----
