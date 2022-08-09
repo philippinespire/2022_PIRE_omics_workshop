@@ -20,6 +20,8 @@ Here is the link to the workshop [lectures](https://drive.google.com/drive/folde
 
 ##  Pictures
 
+![IMG_8310](https://user-images.githubusercontent.com/40210956/183541474-8a1d1fd4-33f3-43ee-9895-cb40622a76dd.JPG)
+
 Here is the link to the workshop [pictures](https://drive.google.com/drive/folders/1_yF8EBbb5CHd6gEuZG4w6AJ4USOpBco5)
 
 ---
