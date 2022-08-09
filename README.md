@@ -22,7 +22,7 @@ Here is the link to the workshop [lectures](https://drive.google.com/drive/folde
 
 ![IMG_8310](https://user-images.githubusercontent.com/40210956/183541474-8a1d1fd4-33f3-43ee-9895-cb40622a76dd.JPG)
 
-Here is the link to the workshop [pictures](https://drive.google.com/drive/folders/1_yF8EBbb5CHd6gEuZG4w6AJ4USOpBco5)
+Here are the links pictures of the [workshop](https://drive.google.com/drive/folders/1_yF8EBbb5CHd6gEuZG4w6AJ4USOpBco5)  and day trip to [Apo Island](https://drive.google.com/drive/folders/1Nri_2HFqQjTyDbFuktNkCNenQNQAzW5B)
 
 ---
 
