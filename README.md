@@ -18,7 +18,7 @@ Here is the link to the workshop [lectures](https://drive.google.com/drive/folde
 
 ---
 
-[Workshop Survey](https://forms.gle/rjnJT14pp42osoQM9)
+[Workshop Survey](https://forms.gle/rjnJT14pp42osoQM9) (closed)
 
 ----
 
@@ -798,3 +798,12 @@ Eric will then share these with Arbor BioSciences.
 
 Now that we have a reference genome, what can we do with it? Follow the [PSMC](https://github.com/philippinespire/2022_PIRE_omics_workshop/tree/main/salarias_fasciatus/PSMC) link to learn how we can use genomic data from a single individual to infer demographic history! 
 
+---
+
+## E. A day of R
+
+Follow the  workshop's [R repository](https://github.com/philippinespire/2022_PIRE_R_workshop) to learn how you can analyze and illustrate your data.
+
+---
+
+***Congratulations! You have completed the 2022 PIRE Omics' Workshop. Good luck in you projects and happy coding!***
