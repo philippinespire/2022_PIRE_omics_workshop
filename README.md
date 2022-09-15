@@ -32,19 +32,18 @@ Here are the links pictures of the [workshop](https://drive.google.com/drive/fol
 
 ## List of Instructors
 
-|Position |Name | Institution | Contact |
-| --- | --- | --- | --- |
-| Professor | Kent Carpenter | ODU | cbird@odu.edu |
-| Professor | Chris Bird | TAMUCC | kcarpent@odu.edu |
-| Postdoc | [Eric Garcia](https://ericgarciaphd.wordpress.com) | ODU | e1garcia@odu.edu |
-| Postdoc | Brendan Reid | Rutgers | br450@sebs.rutgers.edu |
-| PhD Student | Rene Clark | Rutgers | rdc129@scarletmail.rutgers.edu |
-| PhD Student | Kyra Fitz | Rutgers | ksf63@dls.rutgers.edu |
-| PhD Student | John Whalen | ODU | jwhal002@odu.edu |
-| PhD Student | Jemelyn Baldisimo | ODU | jbald004@odu.edu |
-| M.Sc Student | George Bonsall | ODU | gbons002@odu.edu |
-| M.Sc Student | Roy Roberts | TAMUCC | rroberts3@islander.tamucc.edu |
-| REU/Post-Bac | Jordan Rodriguez | TAMUCC | jrodriguez216@islander.tamucc.edu |
+|Position |Role  |Name | Institution | Contact |
+| --- | --- |  --- | --- | --- |
+| Professor | Guest Lecturer | Kent Carpenter | ODU | cbird@odu.edu |
+| Professor | Instructor | Chris Bird | TAMUCC | kcarpent@odu.edu |
+| Postdoc | Instructor | [Eric Garcia](https://ericgarciaphd.wordpress.com) | ODU | e1garcia@odu.edu |
+| Postdoc | Instructor | Brendan Reid | Rutgers | br450@sebs.rutgers.edu |
+| PhD Student | Instructor | Rene Clark | Rutgers | rdc129@scarletmail.rutgers.edu |
+| PhD Student | Guest Lecturer | Kyra Fitz | Rutgers | ksf63@dls.rutgers.edu |
+| PhD Student | Guest Lecturer | John Whalen | ODU | jwhal002@odu.edu |
+| M.Sc Student | Guest Lecturer | George Bonsall | ODU | gbons002@odu.edu |
+| M.Sc Student | Instructor |  Roy Roberts | TAMUCC | rroberts3@islander.tamucc.edu |
+| REU/Post-Bac | Guest Lecturer | Jordan Rodriguez | TAMUCC | jrodriguez216@islander.tamucc.edu |
 
 ## List of Participants
 
