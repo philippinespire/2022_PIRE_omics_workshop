@@ -1,0 +1,7 @@
+Command line: /opt/mitofinder/mitofinder -j Sfa_spades_Blenniidae -a scaffolds.fa -r Blenniidae.gb -o 2
+
+Start time : 2022-07-07 00:42:36
+
+Job name = Sfa_spades_Blenniidae
+
+ERROR: /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/marial_malabag/PSMC/MitoGenomes/MitoFinder/Blenniidae.gb does not exist

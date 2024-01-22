@@ -1,0 +1,15 @@
+
+mkdir: cannot create directory ‘/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/marial_malabag/MitoGenomes/MitoFinder/mitofinder_sfa/mitofinder_Sfa_spades’: No such file or directory
+cp: cannot create regular file '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/marial_malabag/MitoGenomes/MitoFinder/mitofinder_sfa/mitofinder_Sfa_spades': No such file or directory
+cp: cannot create regular file '/home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/marial_malabag/MitoGenomes/MitoFinder/mitofinder_sfa/mitofinder_Sfa_spades/scaffolds.fa': No such file or directory
+/var/spool/slurmd/job758383/slurm_script: line 34: cd: /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/marial_malabag/MitoGenomes/MitoFinder/mitofinder_sfa/mitofinder_Sfa_spades: No such file or directory
+
+Command line: /opt/mitofinder/mitofinder -j Sfa_spades_Blenniidae -a scaffolds.fa -r Blenniidae.gb -o 2
+
+Now running MitoFinder ...
+
+Start time : 2022-07-07 00:41:14
+
+Job name = Sfa_spades_Blenniidae
+
+ERROR: /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/marial_malabag/PSMC/MitoGenomes/MitoFinder/Blenniidae.gb does not exist

@@ -1,0 +1,26 @@
+PLINK v1.90b6.21 64-bit (19 Oct 2020)
+Options in effect:
+  --allow-extra-chr
+  --bfile PIRE.Lle.Ham
+  --out PIRE.Lle.Ham
+  --pca
+
+Hostname: e2-w6420b-19
+Working directory: /home/e1garcia/shotgun_PIRE/2022_PIRE_omics_workshop/marial_malabag/pop_structure
+Start time: Thu Jul  7 04:03:12 2022
+
+Random number seed: 1657180992
+385598 MB RAM detected; reserving 192799 MB for main workspace.
+49050 variants loaded from .bim file.
+121 people (0 males, 0 females, 121 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to PIRE.Lle.Ham.nosex .
+Using up to 39 threads (change this with --threads).
+Before main variant filters, 121 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.965985.
+49050 variants and 121 people pass filters and QC.
+Note: No phenotypes present.
+Relationship matrix calculation complete.
+--pca: Results saved to PIRE.Lle.Ham.eigenval and PIRE.Lle.Ham.eigenvec .
+
+End time: Thu Jul  7 04:03:13 2022
