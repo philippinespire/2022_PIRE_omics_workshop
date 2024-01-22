@@ -1,6 +1,6 @@
 Command line: /opt/mitofinder/mitofinder -j Sfa_spades_Blenniidae -a scaffolds.fa -r Blenniidae.gb -o 2
 
-Start time : 2022-06-22 16:57:57
+Start time : 2022-07-07 00:41:04
 
 Job name = Sfa_spades_Blenniidae
 
@@ -122,4 +122,4 @@ Mitofinder selected the longest sequence as the final sequence.
 Different contigs may be part of different organisms thus "Sfa_spades_Blenniidae_final_genes_NT.fasta" and "Sfa_spades_Blenniidae_final_genes_AA.fasta" could be erroneous.
 We recommend to check contigs and associated genes separately.
 
-Total wall-clock time used by MitoFinder = 0:10:09.371416
+Total wall-clock time used by MitoFinder = 0:10:17.361742
